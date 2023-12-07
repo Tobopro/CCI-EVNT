@@ -1,8 +1,43 @@
-.newsletter-content {
+.my-modal {
+
+    background-image: url(../public/img/Background/Background-medium.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.my-modal form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.my-modal input {
+
+    background-color: $sub-color;
+    color: $main-color
+}
+
+.my-modal input::placeholder {
+    color: $main-color;
+    opacity: 1;
+}
+
+.my-modal input:placeholder-shown {
+    border: 1px solid $main-color;
+}
+
+
+
+.my-modal .newsletter-content {
     height: 50vw;
     position: relative;
     overflow: hidden;
 }
+
+
 
 
 
