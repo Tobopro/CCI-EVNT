@@ -17,6 +17,55 @@
                             <div class="mt-md-4 d-flex flex-column align-items-center h-50">
                                 <p class="login-panel__p">Se connecter / S'inscrire</p>
 
+                                <button type="button" class="mt-md-4 d-flex flex-column align-items-center h-50" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Se connecter / S'inscrire
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+     
+      <div class="modal-body my-modal ">
+        <div class="row">
+        <div class="col-lg-3 offset-lg-5">
+            <h2>Inscription</h2>
+        </div>
+            <div class="col-lg-1 offset-lg-3">
+            <button type="button" class="btn-close text-end" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+     
+        </div>
+      
+        
+      <form>
+            <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Prénom</label>
+            <input type="name" class="form-control" id="exampleInputName1" placeholder="Joe" autocomplete="off">
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Nom</label>
+            <input type="lastName" class="form-control" id="exampleInputLastName1" placeholder="Doe" autocomplete="off">
+            </div>
+            <div class="form-group">
+            <label for="exampleInputEmail1" class="form-label mt-4">Adresse e-mail</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="prenom.nom@exemple.fr">
+            <small id="emailHelp" class="form-text text-muted">Promis, on ne la partage avec personne.</small>
+            </div>
+            <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Mot de passe</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="*******" autocomplete="off">
+            </div>
+      </form>
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn  mt-5  ">Save changes</button>
+            </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 
                                 <!-- connection buttons -->
                                 <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i

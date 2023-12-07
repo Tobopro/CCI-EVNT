@@ -58,9 +58,13 @@ if (isset($_GET['url'])) {
         case 'carte':
             require '../views/mobile_map_page.php';
             break;
+        case 'mentions':
+            require '../views/legal.php';
+            break;
         default:
             require '../views/homepage.php';
             break;
+
     }
 }
 else {require '../views/homepage.php';}
