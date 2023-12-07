@@ -4,7 +4,7 @@
         <div class="cover-and-info-edit">
             <div class="cover-edit-picture">
                 <button class="cover-edit-picture__btn">
-                    <a href="profile_page.html">Enrengistrer</a>
+                    <a href="index.php?url=profile">Enrengistrer</a>
                 </button>
                 <a href="#">
                     <div>
