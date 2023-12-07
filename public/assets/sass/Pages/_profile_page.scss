@@ -1,0 +1,145 @@
+// .cover-picture {
+//   overflow: hidden;
+//   height: 25vh;
+
+//   @media (max-width: 991px) {
+//     height: 15vh;
+//   }
+// }
+
+
+// .cover-picture img {
+//   width: 100vw;
+//   top: -250px;
+//   position: relative;
+
+
+
+// }
+
+.cover-picture img {
+    position: relative;
+    height: 40vh;
+    width: 100%;
+    object-fit: cover;
+    top: 0;
+}
+
+
+
+.cover-picture__btn {
+    z-index: 7;
+    color: #FCFCFC;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    margin-top: 2vh;
+    border: none;
+    background-color: $sub-color;
+    position: absolute;
+    display: flex;
+    height: 30px;
+    bottom: 30vh;
+    right: 10px;
+
+    @media (max-width: $medium) {
+        bottom: 20vh;
+
+    }
+}
+
+
+
+.cover-and-info {
+    position: relative;
+    top: -10vh;
+}
+
+#profile-up {
+
+    background-color: $sub-color;
+    color: $main-color;
+    display: flex;
+    flex-direction: row;
+    box-shadow: (5px, 5px, 20px, 0, #333);
+
+    & a {
+        z-index: 13;
+        margin-left: 3vw;
+        padding: 0px;
+        height: 150px;
+        width: 150px;
+        transform: translate(0px, -7vh);
+    }
+}
+
+
+#profile-picture {
+    position: relative;
+    z-index: 1;
+    min-width: 150px;
+
+    & img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+        border: solid 1.5px;
+        border-color: $sub-color;
+        transform: translate(0px, -7vh);
+    }
+
+    @media (max-width: $small) {
+        transform: translate(0px, -5vh);
+    }
+}
+
+#profile-name {
+
+
+    font-weight: bold;
+
+    @media (max-width: 991px) {}
+
+
+    @media (max-width: 767px) {}
+
+}
+
+.indicator {
+
+    font-size: 2rem;
+
+    &__number {
+        &--size {
+            font-size: 5rem;
+        }
+
+    }
+}
+
+#profile-numbers div {
+    color: $main-color ;
+    background-color: $sub-color;
+    background-size: 50%;
+    border-radius: 5px;
+}
+
+.car-item {
+    @media (max-width: $medium) {
+        max-width: 90vw;
+    }
+
+
+    display: flex;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+#future-events,
+#past-events {
+    @media (min-width: $medium) {
+        overflow: hidden;
+    }
+}
