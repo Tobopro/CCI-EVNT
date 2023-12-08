@@ -12,9 +12,10 @@ $event_description_register = isset($_POST["description"]) ? $_POST["description
 $event_category_register = isset($_POST["category"]) ? $_POST["category"] : "";
 $event_price_register = isset($_POST["price"]) ? $_POST["price"] : "";
 $event_price_info_register = isset($_POST["price_info"]) ? $_POST["price_info"] : "";
+$is_free_entry_register = isset($_POST["is_free_entry"]) ? $_POST["isFree"] : "";
 $event_nbplace_register = isset($_POST["nbplace"]) ? $_POST["nbplace"] : "";
 $is_no_limit_register = isset($_POST["is_no_limit"]) ? $_POST["is_no_limit"] : "";
-$is_free_entry_register = isset($_POST["is_free_entry"]) ? $_POST["is_free_entry"] : "";
+
 
 if (!empty($event_name_register) &&
     !empty($event_date_register) &&
