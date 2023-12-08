@@ -8,7 +8,7 @@
                     <div class="row">
 
                         <!-- logo -->
-                        <img src="img/logo.svg" alt="logo-du-site-Evnt" class="login-panel__logo mb-md-4">
+                        <img src="./assets/img/logo.svg" alt="logo-du-site-Evnt" class="login-panel__logo mb-md-4">
                         <button type="button" class="mt-md-4 d-flex flex-column align-items-center h-50"
                             data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Se connecter / S'inscrire
