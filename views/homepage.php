@@ -6,7 +6,6 @@
             <section id="inscription" class="col-8 col-lg-4 d-flex justify-content-center d-lg-block">
                 <div class="container offset-lg-2 col-8 p-0 pb-4 login-panel">
                     <div class="row">
-
                         <!-- logo -->
                         <img src="./assets/img/logo.svg" alt="logo-du-site-Evnt" class="login-panel__logo mb-md-4">
                         <button type="button" class="mt-md-4 d-flex flex-column align-items-center h-50"
@@ -71,55 +70,57 @@
 
 
                         <!-- connection buttons -->
-                        <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
-                                class="fa-brands fa-google offset-1 col-3 d-flex justify-content-center align-items-center"
-                                aria-hidden="true"></i>
-                            <span class="col-5">Google</span>
-                        </a>
-                        <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
-                                class="fa-brands fa-facebook offset-1 col-3 d-flex justify-content-center align-items-center"
-                                aria-hidden="true"></i>
-                            <span class="col-5">Facebook</span>
-                        </a>
-                        <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
-                                class="fa-brands fa-x-twitter offset-1 col-3 d-flex justify-content-center align-items-center"
-                                aria-hidden="true"></i>
-                            <span class="col-5">X.com</span>
-                        </a>
-                        <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
-                                class="fa-solid fa-at offset-1 col-3 d-flex justify-content-center align-items-center"
-                                aria-hidden="true"></i>
+                        <div>
+                            <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
+                                    class="fa-brands fa-google offset-1 col-3 d-flex justify-content-center align-items-center"
+                                    aria-hidden="true"></i>
+                                <span class="col-5">Google</span>
+                            </a>
+                            <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
+                                    class="fa-brands fa-facebook offset-1 col-3 d-flex justify-content-center align-items-center"
+                                    aria-hidden="true"></i>
+                                <span class="col-5">Facebook</span>
+                            </a>
+                            <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
+                                    class="fa-brands fa-x-twitter offset-1 col-3 d-flex justify-content-center align-items-center"
+                                    aria-hidden="true"></i>
+                                <span class="col-5">X.com</span>
+                            </a>
+                            <a class="d-flex btn col-8 px-0 mb-2 login-panel__button"><i
+                                    class="fa-solid fa-at offset-1 col-3 d-flex justify-content-center align-items-center"
+                                    aria-hidden="true"></i>
 
-                            <span class="col-5">E-mail</span>
-                        </a>
+                                <span class="col-5">E-mail</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </section>
+
+
+            <section id="cardsByThree" class="col-12 col-lg-6 d-flex align-items-center  justify-content-center ">
+                <div class="row d-lg-block ">
+                    <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-1">
+                        <div class=" yellow-card box--yellow">
+                            <img src="./assets/img/icons/calendar-days.png" alt="icon de calendrier" class="w-50">
+                            <h5 class="card-content fs-6 m-3">Créez</h5>
+                        </div>
+                    </div>
+                    <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-2">
+                        <div class="yellow-card box--yellow">
+                            <img src="./assets/img/icons/confettis.png" alt="icone de confettis" class="w-50">
+                            <h5 class="card-content fs-6 m-3">Participez</h5>
+                        </div>
+                    </div>
+                    <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-3">
+                        <div class="yellow-card box--yellow">
+                            <img src="./assets/img/icons/high-five.png" alt="icone tape m'en cinq" class="w-50">
+                            <h5 class="card-content fs-6 m-3">Partagez</h5>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-    </section>
-    <section id="cardsByThree" class="col-12 col-lg-6 d-flex align-items-center  justify-content-center ">
-        <div class="row d-lg-block ">
-            <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-1">
-                <div class=" yellow-card box--yellow">
-                    <img src="./assets/img/icons/calendar-days.png" alt="icon de calendrier" class="w-50">
-                    <h5 class="card-content fs-6 m-3">Créez</h5>
-                </div>
-            </div>
-            <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-2">
-                <div class="yellow-card box--yellow">
-                    <img src="./assets/img/icons/confettis.png" alt="icone de confettis" class="w-50">
-                    <h5 class="card-content fs-6 m-3">Participez</h5>
-                </div>
-            </div>
-            <div class="col-3 offset-1 offset-md-0 col-md-4 container-yellow-card-3">
-                <div class="yellow-card box--yellow">
-                    <img src="./assets/img/icons/high-five.png" alt="icone tape m'en cinq" class="w-50">
-                    <h5 class="card-content fs-6 m-3">Partagez</h5>
-                </div>
-            </div>
-        </div>
-    </section>
-    </div>
     </div>
     <div class="container-fluid">
         <!-- event cards + map container -->
