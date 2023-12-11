@@ -1,26 +1,23 @@
-<div class="card-evnt offset-1 col-10 mt-5">
-    <div>
-        <img src="./img/nature-morte-carte.jpg" alt="" class="card-evnt__image--top p-0">
-    </div>
-    <div class="container">
-        <div class="card-evnt__content row p-0">
-            <div class="col-9 py-2 card-evnt__info">
-                <h2 class="card-evnt__title m-0">Nom de l'Evnt</h2>
-                <div class="card-text d-flex align-items-center">
-                    <p class="m-0 organizer">Nom de l'organisateur</p>
-                    <i class="bi bi-patch-check ms-3"></i>
-                </div>
-                <a href="" class="btn p-0 pe-4 ps-1 mt-4 card-evnt__button text-start">Page de l'Evnt</a>
-            </div>
-
-            <div class="col-3 d-flex flex-column card-evnt__action">
-                <i class="bi bi-suit-heart ms-4"></i>
-                <i class="bi bi-share-fill mb-auto ms-3"></i>
-                <div class="d-flex align-items-center mb-1">
-                    <i class="bi bi-people me-2"></i>
-                    <p class="m-0">3/12</p>
-                </div>
-            </div>
+<article class="evnt-single">
+    <a href="">
+        <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+            alt="photographie d'un groupe de fêtard" />
+        <div class="padding-evnt">
+            <ul class="details-evnt">
+                <!-- Ville -->
+                <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> Strasbourg
+                </li>
+                <!-- Date -->
+                <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01 janvier
+                    2024</li>
+                <!-- Participants -->
+                <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
+            </ul>
+            <h3>Soirée du Nouvel An au Public House</h3>
+            <ul class="liste-categories">
+                <li>Catégorie 1</li>
+                <li>Catégorie 2</li>
+            </ul>
         </div>
-    </div>
-</div>
+    </a>
+</article>
