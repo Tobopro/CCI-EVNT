@@ -120,6 +120,25 @@ class User {
         $this->blockedBy = $result['blockedBy'];
     }
 
+    public function register($db)
+    {
+
+        //need to add email and password check
+
+        if (!$this->isRegisteredInDb($db)) {
+            $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :prefferedCategories)");
+            $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'prefferedCategories' => $this->prefferedCategories]);
+            $query = null;
+
+            $this->loadData($db);
+            $_SESSION['auth'] = true;
+            $_SESSION['user'] = $this;
+
+        } else {
+            $_SESSION['email_exists'] = true;
+        }
+    }
+
 
 }
 
