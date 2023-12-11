@@ -46,116 +46,24 @@
                 <a href="" class="btn btn-secondary">Voir tous les Evnt</a>
             </div>
 
-            <ul class="carousel-evnt container-homepage"
-                data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/foreground-there-is-woman-black-dress.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/new-years-party-is-being-celebrated.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/full-shot-young-people-partying-outdoors.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> Colmar
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 10
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 15/15</li>
-                                </ul>
-                                <h3>Soirée de déglingos</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-            </ul>
+            <!-- event cards section -->
+            <section class="card-hcarousel">
+                <div class="wrapper">
+                    <div class="inner">
+                        <ul class="carousel-evnt container"
+                            data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
+                            <?php
+        // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
+        for ($i = 0; $i < 10; $i++) {
+            echo "<li>";
+            include "../views/components/card.php";
+            echo "</li>";
+        }
+        ?>
+                        </ul>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <section id="quoi-evnt">
