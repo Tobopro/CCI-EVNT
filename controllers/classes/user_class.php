@@ -7,6 +7,7 @@ class User {
     // attributes
     private $id;
 
+    //register form attributes
     private $email;
     private $password;
     private $firstName;
@@ -15,12 +16,13 @@ class User {
     private $description;
     private $profilePicture;
     private $coverPicture;
+    private $prefferedCategories;
+
 
     private $isBanned;
 
     private $participationsCount;
     private $creationsCount;
-    private $prefferedCategories;
 
     private $evntsToCome;
     private $evntsParticipated;
@@ -117,6 +119,8 @@ class User {
         $this->blockedUsers = $result['blockedUsers'];
         $this->blockedBy = $result['blockedBy'];
     }
+
+
 }
 
 ?>
