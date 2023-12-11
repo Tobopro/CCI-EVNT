@@ -26,3 +26,8 @@ slider.addEventListener('mousemove', e => {
     slider.scrollLeft = scrollLeft - walk;
 });
 
+$(document).ready(function () {
+    if (!$.browser.webkit) {
+        $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
+    }
+});

@@ -138,12 +138,17 @@
     <section class="card-hcarousel">
         <div class="wrapper">
             <div class="inner">
-                <?php
-                // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
-                for ($i = 0; $i < 10; $i++) {
-                    include "../views/components/card-desktop.php";
-                }
-                ?>
+                <ul class="carousel-evnt container"
+                    data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
+                    <?php
+        // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
+        for ($i = 0; $i < 10; $i++) {
+            echo "<li>";
+            include "../views/components/card.php";
+            echo "</li>";
+        }
+        ?>
+                </ul>
             </div>
         </div>
     </section>
@@ -171,9 +176,11 @@
                                         <div class="text-on-image d-none d-lg-block ">
                                             <h2 class="mb-5"> Une soirée de déglingo</h2>
 
-                                            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione
+                                            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Ratione
                                                 cupiditate velit, architecto dolorum
-                                                repellendus incidunt nam libero maiores explicabo voluptate sequi
+                                                repellendus incidunt nam libero maiores explicabo voluptate
+                                                sequi
                                                 molestias porro repellat quam ab
                                                 distinctio, reprehenderit at eligendi?</p>
                                         </div>
@@ -202,9 +209,11 @@
                                             class="d-block w-100  " alt="...">
                                         <div class="text-on-image d-none d-lg-block ">
                                             <h2 class="mb-5"> Une soirée de déglingo</h2>
-                                            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ratione
+                                            <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                                Ratione
                                                 cupiditate velit, architecto dolorum
-                                                repellendus incidunt nam libero maiores explicabo voluptate sequi
+                                                repellendus incidunt nam libero maiores explicabo voluptate
+                                                sequi
                                                 molestias porro repellat quam ab
                                                 distinctio, reprehenderit at eligendi?</p>
                                         </div>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <script defer src="../leaflet/leaflet.js"></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,6 +16,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
         crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/sass/main.css">
+    <!-- <script type="text/javascript" src="assets/js/script.js" defer></script>
+    <script type="text/javascript" src="assets/javascript/flickity/flickity.pkgd.min.js" defer></script> -->
 
     <!-- Highest Praise font  -->
     <link rel="stylesheet" href="https://use.typekit.net/xdq8dza.css">

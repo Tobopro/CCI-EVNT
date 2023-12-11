@@ -151,9 +151,8 @@
 
     &>.wrapper {
         display: flex;
-        // grid-gap: 2em;
         overflow: hidden;
-        width: 55em;
+        width: 80em;
 
         & .inner {
             display: flex;
@@ -161,9 +160,24 @@
             overflow: scroll;
             scroll-snap-type: both mandatory;
             scroll-padding: 1rem;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                background-color: $main-color;
+                opacity: 50%;
+            }
 
             &::-webkit-scrollbar {
-                display: none;
+                width: 5px;
+                height: 4px;
+                background-color: #F5F5F5;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: #000000;
+
+                border-radius: 10px;
             }
         }
     }
@@ -198,4 +212,28 @@
 
 .my-modal input:placeholder-shown {
     border: 1px solid $main-color;
+}
+
+section#last-evnt {
+    padding-top: 10em;
+    position: relative;
+    background-image: url('../img/evnt-fond-drawings_gris.svg');
+}
+
+section#last-evnt>ul {
+    margin-top: 2em;
+    display: grid;
+    gap: 2em;
+}
+
+.carousel-evnt {
+    display: flex;
+
+    & li {
+        margin-bottom: 1em;
+    }
+}
+
+ol.flickity-page-dots {
+    bottom: -30px;
 }
