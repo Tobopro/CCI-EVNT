@@ -35,9 +35,29 @@ class User {
 
     // methods 
 
-    // constructor
-    
 
+    public function logIn($db)
+    {
+        if ($this->isRegisteredInDb($db)) {
+            if ($this->checkPassword($db)) {
+                if (!$this->isBanned($db)) {
 
+                    $this->loadData($db);
+                    $_SESSION['auth'] = true;
+                    $_SESSION['user'] = $this;
 
+                } else {
+                    $_SESSION['banned'] = true;
+                }
+
+            } else {
+                $_SESSION['auth'] = false;
+            }
+
+        } else {
+            $_SESSION['email_exists'] = false;
+        }
+    }
 }
+
+?>
