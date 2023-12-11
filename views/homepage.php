@@ -47,30 +47,32 @@
             </div>
 
             <!-- event cards section -->
-            <section class="card-hcarousel">
+            <article class="card-hcarousel">
                 <div class="wrapper">
                     <div class="inner">
                         <ul class="carousel-evnt container"
                             data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
                             <?php
-        // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
-        for ($i = 0; $i < 10; $i++) {
-            echo "<li>";
-            include "../views/components/card.php";
-            echo "</li>";
-        }
-        ?>
+                            // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
+                            for ($i = 0; $i < 10; $i++) {
+                                echo "<li>";
+                                include "../views/components/card.php";
+                                echo "</li>";
+                            }
+                            ?>
                         </ul>
                     </div>
                 </div>
-            </section>
+            </article>
         </section>
 
         <section id="quoi-evnt">
             <div class="container-homepage">
                 <h2>C'est quoi <span class="white">EVNT</span> ?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut
                     aliquip ex ea commodo consequat. </p>
                 <a href="" class="btn btn-secondary">En savoir plus sur Evnt</a>
             </div>
@@ -78,7 +80,8 @@
 
         <section id="evnt-passes" class="container-homepage">
             <h2>Les <span class="yellow">EVNT</span> passés</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et
                 dolore magna aliqua.</p>
         </section>
     </main>

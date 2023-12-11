@@ -31,3 +31,34 @@ $(document).ready(function () {
         $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
     }
 });
+
+
+
+JS:
+let top = 0;
+const scrollAmount = 25;
+const height = 500;
+const totalHeight = 5000;
+
+function scrollModalTo(top) {
+    document.getElementById('.modal-dot-carousel').scroll({
+        top,
+        behavior: 'smooth'
+    });
+}
+
+function scrollUp() {
+    if (top !== 0) {
+        top -= scrollAmount;
+        top = Math.max(0, top);
+        scrollModalTo(top);
+    }
+}
+
+function scrollDown() {
+    if (top < totalHeight - height) {
+        top += scrollAmount;
+        top = Math.min(top, totalHeight - height);
+        scrollModalTo(top);
+    }
+}
