@@ -64,6 +64,7 @@ class User {
         $query = $db->prepare("SELECT * FROM users WHERE email = :email");
         $query->execute(['email' => $this->email]);
         $result = $query->fetch();
+        $query = null;
 
         return $result;
     }
@@ -73,6 +74,7 @@ class User {
         $query = $db->prepare("SELECT password FROM users WHERE email = :email");
         $query->execute(['email' => $this->email]);
         $result = $query->fetch();
+        $query = null;
 
         return $this->password === $result['password'];
     }
@@ -82,6 +84,7 @@ class User {
         $query = $db->prepare("SELECT isBanned FROM users WHERE email = :email");
         $query->execute(['email' => $this->email]);
         $result = $query->fetch();
+        $query = null;
 
         return $result['isBanned'];
     }
@@ -91,6 +94,7 @@ class User {
         $query = $db->prepare("SELECT * FROM users WHERE email = :email");
         $query->execute(['email' => $this->email]);
         $result = $query->fetch();
+        $query = null;
 
         $this->id = $result['id'];
         $this->firstName = $result['firstName'];
