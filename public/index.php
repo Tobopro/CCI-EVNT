@@ -11,7 +11,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/sass/main.css">
     <!-- Highest Praise font  -->
-    <link rel="stylesheet" href="https://use.typekit.net/xdq8dza.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
     <link rel="stylesheet" href="../leaflet/leaflet.css">
 
     <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css">
