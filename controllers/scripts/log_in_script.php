@@ -16,6 +16,22 @@ $user = new User(email: $email, password: $password);
 $db = connection_dbb();
 
 $user->logIn($db);
+
+// check for session variables indicating log failure 
+if (isset($_SESSION['email_exists']) && $_SESSION['email_exists'] == false) {
+    header("Location: ../../index.php?log=fail&reason=email");
+    exit();
+} else if (isset($_SESSION['auth']) && $_SESSION['auth'] == false) {
+    header("Location: ../../index.php?log=fail&reason=password");
+    exit();
+} else if (isset($_SESSION['banned']) && $_SESSION['banned'] == true) {
+    header("Location: ../../index.php?log=fail&reason=banned");
+    exit();
+} else {
+    header("Location: ../../index.php?log=success");
+    exit();
+}
+
 ?>
 
 
