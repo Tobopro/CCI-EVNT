@@ -1,0 +1,170 @@
+.newsletter-content {
+    height: 50vw;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.newsletter-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blur-filter-vertical {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 100%);
+
+    filter: blur(10px);
+    pointer-events: none;
+
+    @media (max-width: $medium) {
+        width: 0;
+        height: 0;
+    }
+
+}
+
+.blur-filter-horizontal {
+    height: 0%;
+    width: 0%;
+
+    @media (max-width: $medium) {
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 80%;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 1) 100%);
+        filter: blur(10px);
+        pointer-events: none;
+    }
+
+
+}
+
+#who-are-we {
+    background-color: $sub-color;
+    border-radius: 5px;
+    color: #FCFCFC;
+    padding: 10px;
+    max-height: 50vh;
+    overflow-y: hidden;
+
+    @media (max-width: $medium) {
+        overflow-y: scroll;
+    }
+
+}
+
+.text-on-image {
+    position: absolute;
+    top: 5%;
+    left: 1%;
+    width: 25%;
+    /* transform: translate(-25%, -25%); */
+    color: $white-color;
+    /* Couleur du texte */
+    font-size: 24px;
+    /* Taille de la police du texte */
+    font-weight: bold;
+    /* Poids de la police du texte */
+    text-align: center;
+    z-index: 1;
+    /* Assurez-vous que le texte est au-dessus du filtre de flou */
+}
+
+.text-after-image {
+    /* transform: translate(-25%, -25%); */
+    color: $white-color;
+    /* Couleur du texte */
+    font-size: 24px;
+    /* Taille de la police du texte */
+    font-weight: bold;
+    /* Poids de la police du texte */
+    text-align: center;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.5) 80%);
+    /* Assurez-vous que le texte est au-dessus du filtre de flou */
+}
+
+.homepage {
+    background-image: url(../img/Background/background-homepage_Plan\ de\ travail\ 1.svg);
+}
+
+.zoom-out {
+    zoom: 80%;
+}
+
+.map-homepage {
+    height: 35vh;
+    width: 100vw;
+    margin-top: 2rem;
+    border: 1px solid $sub-color;
+    border-radius: 5px;
+}
+
+.text-founders {
+    color: $sub-color;
+    font-size: 1.5rem;
+    background-color: $main-color;
+
+
+}
+
+.black-border-radius {
+    border-radius: 5px;
+    background-color: $sub-color;
+    padding: 5px;
+}
+
+.carousel-indicators .my-slide-button {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+
+.change-buttons-newsletter {
+    @media (max-width: $medium) {
+        top: 0;
+    }
+
+
+}
+
+.about-us {
+    text-align: center;
+}
+
+.card-hcarousel {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+
+    &>.wrapper {
+        display: flex;
+        // grid-gap: 2em;
+        overflow: hidden;
+        width: 55em;
+
+        & .inner {
+            display: flex;
+            grid-gap: 2em;
+            overflow: scroll;
+            scroll-snap-type: both mandatory;
+            scroll-padding: 1rem;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+    }
+}
