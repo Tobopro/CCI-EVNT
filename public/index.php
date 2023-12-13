@@ -23,11 +23,13 @@
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="/public/assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
 
 </head>
 
 <?php
 session_start();
+require_once '../controllers/functions.php';
 ?>
 
 <body <?php

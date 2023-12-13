@@ -1,4 +1,14 @@
+<?php 
 
+$db= connection_dbb();
+
+
+$query = $db->prepare("SELECT name FROM categories");
+$query->execute();
+$categories = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
     <main>
         <div id="creation-form" class="container">
             <form>
@@ -125,13 +135,13 @@
                             <div class="row">
                                 <label for="categories" class="col-12 pb-3"><i class="fa-solid fa-rectangle-list"></i>
                                     Catégories</label>
-                                <select id="categories" multiple class="form-select col-12"
-                                    aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                     <select id="categories" class="form-select col-12" aria-label="Default select example">
+                        <option selected>Open this select menu</option>
+                        <?php foreach ($categories as $category): ?>
+                            <?php echo '<option value="' . $category['idCategory'] . '">' . $category['name'] . '</option>'; ?>
+                        <?php endforeach; ?>
+                    </select>
+
                                 <ul class="category-list"></ul>
                             </div>
                         </div>
