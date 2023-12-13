@@ -10,14 +10,24 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
     <main>
+ 
+<?php
+if (isset($_GET['message']) && isset($_GET['type_message'])) {
+    echo '<div class="alert   mx-5 alert-' . $_GET['type_message'] . ' alert-dismissible fade show" role="alert">
+    <strong>' . $_GET['message'] . '</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+}
+?>
+
         <div id="creation-form" class="container">
-            <form>
+            <form action="../controllers/creation_event_process.php" method="POST">
                 <div class="row d-flex  justify-content-between  ">
                     <!--Title box-->
                     <div class="mb-4 mb-lg-4 col-12 offset-0 col-lg-8 offset-lg-2 order-lg-0">
                         <div id="title-box" class="px-5 py-2 pb-3 box--yellow fs-5">
                             <label for="input-title" class="form-label ">Nom de votre Evnt</label>
-                            <input type="title" class="form-control" id="input-event-title" aria-describedby="title">
+                            <input type="title" class="form-control" name="title" id="input-event-title" aria-describedby="title">
                         </div>
                     </div>
 
@@ -28,9 +38,9 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                                 <label for="input-date" class="form-label "><i class="fa-regular fa-calendar-xmark"></i>
                                     Quand
                                     aura lieu votre EVNT ? </label>
-                                <input type="date" class="form-control mb-2" id="input-event-date"
+                                <input type="date" class="form-control mb-2" id="input-event-date" name="date"
                                     aria-describedby="date">
-                                <input type="time" class="form-control w-50" id="hour" aria-describedby="hour">
+                                <input type="time" class="form-control w-50" name="time" id="hour" aria-describedby="hour">
                             </div>
                         </div>
                         <!--Adress box  2xs-->
@@ -43,7 +53,7 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                                             <i class="fas fa-info-circle"></i>
                                         </span></label>
                                     <div class="col-12 col-md-10 col-lg-8 ">
-                                        <input type="text" class="form-control" id="adresse" name="adresse">
+                                        <input type="text" class="form-control" id="adresse" name="adress">
                                     </div>
                                     <div class="col-12 col-md-2 col-lg-4 "> <input type="checkbox"
                                             class="form-check-input mt-2" id="private-adress">
@@ -64,8 +74,8 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="row d-flex align-items-stretch" id="participant-content">
                                     <div class="form-group col-3">
                                         <div class="input-group">
-                                            <input type="text" class="form-control mt-2" id="nombreParticipants"
-                                                name="nombreParticipants" value="0">
+                                            <input type="text" class="form-control mt-2" id="nombreParticipants" name="nbplace" value="0">
+                                      
                                             <div class="col-2">
                                                 <span class="participant__number row align-items-baseline ">
                                                     <span class="input-group-btn ">
@@ -82,16 +92,9 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
                                     <div class="col-9  text-end ">
                                         <div class="row">
+                                           
                                             <div class="col-12">
-                                                <input type="checkbox" class="form-check-input"
-                                                    id="partipant-is-no-limit">
-                                                <label class="form-check-label" for="partipant-is-no-limit">Sans
-                                                    limite<span data-toggle="tooltip" data-placement="top" title="info">
-                                                        <i class="fas fa-info-circle"></i>
-                                                    </span></label>
-                                            </div>
-                                            <div class="col-12">
-                                                <input type="checkbox" class="form-check-input" id="partipant-is-free">
+                                                <input type="checkbox" class="form-check-input" id="partipant-is-free" name="isFree">
                                                 <label class="form-check-label" for="partipant-is-free">Entrée Libre
                                                     <span data-toggle="tooltip" data-placement="top" title="info">
                                                         <i class="fas fa-info-circle"></i>
@@ -114,16 +117,9 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                                             <i class="fas fa-info-circle"></i>
                                         </span></label>
                                     <div class="col-12 col-md-7 ">
-
-                                        <input type="text" class="form-control" id="price" name="price"
-                                            placeholder="ex: prévoir 7euros pour la place de ciné">
-
-
-                                    </div>
-
-                                    <div class="col-12 col-md-5 text-lg-end text-zstart "> <input type="checkbox"
-                                            class="form-check-input mt-2" id="is-free">
-                                        <label class="form-check-label mt-1" for="is-free">Gratuit</label>
+                                        <input type="number" class="form-control" id="price" name="price">
+                                             <!-- <input type="text" class="form-control" id="price" name="priceInfo"
+                                            placeholder="ex: prévoir 7euros pour la place de ciné"> -->
                                     </div>
                                 </div>
                             </div>
@@ -135,7 +131,7 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                             <div class="row">
                                 <label for="categories" class="col-12 pb-3"><i class="fa-solid fa-rectangle-list"></i>
                                     Catégories</label>
-                     <select id="categories" class="form-select col-12" aria-label="Default select example">
+                      <select id="categories" name="category" class="form-select col-12" aria-label="Default select example">
                         <option selected>Open this select menu</option>
                         <?php foreach ($categories as $category): ?>
                             <?php echo '<option value="' . $category['idCategory'] . '">' . $category['name'] . '</option>'; ?>
@@ -153,7 +149,7 @@ $categories = $query->fetchAll(PDO::FETCH_ASSOC);
                         <div id="description-box" class="px-3 pt-3  box--yellow fs-5 ">
                             <label for="description"><i class="fa-solid fa-pencil pb-3"></i> Description</label>
                             <div class="input-group">
-                                <textarea class="form-control pb-2" aria-label="textarea description"
+                                <input name="description" class="form-control pb-2" aria-label="textarea description"
                                     placeholder="Un EVNT est plus marrant à plusieurs. Un bon résumé augmentera sûrement le taux de participation"></textarea>
                             </div>
                         </div>

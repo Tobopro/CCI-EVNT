@@ -29,9 +29,9 @@ function registerUser($db, $nom, $prenom, $email, $password)
     }
 }
 
-function createEvent($db, $event_name, $event_date, $event_time, $event_adress, $event_description, $event_category, $event_price, $event_price_info, $event_nbplace, $is_no_limit, $is_free_entry)
+function createEvent($db, $event_name_register, $event_date_register, $event_time_register, $event_adress_register, $event_description_register, $event_category_register, $event_price_register, $event_nbplace_register, $is_free_entry_register)
 {
-    $result = $db->exec("INSERT INTO events (event_name, event_date, event_time, event_adress, event_description, event_category, event_price, event_price_info, event_nbplace, is_no_limit, is_free_entry) VALUES ('$event_name', '$event_date', '$event_time', '$event_adress', '$event_description', '$event_category', '$event_price', '$event_price_info', '$event_nbplace', '$is_no_limit', '$is_free_entry')");
+    $result = $db->exec("INSERT INTO events (title, dateEvnt, timeEvnt, adress, description, price, priceInfo, nbParticipants, isFreeEntry) VALUES ('$event_name_register', '$event_date_register', '$event_time_register', '$event_adress_register', '$event_description_register',  '$event_price_register',' ', '$event_nbplace_register', '$is_free_entry_register')");
 
     if ($result !== false) {
         $message = "Votre évènement a bien été créé";
