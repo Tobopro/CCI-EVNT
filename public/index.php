@@ -80,7 +80,10 @@ if ($_GET['url'] === 'home') {
 
     ?>
     <?php
-    include('../views/footer.php');
+    if ($_GET['url'] != 'home') {
+          include('../views/footer.php');
+    }
+ 
     if ($_GET['url'] === 'home') {
         echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
     }

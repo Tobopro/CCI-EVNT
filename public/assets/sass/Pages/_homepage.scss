@@ -110,11 +110,11 @@ table {
 }
 
 #homepage h1,
-#footer-homepage h1,
+.footer-homepage h1,
 #homepage h2,
-#footer-homepage h2,
+.footer-homepage h2,
 #homepage h3,
-#footer-homepage h3 {
+.footer-homepage h3 {
     font-family: 'highest-praise';
     font-weight: normal;
 
@@ -435,18 +435,12 @@ section#newsletter form {
     position: relative;
 }
 
-section#newsletter form:after {
-    content: url('../img/icons/icon-paper-plane.svg');
-    position: absolute;
-    right: 16px;
-    top: 16px;
-}
 
 section#newsletter input[type="email"] {
     padding: 1em 1.4em;
     border: 0;
     font-size: 1.07rem;
-    width: calc(100% - 54px);
+    width: calc(100% - 62px);
 }
 
 section#newsletter input[type="submit"] {
@@ -457,7 +451,14 @@ section#newsletter input[type="submit"] {
     vertical-align: top;
     border: 0;
     width: 54px;
-    margin-left: -5px;
+
+}
+
+section#newsletter form:after {
+    content: url('../img/icons/icon-paper-plane.svg');
+    position: absolute;
+    right: 16px;
+    top: 16px;
 }
 
 footer {
