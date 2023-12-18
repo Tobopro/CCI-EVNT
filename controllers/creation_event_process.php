@@ -17,15 +17,17 @@ $event_nbplace_register = isset($_POST["nbplace"]) ? $_POST["nbplace"] : "";
 
 
 
+
+
 if (!empty($event_name_register) &&
     !empty($event_date_register) &&
-    !empty($event_time_register) &&
     !empty($event_adress_register) &&
     !empty($event_description_register) &&
     !empty($event_price_register) &&
     !empty($event_nbplace_register) && 
-    !empty($is_free_entry_register)) {
-    createEvent($db, $event_name_register, $event_date_register, $event_time_register, $event_adress_register, $event_description_register, $event_category_register, $event_price_register, $event_nbplace_register, $is_free_entry_register);
+    !empty($is_free_entry_register) &&
+    !empty($event_category_register)) {
+    createEvent($db, $event_name_register, $event_date_register, $event_adress_register, $event_description_register, $event_category_register, $event_price_register, $event_nbplace_register, $is_free_entry_register);
     $message="Votre évènement a bien été créé";
     $type_message = "success";
     header('Location: ../public/index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);

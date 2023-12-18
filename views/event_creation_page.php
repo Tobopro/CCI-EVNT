@@ -3,9 +3,10 @@
 $db= connection_dbb();
 
 
-$query = $db->prepare("SELECT name FROM categories");
+$query = $db->prepare("SELECT * FROM categories");
 $query->execute();
 $categories = $query->fetchAll(PDO::FETCH_ASSOC);
+
 
 
 ?>
@@ -132,7 +133,7 @@ if (isset($_GET['message']) && isset($_GET['type_message'])) {
                                 <label for="categories" class="col-12 pb-3"><i class="fa-solid fa-rectangle-list"></i>
                                     Catégories</label>
                       <select id="categories" name="category" class="form-select col-12" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
+                        <option selected >Open this select menu</option>
                         <?php foreach ($categories as $category): ?>
                             <?php echo '<option value="' . $category['idCategory'] . '">' . $category['name'] . '</option>'; ?>
                         <?php endforeach; ?>
