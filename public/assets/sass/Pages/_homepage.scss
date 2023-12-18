@@ -1,12 +1,3 @@
-@font-face {
-    font-family: "highest-praise";
-    src: url("https://use.typekit.net/af/f6cd50/00000000000000007736d7d8/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"), url("https://use.typekit.net/af/f6cd50/00000000000000007736d7d8/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"), url("https://use.typekit.net/af/f6cd50/00000000000000007736d7d8/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
-    font-display: auto;
-    font-style: normal;
-    font-weight: 400;
-    font-stretch: normal;
-}
-
 #homepage {
     font-size: 62.5%;
 
@@ -41,7 +32,7 @@ video,
 canvas,
 svg {
     display: block;
-    max-width: 100%;
+    // max-width: 100%;
 }
 
 blockquote,
@@ -124,7 +115,7 @@ table {
 #footer-homepage h2,
 #homepage h3,
 #footer-homepage h3 {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
 
 }
@@ -193,7 +184,7 @@ a:not(.btn):focus:after {
 
 .btn-primary,
 .btn-secondary {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-size: 150%;
     border: 2px solid transparent;
 }
@@ -304,7 +295,7 @@ section#introduction li img {
 }
 
 section#introduction li strong {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
     font-size: 3rem;
 }

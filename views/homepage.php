@@ -50,8 +50,8 @@
             <article class="card-hcarousel">
                 <div class="wrapper">
                     <div class="inner">
-                        <ul class="carousel-evnt container"
-                            data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
+                        <ul class="carousel-evnt container">
+                            <!-- data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }' -->
                             <?php
                             // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
                             for ($i = 0; $i < 10; $i++) {

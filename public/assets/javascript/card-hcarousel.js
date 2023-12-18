@@ -1,4 +1,4 @@
-const slider = document.querySelector('.card-hcarousel .inner');
+const slider = document.querySelector('.card-hcarousel .wrapper');
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -34,31 +34,33 @@ $(document).ready(function () {
 
 
 
-JS:
-let top = 0;
-const scrollAmount = 25;
-const height = 500;
-const totalHeight = 5000;
+// JS:
+// let top = 0;
+// const scrollAmount = 25;
+// const height = 500;
+// const totalHeight = 5000;
 
-function scrollModalTo(top) {
-    document.getElementById('.modal-dot-carousel').scroll({
-        top,
-        behavior: 'smooth'
-    });
-}
+// function scrollModalTo(top) {
+//     document.getElementById('.modal-dot-carousel').scroll({
+//         top,
+//         behavior: 'smooth'
+//     });
+// }
 
-function scrollUp() {
-    if (top !== 0) {
-        top -= scrollAmount;
-        top = Math.max(0, top);
-        scrollModalTo(top);
-    }
-}
+// function scrollUp() {
+//     if (top !== 0) {
+//         top -= scrollAmount;
+//         top = Math.max(0, top);
+//         scrollModalTo(top);
+//     }
+// }
 
-function scrollDown() {
-    if (top < totalHeight - height) {
-        top += scrollAmount;
-        top = Math.min(top, totalHeight - height);
-        scrollModalTo(top);
-    }
-}
+// function scrollDown() {
+//     if (top < totalHeight - height) {
+//         top += scrollAmount;
+//         top = Math.min(top, totalHeight - height);
+//         scrollModalTo(top);
+//     }
+// }
+
+// alert("bjr");
