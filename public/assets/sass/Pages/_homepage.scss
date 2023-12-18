@@ -32,7 +32,7 @@ video,
 canvas,
 svg {
     display: block;
-    max-width: 100%;
+    // max-width: 100%;
 }
 
 blockquote,
@@ -114,8 +114,9 @@ table {
 #homepage h2,
 .footer-homepage h2,
 #homepage h3,
-.footer-homepage h3 {
-    font-family: 'highest-praise';
+
+#footer-homepage h3 {
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
 
 }
@@ -184,7 +185,7 @@ a:not(.btn):focus:after {
 
 .btn-primary,
 .btn-secondary {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-size: 150%;
     border: 2px solid transparent;
 }
@@ -295,7 +296,7 @@ section#introduction li img {
 }
 
 section#introduction li strong {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
     font-size: 3rem;
 }
@@ -307,8 +308,48 @@ section#introduction a.btn {
 /* Last evnt
 --------------------------------------------- */
 
+.card-hcarousel {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    margin-top: 3em;
+
+    &>.wrapper {
+        // display: flex;
+        overflow: hidden;
+        width: 80em;
+
+        & .inner {
+            display: flex;
+            grid-gap: 2em;
+            overflow: scroll;
+            scroll-snap-type: both mandatory;
+            scroll-padding: 1rem;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+                background-color: $main-color;
+                opacity: 50%;
+            }
+
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 8px;
+                background-color: #F5F5F5;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $sub-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
 section#last-evnt {
-    padding-top: 10em;
+    padding-top: 12em;
     position: relative;
     background-image: url('../img/evnt-fond-drawings_gris.svg');
 }
@@ -325,67 +366,6 @@ section#last-evnt>ul {
 
 ol.flickity-page-dots {
     bottom: -30px;
-}
-
-article.evnt-single {
-    border-radius: 4px;
-    overflow: hidden;
-    background-color: #FFF;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 480px;
-    transition: ease all 0.25s;
-    margin-right: 1em;
-}
-
-article.evnt-single:hover,
-article.evnt-single:focus {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-
-.padding-evnt {
-    padding: 1.5em 1em 2em;
-}
-
-article.evnt-single a {
-    text-decoration: none;
-    color: inherit;
-}
-
-article.evnt-single a:hover {
-    text-decoration: none;
-}
-
-img.img-une {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
-
-ul.details-evnt {
-    display: flex;
-    gap: 1em;
-    text-transform: uppercase;
-    font-size: 85%;
-}
-
-ul.details-evnt img {
-    display: inline-block;
-    margin-right: 0.2em;
-    width: 16px;
-    vertical-align: middle;
-}
-
-ul.liste-categories {
-    display: flex;
-    gap: 1em;
-}
-
-ul.liste-categories li {
-    background-color: #e2e2e2;
-    color: #646464;
-    padding: 0.5em 1em;
-    border-radius: 2px;
-    font-size: 90%;
 }
 
 section#last-evnt:after {
