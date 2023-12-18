@@ -24,12 +24,14 @@
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script>
-    <script src="./assets/javascript/card-hcarousel.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
+
 
 </head>
 
 <?php
 session_start();
+require_once '../controllers/functions.php';
 ?>
 
 <body <?php
@@ -82,7 +84,13 @@ if ($_GET['url'] === 'home') {
 
     ?>
     <?php
+
+    if ($_GET['url'] === 'home') {
+        echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
+    }
+
     include('../views/footer.php');
+
     ?>
 
 
