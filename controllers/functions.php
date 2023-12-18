@@ -3,7 +3,7 @@
 
 function connection_dbb(){
 
-$dsn = "mysql:host=localhost;port=3306;dbname=test_php";
+$dsn = "mysql:host=localhost;port=3306;dbname=evnt;charset=utf8";
 try {
     $db = new PDO($dsn, "test", "test");
 } catch (PDOException $e) {

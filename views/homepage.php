@@ -46,123 +46,33 @@
                 <a href="" class="btn btn-secondary">Voir tous les Evnt</a>
             </div>
 
-            <ul class="carousel-evnt container-homepage"
-                data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }'>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/foreground-there-is-woman-black-dress.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/new-years-party-is-being-celebrated.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                        Strasbourg
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 01
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 3/10</li>
-                                </ul>
-                                <h3>Soirée du Nouvel An au Public House</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-                <li>
-                    <article class="evnt-single">
-                        <a href="">
-                            <img class="img-une" src="assets/img/full-shot-young-people-partying-outdoors.jpg"
-                                alt="photographie d'un groupe de fêtard" />
-                            <div class="padding-evnt">
-                                <ul class="details-evnt">
-                                    <!-- Ville -->
-                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> Colmar
-                                    </li>
-                                    <!-- Date -->
-                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> 10
-                                        janvier
-                                        2024</li>
-                                    <!-- Participants -->
-                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> 15/15</li>
-                                </ul>
-                                <h3>Soirée de déglingos</h3>
-                                <ul class="liste-categories">
-                                    <li>Catégorie 1</li>
-                                    <li>Catégorie 2</li>
-                                </ul>
-                            </div>
-                        </a>
-                    </article>
-                </li>
-            </ul>
+            <!-- event cards section -->
+            <article class="card-hcarousel">
+                <div class="wrapper">
+                    <div class="inner">
+                        <ul class="carousel-evnt container">
+                            <!-- data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }' -->
+                            <?php
+                            // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
+                            for ($i = 0; $i < 10; $i++) {
+                                echo "<li>";
+                                include "../views/components/card.php";
+                                echo "</li>";
+                            }
+                            ?>
+                        </ul>
+                    </div>
+                </div>
+            </article>
         </section>
 
         <section id="quoi-evnt">
             <div class="container-homepage">
                 <h2>C'est quoi <span class="white">EVNT</span> ?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                    labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                    ut
                     aliquip ex ea commodo consequat. </p>
                 <a href="" class="btn btn-secondary">En savoir plus sur Evnt</a>
             </div>
@@ -170,28 +80,60 @@
 
         <section id="evnt-passes" class="container-homepage">
             <h2>Les <span class="yellow">EVNT</span> passés</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+                et
                 dolore magna aliqua.</p>
         </section>
     </main>
 
-    <footer id="footer-homepage">
-        <section id="newsletter">
-            <div class="container-homepage">
-                <div>
-                    <h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.</p>
-                </div>
+<footer >
+    <div class="footer-homepage">
+		<section id="newsletter">
+			<div class="container">
+				<div>
+					<h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				</div>
 
-                <form>
-                    <input type="email" name="your-email" placeholder="Votre adresse email">
-                    <input type="submit" name="send" value="Envoyer">
-                </form>
-            </div>
-        </section>
+				<form>
+					<input type="email" name="your-email" placeholder="Votre adresse email">
+					<input type="submit" name="send" value="Envoyer">
+				</form>
+			</div>
+		</section>
 
+		<section id="nav-footer" class="container">
 
+			<div>
+				<img src="assets/img/evnt-logo-jaune.svg" alt="logo EVNT">
+				<address>
+					EVNT Group<br />
+					234 avenue de Colmar<br />
+					01 02 03 04 05<br />
+					evnt-group@email.fr
+				</address>
+			</div>
+
+			<nav>
+				<ul>
+					<li><a href="">Mon compte EVNT</a></li>
+					<li><a href="">Qui sommes-nous ?</a></li>
+					<li><a href="">Consulter les EVNT</a></li>
+					<li><a href="">Créer un EVNT</a></li>
+				</ul>
+			</nav>
+
+			<nav>
+				<ul>
+					<li><a href="">Mentions légales</a></li>
+					<li><a href="">Politique de confidentialité</a></li>
+					<li><a href="">Plan du site</a></li>
+					<li><a href="">Contacter EVNT</a></li>
+				</ul>
+			</nav>
+		</section>
+    </div>
+	</footer>
 </body>
 
 </html>

@@ -14,20 +14,24 @@
     <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
     <link rel="stylesheet" href="../leaflet/leaflet.css">
 
-    <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
+
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <script defer src="../leaflet/leaflet.js"></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
-    <script defer type="text/javascript" src="/public/assets/javascript/script-homepage.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
+
 
 </head>
 
 <?php
 session_start();
+require_once '../controllers/functions.php';
 ?>
 
 <body <?php
@@ -80,10 +84,13 @@ if ($_GET['url'] === 'home') {
 
     ?>
     <?php
-    include('../views/footer.php');
+
     if ($_GET['url'] === 'home') {
         echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
     }
+
+    include('../views/footer.php');
+
     ?>
 
 

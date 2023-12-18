@@ -18,7 +18,7 @@
                 </a>
             </div>
 
-            <div class="col-5 col-lg-3 p-2 text-end offset-lg-0">
+            <div class="col-5 col-lg-3 p-2 text-end offset-lg-0 login-register">
                 <a href="?url=profile">
                     <div class="navigation__hidden d-lg-inline-block">Se connecter/s'inscrire</div>
                     <i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>
