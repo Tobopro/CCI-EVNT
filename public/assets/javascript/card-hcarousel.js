@@ -1,7 +1,8 @@
-const slider = document.querySelector('.card-hcarousel .wrapper');
+const slider = document.querySelector('.card-hcarousel .wrapper .inner');
 let isDown = false;
 let startX;
 let scrollLeft;
+
 
 slider.addEventListener('mousedown', e => {
     isDown = true;
@@ -25,42 +26,3 @@ slider.addEventListener('mousemove', e => {
     const walk = (x - startX) * SCROLL_SPEED;
     slider.scrollLeft = scrollLeft - walk;
 });
-
-$(document).ready(function () {
-    if (!$.browser.webkit) {
-        $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
-    }
-});
-
-
-
-// JS:
-// let top = 0;
-// const scrollAmount = 25;
-// const height = 500;
-// const totalHeight = 5000;
-
-// function scrollModalTo(top) {
-//     document.getElementById('.modal-dot-carousel').scroll({
-//         top,
-//         behavior: 'smooth'
-//     });
-// }
-
-// function scrollUp() {
-//     if (top !== 0) {
-//         top -= scrollAmount;
-//         top = Math.max(0, top);
-//         scrollModalTo(top);
-//     }
-// }
-
-// function scrollDown() {
-//     if (top < totalHeight - height) {
-//         top += scrollAmount;
-//         top = Math.min(top, totalHeight - height);
-//         scrollModalTo(top);
-//     }
-// }
-
-// alert("bjr");

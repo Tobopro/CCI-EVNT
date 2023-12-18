@@ -34,66 +34,68 @@ session_start();
 require_once '../controllers/functions.php';
 ?>
 
-<body <?php
-if ($_GET['url'] === 'home') {
-    print(htmlspecialchars("class = homepage-background"));
-} else {
-    print(htmlspecialchars("class = body-background"));
+<?php
+if ($_GET['url'] !== 'home') {
+    echo "<body class = body-background>";
 }
-?>>
+?>
 
-    <?php
-    include("../views/header.php");
-    ?>
+<?php
+include("../views/header.php");
+?>
 
-    <?php
+<?php
 
-    if (isset($_GET['url'])) {
-        switch ($_GET['url']) {
-            case 'home':
-                require '../views/homepage.php';
-                break;
-            case 'dashboard':
-                require '../views/dashboard_page.php';
-                break;
-            case 'profile':
-                require '../views/profile_page.php';
-                break;
-            case 'page_EVNT':
-                require '../views/evnt-page.php';
-                break;
-            case 'creation_EVNT':
-                require '../views/event_creation_page.php';
-                break;
-            case 'edition_profil':
-                require '../views/profile_edit_page.php';
-                break;
-            case 'carte':
-                require '../views/mobile_map_page.php';
-                break;
-            case 'mentions':
-                require '../views/legal.php';
-                break;
-            default:
-                require '../views/homepage.php';
-                break;
-        }
-    } else {
-        require '../views/homepage.php';
+if (isset($_GET['url'])) {
+    switch ($_GET['url']) {
+        case 'home':
+            require '../views/homepage.php';
+            break;
+        case 'dashboard':
+            require '../views/dashboard_page.php';
+            break;
+        case 'profile':
+            require '../views/profile_page.php';
+            break;
+        case 'page_EVNT':
+            require '../views/evnt-page.php';
+            break;
+        case 'creation_EVNT':
+            require '../views/event_creation_page.php';
+            break;
+        case 'edition_profil':
+            require '../views/profile_edit_page.php';
+            break;
+        case 'carte':
+            require '../views/mobile_map_page.php';
+            break;
+        case 'mentions':
+            require '../views/legal.php';
+            break;
+        default:
+            require '../views/homepage.php';
+            break;
     }
+} else {
+    require '../views/homepage.php';
+}
 
-    ?>
-    <?php
+?>
+<?php
 
-    if ($_GET['url'] === 'home') {
-        echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
-    }
+if ($_GET['url'] === 'home') {
+    echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
+}
 
-    include('../views/footer.php');
+include('../views/footer.php');
 
-    ?>
+?>
 
 
-</body>
+<?php
+if ($_GET['url'] !== 'home') {
+    echo "</body>";
+}
+?>
 
 </html>
