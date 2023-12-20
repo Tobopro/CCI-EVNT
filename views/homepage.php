@@ -86,54 +86,55 @@
         </section>
     </main>
 
-<footer >
-    <div class="footer-homepage">
-		<section id="newsletter">
-			<div class="container">
-				<div>
-					<h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				</div>
+    <footer>
+        <div class="footer-homepage">
+            <section id="newsletter">
+                <div class="container">
+                    <div>
+                        <h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </div>
 
-				<form>
-					<input type="email" name="your-email" placeholder="Votre adresse email">
-					<input type="submit" name="send" value="Envoyer">
-				</form>
-			</div>
-		</section>
+                    <form>
+                        <input type="email" name="your-email" placeholder="Votre adresse email">
+                        <input type="submit" name="send" value="Envoyer">
+                    </form>
+                </div>
+            </section>
 
-		<section id="nav-footer" class="container">
+            <section id="nav-footer" class="container">
 
-			<div>
-				<img src="assets/img/evnt-logo-jaune.svg" alt="logo EVNT">
-				<address>
-					EVNT Group<br />
-					234 avenue de Colmar<br />
-					01 02 03 04 05<br />
-					evnt-group@email.fr
-				</address>
-			</div>
+                <div>
+                    <img src="assets/img/evnt-logo-jaune.svg" alt="logo EVNT">
+                    <address>
+                        EVNT Group<br />
+                        234 avenue de Colmar<br />
+                        01 02 03 04 05<br />
+                        evnt-group@email.fr
+                    </address>
+                </div>
 
-			<nav>
-				<ul>
-					<li><a href="">Mon compte EVNT</a></li>
-					<li><a href="">Qui sommes-nous ?</a></li>
-					<li><a href="">Consulter les EVNT</a></li>
-					<li><a href="">Créer un EVNT</a></li>
-				</ul>
-			</nav>
+                <nav>
+                    <ul>
+                        <li><a href="">Mon compte EVNT</a></li>
+                        <li><a href="">Qui sommes-nous ?</a></li>
+                        <li><a href="">Consulter les EVNT</a></li>
+                        <li><a href="">Créer un EVNT</a></li>
+                    </ul>
+                </nav>
 
-			<nav>
-				<ul>
-					<li><a href="">Mentions légales</a></li>
-					<li><a href="">Politique de confidentialité</a></li>
-					<li><a href="">Plan du site</a></li>
-					<li><a href="">Contacter EVNT</a></li>
-				</ul>
-			</nav>
-		</section>
-    </div>
-	</footer>
+                <nav>
+                    <ul>
+                        <li><a href="">Mentions légales</a></li>
+                        <li><a href="">Politique de confidentialité</a></li>
+                        <li><a href="">Plan du site</a></li>
+                        <li><a href="">Contacter EVNT</a></li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+    </footer>
 </body>
 
 </html>
