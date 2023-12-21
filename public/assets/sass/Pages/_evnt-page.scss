@@ -1,9 +1,9 @@
 .evnt-page-container {
 
-  @media (max-width: $small) {
-    margin-top: 15vh;
-    height: 100vh;
-  }
+    @media (max-width: $small) {
+        margin-top: 15vh;
+        height: 100vh;
+    }
 }
 
 
@@ -12,233 +12,233 @@
 
 
 .evnt-page {
-  width: 90vw;
-  height: 90vh;
-  margin: auto;
-  margin-top: 5vh;
-  display: flex;
-  justify-content: space-between;
-
-  &__banner {
-    background-image: url(../img/nature-morte-carte.jpg);
-    height: 25vh;
-    width: 98vw;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: 0px 5px 20px #333;
-  }
-
-  &__left-block {
-    width: 54vw;
-    height: 79vh;
-    z-index: 2;
-
-    @media (max-width: $small) {
-      height: 100vh;
-    }
-  }
-
-  &__right-block {
-    margin-left: 3.2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: end;
-    transform: translate(-28.2vw);
-    height: 79vh;
-    z-index: 1;
-
-    @media (max-width: $small) {
-      transform: translate(0vh, -42vh);
-    }
-  }
-
-  &__title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 0.3rem;
-    padding-left: 1rem;
-    width: 54vw;
-    height: 6vh;
-
-
-    & h1 {
-
-      margin: 0px;
-    }
-  }
-
-  &__date-cost {
-    width: 54vw;
-
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+    margin-top: 5vh;
     display: flex;
     justify-content: space-between;
 
-    @media (max-width: $small) {
-      flex-direction: column;
-      align-items: end;
+    &__banner {
+        background-image: url(../img/Category-pictures/board-games/board3.jpg);
+        height: 15em;
+        width: 100vw;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0px 5px 20px #333;
     }
 
-  }
+    &__left-block {
+        width: 54vw;
+        height: 79vh;
+        z-index: 2;
 
-  &__date {
-    @media (max-width: $small) {
-      margin-top: 5vh;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-
-  &__date,
-  &__cost {
-    display: flex;
-    width: 25vw;
-    min-width: 125px;
-    height: 5.4vh;
-    min-height: 50px;
-  }
-
-  &__participant-desc {
-    display: flex;
-    justify-content: space-between;
-    width: 54vw;
-
-    @media (max-width: $small) {
-      flex-direction: column;
-      transform: translate(0vh, -9vh);
+        @media (max-width: $small) {
+            height: 100vh;
+        }
     }
 
-    &>div,
+    &__right-block {
+        margin-left: 3.2vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: end;
+        transform: translate(-28.2vw);
+        height: 79vh;
+        z-index: 1;
+
+        @media (max-width: $small) {
+            transform: translate(0vh, -42vh);
+        }
+    }
+
+    &__title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 0.3rem;
+        padding-left: 1rem;
+        width: 54vw;
+        height: 6vh;
+
+
+        & h1 {
+
+            margin: 0px;
+        }
+    }
+
+    &__date-cost {
+        width: 54vw;
+
+        display: flex;
+        justify-content: space-between;
+
+        @media (max-width: $small) {
+            flex-direction: column;
+            align-items: end;
+        }
+
+    }
+
+    &__date {
+        @media (max-width: $small) {
+            margin-top: 5vh;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    &__date,
+    &__cost {
+        display: flex;
+        width: 25vw;
+        min-width: 125px;
+        height: 5.4vh;
+        min-height: 50px;
+    }
+
+    &__participant-desc {
+        display: flex;
+        justify-content: space-between;
+        width: 54vw;
+
+        @media (max-width: $small) {
+            flex-direction: column;
+            transform: translate(0vh, -9vh);
+        }
+
+        &>div,
+        &__icon {
+            width: 25vw;
+
+            @media (max-width: $small) {
+                width: 50vw;
+            }
+        }
+
+    }
+
+    &__participant {
+        height: 57vh;
+
+        &>div {
+            display: flex;
+        }
+
+        @media (max-width: $small) {
+            height: 5.4vh;
+        }
+
+        // hide participant list /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        &-list>ul {
+            @media (max-width: $small) {
+                display: none;
+            }
+        }
+    }
+
+    &__description {
+        height: 35vh;
+        overflow-Y: scroll;
+
+        @media (max-width: $small) {
+            height: 20vh;
+        }
+    }
+
     &__icon {
-      width: 25vw;
+        display: flex;
+        justify-content: space-between;
 
-      @media (max-width: $small) {
-        width: 50vw;
-      }
+        &>.box--yellow {
+            height: 5.4vh;
+        }
+
+        & a:active {
+            background-color: $sub-color;
+            color: $main-color;
+        }
+
+        &--share {
+            width: 30%;
+            min-height: 50px;
+            color: $sub-color;
+        }
+
+        &--share:hover {
+            color: $main-color;
+            background-color: $sub-color;
+        }
+
+        &--like {
+            width: 60%;
+            min-height: 50px;
+            color: $sub-color;
+        }
+
+        &--like:hover {
+            color: $main-color;
+            background-color: $sub-color;
+        }
+
+        @media (max-width: $small) {
+            margin-top: 43vh;
+        }
     }
 
-  }
+    &__join {
+        width: 60.8vw;
+        height: 9vh;
+        margin-top: 2.5vh;
+        border-radius: 6px;
 
-  &__participant {
-    height: 57vh;
-
-    &>div {
-      display: flex;
+        @media (max-width: $small) {
+            margin-top: 10vh;
+            margin-bottom: 5vh;
+        }
     }
 
-    @media (max-width: $small) {
-      height: 5.4vh;
+    &__adress {
+        height: 62.5vh;
+        width: 31.8vw;
+        margin: 0px;
+
+        @media (max-width: $small) {
+            height: 35vh;
+
+        }
     }
 
-    // hide participant list /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    &-list>ul {
-      @media (max-width: $small) {
-        display: none;
-      }
-    }
-  }
-
-  &__description {
-    height: 35vh;
-    overflow-Y: scroll;
-
-    @media (max-width: $small) {
-      height: 20vh;
-    }
-  }
-
-  &__icon {
-    display: flex;
-    justify-content: space-between;
-
-    &>.box--yellow {
-      height: 5.4vh;
-    }
-
-    & a:active {
-      background-color: $sub-color;
-      color: $main-color;
-    }
-
-    &--share {
-      width: 30%;
-      min-height: 50px;
-      color: $sub-color;
-    }
-
-    &--share:hover {
-      color: $main-color;
-      background-color: $sub-color;
-    }
-
-    &--like {
-      width: 60%;
-      min-height: 50px;
-      color: $sub-color;
-    }
-
-    &--like:hover {
-      color: $main-color;
-      background-color: $sub-color;
+    & .box--yellow {
+        margin-bottom: 2rem;
     }
 
     @media (max-width: $small) {
-      margin-top: 43vh;
+        flex-direction: column;
+        margin-top: 0;
+        transform: translate(0vh, -10vh);
     }
-  }
 
-  &__join {
-    width: 60.8vw;
-    height: 9vh;
-    margin-top: 2.5vh;
-    border-radius: 6px;
-
-    @media (max-width: $small) {
-      margin-top: 10vh;
-      margin-bottom: 5vh;
+    &__title,
+    &__date,
+    &__adress,
+    &__description,
+    &__join,
+    &__date-cost,
+    &__participant-desc,
+    &__icon,
+    &__left-block {
+        @media (max-width: $small) {
+            width: $sm-w;
+        }
     }
-  }
-
-  &__adress {
-    height: 62.5vh;
-    width: 31.8vw;
-    margin: 0px;
-
-    @media (max-width: $small) {
-      height: 35vh;
-
-    }
-  }
-
-  & .box--yellow {
-    margin-bottom: 2rem;
-  }
-
-  @media (max-width: $small) {
-    flex-direction: column;
-    margin-top: 0;
-    transform: translate(0vh, -10vh);
-  }
-
-  &__title,
-  &__date,
-  &__adress,
-  &__description,
-  &__join,
-  &__date-cost,
-  &__participant-desc,
-  &__icon,
-  &__left-block {
-    @media (max-width: $small) {
-      width: $sm-w;
-    }
-  }
 }
 
 .evnt-map {
-  height: 100%;
-  width: 100%;
-  border: 1px solid black;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
 }
