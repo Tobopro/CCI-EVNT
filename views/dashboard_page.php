@@ -1,4 +1,4 @@
-<main class="mt-5 ">
+<main>
     <section id="filter" class="container-fluid">
         <!-- Selection Filter -->
         <div class="row bg-warning d-flex justify-content-end mt-md-3 border rounded mx-0 mx-lg-5 py-2 ">
