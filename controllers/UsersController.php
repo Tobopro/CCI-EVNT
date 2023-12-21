@@ -1,43 +1,10 @@
-<!-- file defining the user class  -->
-
-
 <?php
 
-class User
+namespace controllers;
+
+
+class UsersController
 {
-    // attributes
-    private $id;
-
-    //register form attributes
-    private $email;
-    private $password;
-    private $firstName;
-    private $lastName;
-    private $city;
-    private $description;
-    private $profilePicture;
-    private $coverPicture;
-    private $prefferedCategories;
-
-
-    private $isBanned;
-
-    private $participationsCount;
-    private $creationsCount;
-
-    private $evntsToCome;
-    private $evntsParticipated;
-    private $evntsCreated;
-    private $evntsLiked;
-
-    private $friends;
-    private $friendRequests;
-    private $friendRequestsSent;
-    private $blockedUsers;
-    private $blockedBy;
-
-    // methods 
-
 
     public function logIn($db)
     {
@@ -140,7 +107,7 @@ class User
         }
     }
 
-    public function setUserData($db)
+    public function storeUserData($db)
     {
 
 
@@ -165,5 +132,3 @@ class User
         ]);
     }
 }
-
-?>
