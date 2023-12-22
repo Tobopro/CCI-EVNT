@@ -89,7 +89,7 @@
     <footer>
         <div class="footer-homepage">
             <section id="newsletter">
-                <div class="container">
+                <div class="container-homepage">
                     <div>
                         <h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
