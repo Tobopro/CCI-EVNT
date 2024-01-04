@@ -149,25 +149,6 @@ a:not(.btn) {
     position: relative;
 }
 
-a:not(.btn):after,
-a:not(.btn):after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0px;
-    background-color: currentColor;
-    height: 1px;
-    opacity: 0;
-    transition: ease all 0.2s;
-}
-
-
-a:not(.btn):hover:after,
-a:not(.btn):focus:after {
-    bottom: -4px;
-    opacity: 1;
-}
 
 .btn {
     display: inline-block;
@@ -493,9 +474,6 @@ section#nav-footer div img {
 --------------------------------------------- */
 
 @media screen and (min-width:992px) {
-    header nav ul li:nth-child(2) {
-        margin-right: 2em;
-    }
 
     section#introduction ul {
         margin-top: 8em;
@@ -532,29 +510,6 @@ section#nav-footer div img {
         display: none;
     }
 
-    header nav ul {
-        gap: 1em;
-    }
-
-    header nav.scrolled ul {
-        background-color: var(--text-color);
-        border-radius: 6px;
-    }
-
-    header nav a:not(.btn) {
-        color: var(--primary-color);
-    }
-
-    header nav li:nth-child(2) img {
-        display: none;
-    }
-
-    header nav.scrolled li#logo {
-        flex: 120px;
-        max-width: 120px;
-        position: relative;
-        top: -14px;
-    }
 
     section#nav-footer {
         grid-template-columns: 1fr 160px 210px;
@@ -579,53 +534,6 @@ section#nav-footer div img {
 @media screen and (max-width:767px) {
     .desktop-only {
         display: none;
-    }
-
-    header nav ul {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: var(--primary-color);
-        gap: 3em;
-        font-size: 0.9rem;
-        box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    header nav div {
-        transition: ease all 0.25s;
-    }
-
-    header nav.scrolled div {
-        background-color: var(--text-color);
-        border-radius: 4px;
-        padding: 0 1em;
-    }
-
-    header nav a:not(.btn) {
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-
-    header nav ul a.btn {
-        background: none;
-        padding: 0;
-        text-transform: uppercase;
-        font-family: 'Inter', sans-serif;
-        font-size: inherit;
-        font-weight: 600;
-    }
-
-    header nav a {
-        color: inherit;
-    }
-
-    header nav li img,
-    header ul a.btn svg {
-        display: block;
-        margin: 0 auto 0.8em;
-        height: 28px;
-        width: 28px;
     }
 
     .btn-primary,
