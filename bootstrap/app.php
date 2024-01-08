@@ -8,6 +8,7 @@ require_once __DIR__ . "/../helpers/path_functions.php";
 // Import
 
 require_once __DIR__ . "/../Models/UserModel.php";
+require_once __DIR__ . "/../Controllers/UserController.php";
 
 // Start sessions
 session_start();
