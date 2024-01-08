@@ -19,8 +19,8 @@ abstract class UserModel
     protected $coverPicture;
     protected $preferredCategories;
     protected $isBanned;
-    protected $participationsCount;
-    protected $creationsCount;
+    protected $participationCount;
+    protected $creationCount;
     protected $evntsToCome;
     protected $evntsParticipated;
     protected $evntsCreated;
@@ -29,7 +29,6 @@ abstract class UserModel
     protected $friendRequests;
     protected $friendRequestsSent;
     protected $blockedUsers;
-    protected $blockedBy;
     protected $showFutureEvnts;
     protected $showPastEvnts;
     protected $showEvntScores;
