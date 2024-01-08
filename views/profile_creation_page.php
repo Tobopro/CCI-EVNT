@@ -1,6 +1,8 @@
 <main>
+    <?php displayErrorsAndMessages() ?>
     <h2>Création de compte</h2>
-    <form action=<?php $actionUrl ?> method="POST">
+    <form action=<?php echo $actionURL ?> method="POST">
+        <input type="text" name="action" value="store" hidden>
         <label for="lastName">Nom:</label>
         <input type="text" name="lastName" required>
 
@@ -14,7 +16,7 @@
         <input type="password" name="password" required>
 
         <label for="password">Confirmer le mot de passe:</label>
-        <input type="password" name="password" required>
+        <input type="password" name="passwordConfirmation" required>
 
         <button type="submit">Valider</button>
     </form>

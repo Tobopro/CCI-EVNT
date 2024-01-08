@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../bootstrap/app.php';
-use Controllers\UsersController;
 
 // Check auth
 // Auth::isAuthOrRedirect();
@@ -18,7 +17,7 @@ if (!empty($_POST['action'])) {
 }
 
 // Remove errors, success and old data
-// App::terminate();
+App::terminate();
 
-// // Unknown action
-// redirectAndExit(Controllers\ProductsController::URL_INDEX);
+// Unknown action
+redirectAndExit(Controllers\ProductsController::URL_INDEX);
