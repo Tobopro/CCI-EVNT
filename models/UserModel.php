@@ -4,7 +4,7 @@ namespace Models;
 
 require_once __DIR__ . "..\controllers\functions.php";
 
-abstract class Users
+abstract class UserModel
 {
     // attributes
     protected $id;
@@ -39,9 +39,7 @@ abstract class Users
 
     public function __construct()
     {
-        $user = new UsersController();
-        $user->loadData(connectionDB());
-
+        //
     }
 
 
