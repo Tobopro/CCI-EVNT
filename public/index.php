@@ -30,8 +30,9 @@
 </head>
 
 <?php
-session_start();
-require_once '../controllers/functions.php';
+use controllers\UsersController;
+
+require_once __DIR__ . '/../bootstrap/app.php';
 ?>
 
 <?php
@@ -71,6 +72,11 @@ if (isset($_GET['url'])) {
             break;
         case 'mentions':
             require '../views/legal.php';
+            break;
+        case 'creation_profil':
+            require_once base_path('Controllers/UserController.php');
+            $controller = new UsersController();
+            $controller->index();
             break;
         default:
             require '../views/homepage.php';
