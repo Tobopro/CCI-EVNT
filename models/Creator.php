@@ -1,5 +1,5 @@
 <?php
-use models\Users;
+use Models;
 
 class Creator extends UserModel
 {
