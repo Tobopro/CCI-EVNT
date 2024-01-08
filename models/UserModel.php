@@ -2,8 +2,6 @@
 
 namespace Models;
 
-require_once __DIR__ . "..\controllers\functions.php";
-
 abstract class UserModel
 {
     // attributes
@@ -94,12 +92,12 @@ abstract class UserModel
 
     public function getParticipationsCount(): int
     {
-        return $this->participationsCount;
+        return $this->participationCount;
     }
 
     public function getCreationsCount(): int
     {
-        return $this->creationsCount;
+        return $this->creationCount;
     }
 
     public function getEvntsToCome(): array
@@ -132,20 +130,16 @@ abstract class UserModel
         return $this->friendRequests;
     }
 
-    public function getFriendRequestsSent(): array
-    {
-        return $this->friendRequestsSent;
-    }
+    // public function getFriendRequestsSent(): array
+    // {
+    //     return $this->friendRequestsSent;
+    // }
 
     public function getBlockedUsers(): array
     {
         return $this->blockedUsers;
     }
 
-    public function getBlockedBy(): array
-    {
-        return $this->blockedBy;
-    }
     public function getisDisplayFutureEvnts(): bool
     {
         return $this->showFutureEvnts;

@@ -31,8 +31,8 @@
 
 <?php
 use controllers\UsersController;
-session_start();
-require_once '../controllers/functions.php';
+
+require_once __DIR__ . '/../bootstrap/app.php';
 ?>
 
 <?php
@@ -74,8 +74,7 @@ if (isset($_GET['url'])) {
             require '../views/legal.php';
             break;
         case 'creation_profil':
-            require '../Controllers/UserController.php';
-            require_once base_path('Controllers/ProductsController.php');
+            require_once base_path('Controllers/UserController.php');
             $controller = new UsersController();
             $controller->index();
             break;
