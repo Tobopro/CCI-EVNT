@@ -6,7 +6,7 @@ if (function_exists('connection_dbb')) {
     $query = $db->prepare("SELECT name FROM categories");
     $query->execute();
     $categories = $query->fetchAll(PDO::FETCH_ASSOC);
-
+}
 
 
 ?>

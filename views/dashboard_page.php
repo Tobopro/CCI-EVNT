@@ -24,223 +24,48 @@
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <!-- cards placeholder -->
                 <div class="events_event__cards">
-                    <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ------------------------------------------------------------------------------------------- -->
 
+        
                     <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop d-none d-xl-block">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ------------------------------------------------------------------------------------------- -->
+                 <div class="events_event__cards">
+    <?php foreach ($events as $event) : ?>
+        <div class="card-desktop">
+            <div class="card-desktop__top">
+                <img class="card-desktop__top-img" src="<?= $event->getUrlImage(); ?>" alt="">
+                <div class="card-desktop__top-cat">
+                    <?php foreach ($event->getCategories() as $category) : ?>
+                        <a href="#">
+                            <p><?= $category->getName(); ?></p>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
-                <div class="events_event__cards">
-                    <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+            <div class="card-desktop__bot">
+                <div class="card-desktop__bot-left">
+                    <div class="card-desktop__bot-left-content">
+                        <h2><?= $event->getTitle(); ?></h2>
+                        <h3><?= $event->getOrganizerName(); ?></h3>
                     </div>
-                    <!-- ------------------------------------------------------------------------------------------- -->
-
-                    <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop d-none d-xl-block">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ------------------------------------------------------------------------------------------- -->
+                    <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de l'Evnt</a>
                 </div>
-                <div class="events_event__cards">
-                    <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="card-desktop__bot-right">
+                    <div class="card-desktop__bot-right-i">
+                        <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
+                        <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
                     </div>
+                    <div class="card-desktop__bot-right-u">
+                        <i class="fa-solid fa-user"></i>
+                        <p><?= $event->getNbParticipants(); ?>/<?= $event->getMaxParticipants(); ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
                     <!-- ------------------------------------------------------------------------------------------- -->
 
-                    <!-- CARD ------------------------------------------------------------------------------------ -->
-                    <div class="card-desktop d-none d-xl-block">
-                        <div class="card-desktop__top">
-                            <img class="card-desktop__top-img" src="./assets/img/nature-morte-carte.jpg" alt="">
-                            <div class="card-desktop__top-cat">
-                                <a href="#">
-                                    <p>Catégorie 1</p>
-                                </a>
-                                <a href="#">
-                                    <p>Catégorie 2</p>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="card-desktop__bot">
-                            <div class="card-desktop__bot-left">
-                                <div class="card-desktop__bot-left-content">
-                                    <h2>Titre de l'evnt</h2>
-                                    <h3>Nom de l'organisateur</h3>
-                                </div>
-                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de
-                                    l'Evnt</a>
-                            </div>
-                            <div class="card-desktop__bot-right">
-                                <div class="card-desktop__bot-right-i">
-                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                </div>
-                                <div class="card-desktop__bot-right-u">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>3/12</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- ------------------------------------------------------------------------------------------- -->
+                   
                 </div>
             </div>
         </div>
