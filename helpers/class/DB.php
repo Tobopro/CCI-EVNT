@@ -1,15 +1,17 @@
 <?php
 
-namespace Helpers;
-Use \PDO;
-Use \Exception;
-Use \PDOException;
+// namespace Helpers;
+
+// use \PDO;
+// use \Exception;
+// use \PDOException;
 
 
-class DB {
+class DB
+{
     private static ?PDO $db = null; // "?PDO" allowed only on PHP 8.1+
 
-    public static function getDB() 
+    public static function getDB()
     {
         if (self::$db === null) {
             self::$db = self::connection();
@@ -24,7 +26,7 @@ class DB {
         ?int $limit = null,
         ?int $offset = null,
         int $fetchType = PDO::FETCH_ASSOC,
-    ) : array|false {
+    ): array|false {
         return self::runQuery($sql, $params, $limit, $offset, true, $fetchType);
     }
 
@@ -33,8 +35,8 @@ class DB {
         array $params = [],
         ?int $limit = null,
         ?int $offset = null,
-    ) : int|false {
-        return self::runQuery($sql, $params, $limit, $offset,  false);
+    ): int|false {
+        return self::runQuery($sql, $params, $limit, $offset, false);
     }
 
     protected static function runQuery(
@@ -44,7 +46,7 @@ class DB {
         ?int $offset = null,
         bool $fetchMode = true,
         int $fetchType = PDO::FETCH_ASSOC,
-    ) : array|bool|int {
+    ): array|bool|int {
         try {
             // Add Limit to sql
             if ($limit !== null) {
@@ -85,13 +87,12 @@ class DB {
             return $fetchMode ? $req->fetchAll($fetchType) : $req->rowCount();
         } catch (Exception $e) {
             // TODO Write error message in a independent log file
-            echo 'Erreur : '.$e->getMessage(); exit();
+            echo 'Erreur : ' . $e->getMessage();
+            exit();
         }
-
-        return false;
     }
 
-    protected static function connection() 
+    protected static function connection()
     {
         try {
             return new PDO(
@@ -99,7 +100,7 @@ class DB {
                 'test',
                 'test',
                 [
-                    // Options
+                        // Options
                     PDO::ATTR_PERSISTENT => true,
                 ]
             );
@@ -107,7 +108,5 @@ class DB {
             echo $e->getMessage();
             exit();
         }
-    
-        return null;
     }
 }
