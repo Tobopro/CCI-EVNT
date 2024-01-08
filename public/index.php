@@ -19,7 +19,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        </script>
     <script defer src="../leaflet/leaflet.js"></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
@@ -76,7 +76,7 @@ if (isset($_GET['url'])) {
         case 'creation_profil':
             require_once base_path('Controllers/UserController.php');
             $controller = new UsersController();
-            $controller->index();
+            $controller->create();
             break;
         default:
             require '../views/homepage.php';
