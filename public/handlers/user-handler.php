@@ -20,4 +20,4 @@ if (!empty($_POST['action'])) {
 App::terminate();
 
 // Unknown action
-redirectAndExit(Controllers\ProductsController::URL_INDEX);
+redirectAndExit(Controllers\UsersController::URL_INDEX);

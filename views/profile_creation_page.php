@@ -1,5 +1,5 @@
 <main>
-    <?php displayErrorsAndMessages() ?>
+    <?php displayErrorsAndMessages(); ?>
     <h2>Création de compte</h2>
     <form action=<?php echo $actionURL ?> method="POST">
         <input type="text" name="action" value="store" hidden>

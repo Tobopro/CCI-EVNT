@@ -2,6 +2,8 @@
 
 namespace Controllers;
 
+use Models\User;
+use DB;
 
 class UsersController
 {
@@ -29,6 +31,16 @@ class UsersController
             errors('Les mots de passe sont différents.');
             redirectAndExit(self::URL_CREATE);
         }
+
+        $user = new User(
+            $_POST['firstName'] ?? null,
+            $_POST['lastName'] ?? null,
+            $_POST['mail'] ?? null,
+            $_POST['password']
+        );
+
+        $user->setCity("Strasbourg");
+        $user->save();
     }
     public function edit()
     {

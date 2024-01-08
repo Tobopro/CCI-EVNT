@@ -2,9 +2,9 @@
 
 require_once __DIR__ . "/../bootstrap/app.php";
 
-use Models\UserModel;
+use Models\User;
 
-class Attendee extends UserModel
+class Attendee extends User
 {
     //
 }
