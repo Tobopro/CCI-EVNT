@@ -30,8 +30,9 @@
 </head>
 
 <?php
-session_start();
-require_once '../controllers/functions.php';
+use controllers\UsersController;
+
+require_once __DIR__ . '/../bootstrap/app.php';
 ?>
 
 <?php
@@ -52,7 +53,7 @@ if (isset($_GET['url'])) {
             require '../views/homepage.php';
             break;
         case 'dashboard':
-            require '../views/dashboard_page.php';
+            require '../controllers/dashboard.php';
             break;
         case 'profile':
             require '../views/profile_page.php';
@@ -72,6 +73,11 @@ if (isset($_GET['url'])) {
         case 'mentions':
             require '../views/legal.php';
             break;
+        case 'creation_profil':
+            require_once base_path('Controllers/UserController.php');
+            $controller = new UsersController();
+            $controller->index();
+            break;
         default:
             require '../views/homepage.php';
             break;
@@ -84,10 +90,12 @@ if (isset($_GET['url'])) {
 <?php
 
 if ($_GET['url'] === 'home') {
-    echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
+    echo "<script defer src='./assets/javascript/card-hcarousel.js'></script>";
 }
 
-include('../views/footer.php');
+if  ($_GET['url'] !== 'home') {
+   include('../views/footer.php');
+}
 
 ?>
 

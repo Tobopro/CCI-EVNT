@@ -4,7 +4,7 @@ require_once __DIR__ . "/../bootstrap/app.php";
 
 use Models\UserModel;
 
-class User extends UserModel
+class Creator extends UserModel
 {
     //
 }
