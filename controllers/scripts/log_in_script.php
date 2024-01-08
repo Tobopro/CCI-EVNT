@@ -10,7 +10,6 @@ session_start();
 $email = $_POST['email'];
 
 $password = $_POST['password'];
-$password = password_hash($password);
 
 $user = new User(email: $email, password: $password);
 $db = connection_dbb();

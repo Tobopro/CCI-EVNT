@@ -211,7 +211,8 @@ class Users
         $result = $query->fetch();
         $query = null;
 
-        return $this->password === $result['password'];
+        return password_verify($this->password, $result['password']);
+        
     }
 
     public function isBanned($db)
