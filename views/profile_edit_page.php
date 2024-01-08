@@ -4,14 +4,16 @@
             <button class="cover-edit-picture__btn">
                 <a href="index.php?url=profile">Enrengistrer</a>
             </button>
-            <a href="#">
-                <div>
-                    <img class="cover-edit-picture__img" src="./assets/img/tourne-disque-tournant-vinyle-vintage.jpg"
-                        alt="bannière de profil">
-                    <img class="cover-edit-picture__icon" src="./assets/img/icone/camera-solid.svg"
-                        alt="modification de bannière de profil">
-                </div>
-            </a>
+
+            <form action="" method="POST">
+                <a href="#">
+                    <div>
+                        <img class="cover-edit-picture__img"
+                            src="./assets/img/tourne-disque-tournant-vinyle-vintage.jpg" alt="bannière de profil">
+                        <img class="cover-edit-picture__icon" src="./assets/img/icone/camera-solid.svg"
+                            alt="modification de bannière de profil">
+                    </div>
+                </a>
         </div>
         <div id="profile-edit-up" class="row m-0">
             <a href="#">
@@ -40,8 +42,6 @@
         </div>
     </div>
 
-
-
     <div class="container toggle-edit">
         <div class="row mx-3 mt-md-5">
             <div class="box--yellow">
@@ -54,7 +54,7 @@
             <div class="box--yellow">
                 <p>Afficher mes évènement à venir</p>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" name="">
                     <span class="slider round"></span>
                 </label>
             </div>
@@ -74,4 +74,5 @@
             </div>
         </div>
     </div>
+    </form>
 </main>

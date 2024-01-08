@@ -11,19 +11,21 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/sass/main.css">
     <!-- Highest Praise font  -->
-    <link rel="stylesheet" href="https://use.typekit.net/xdq8dza.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
     <link rel="stylesheet" href="../leaflet/leaflet.css">
 
-    <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
+
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <script defer src="../leaflet/leaflet.js"></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
-    <script defer type="text/javascript" src="/public/assets/javascript/script-homepage.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script>
     <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
+
 
 </head>
 
@@ -32,66 +34,68 @@ session_start();
 require_once '../controllers/functions.php';
 ?>
 
-<body <?php
-if ($_GET['url'] === 'home') {
-    print(htmlspecialchars("class = homepage-background"));
-} else {
-    print(htmlspecialchars("class = body-background"));
+<?php
+if ($_GET['url'] !== 'home') {
+    echo "<body class = body-background>";
 }
-?>>
+?>
 
-    <?php
-    include("../views/header.php");
-    ?>
+<?php
+include("../views/header.php");
+?>
 
-    <?php
+<?php
 
-    if (isset($_GET['url'])) {
-        switch ($_GET['url']) {
-            case 'home':
-                require '../views/homepage.php';
-                break;
-            case 'dashboard':
-                require '../views/dashboard_page.php';
-                break;
-            case 'profile':
-                require '../views/profile_page.php';
-                break;
-            case 'page_EVNT':
-                require '../views/evnt-page.php';
-                break;
-            case 'creation_EVNT':
-                require '../views/event_creation_page.php';
-                break;
-            case 'edition_profil':
-                require '../views/profile_edit_page.php';
-                break;
-            case 'carte':
-                require '../views/mobile_map_page.php';
-                break;
-            case 'mentions':
-                require '../views/legal.php';
-                break;
-            default:
-                require '../views/homepage.php';
-                break;
-        }
-    } else {
-        require '../views/homepage.php';
+if (isset($_GET['url'])) {
+    switch ($_GET['url']) {
+        case 'home':
+            require '../views/homepage.php';
+            break;
+        case 'dashboard':
+            require '../views/dashboard_page.php';
+            break;
+        case 'profile':
+            require '../views/profile_page.php';
+            break;
+        case 'page_EVNT':
+            require '../views/evnt-page.php';
+            break;
+        case 'creation_EVNT':
+            require '../views/event_creation_page.php';
+            break;
+        case 'edition_profil':
+            require '../views/profile_edit_page.php';
+            break;
+        case 'carte':
+            require '../views/mobile_map_page.php';
+            break;
+        case 'mentions':
+            require '../views/legal.php';
+            break;
+        default:
+            require '../views/homepage.php';
+            break;
     }
+} else {
+    require '../views/homepage.php';
+}
 
-    ?>
-    <?php
-    if ($_GET['url'] != 'home') {
-          include('../views/footer.php');
-    }
- 
-    if ($_GET['url'] === 'home') {
-        echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
-    }
-    ?>
+?>
+<?php
+
+if ($_GET['url'] === 'home') {
+    echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
+}
+
+include('../views/footer.php');
+
+?>
 
 
-</body>
+<?php
+if ($_GET['url'] !== 'home') {
+    echo "</body>";
+}
+?>
 
 </html>

@@ -11,6 +11,8 @@ html,
     box-sizing: border-box;
     line-height: 1;
     font-family: 'Inter', sans-serif;
+    background-image: url('../img/evnt-fond-drawings_gris.svg');
+    background-attachment: fixed;
 }
 
 *,
@@ -110,12 +112,12 @@ table {
 }
 
 #homepage h1,
-.footer-homepage h1,
+#footer-homepage h1,
 #homepage h2,
-.footer-homepage h2,
+#footer-homepage h2,
 #homepage h3,
-.footer-homepage h3 {
-    font-family: 'highest-praise';
+#footer-homepage h3 {
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
 
 }
@@ -147,25 +149,6 @@ a:not(.btn) {
     position: relative;
 }
 
-a:not(.btn):after,
-a:not(.btn):after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0px;
-    background-color: currentColor;
-    height: 1px;
-    opacity: 0;
-    transition: ease all 0.2s;
-}
-
-
-a:not(.btn):hover:after,
-a:not(.btn):focus:after {
-    bottom: -4px;
-    opacity: 1;
-}
 
 .btn {
     display: inline-block;
@@ -184,7 +167,7 @@ a:not(.btn):focus:after {
 
 .btn-primary,
 .btn-secondary {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-size: 150%;
     border: 2px solid transparent;
 }
@@ -295,7 +278,7 @@ section#introduction li img {
 }
 
 section#introduction li strong {
-    font-family: 'Highest Praise';
+    font-family: "highest-praise", sans-serif;
     font-weight: normal;
     font-size: 3rem;
 }
@@ -310,7 +293,6 @@ section#introduction a.btn {
 section#last-evnt {
     padding-top: 10em;
     position: relative;
-    background-image: url('../img/evnt-fond-drawings_gris.svg');
 }
 
 section#last-evnt>ul {
@@ -404,7 +386,7 @@ section#last-evnt:after {
 section#quoi-evnt {
     text-align: center;
     background-color: var(--primary-color);
-    background-image: url('../img/evnt-fond-drawings_jaune.svg');
+    // background-image: url('../img/evnt-fond-drawings_jaune.svg');
     padding: 6em 0;
 }
 
@@ -427,7 +409,7 @@ section#evnt-passes p {
 section#newsletter {
     padding: 2em 0 3em;
     background-color: var(--primary-color);
-    background-image: url('../img/evnt-fond-drawings_jaune.svg');
+    // background-image: url('../img/evnt-fond-drawings_jaune.svg');
     color: var(--text-color);
 }
 
@@ -435,30 +417,29 @@ section#newsletter form {
     position: relative;
 }
 
+section#newsletter form:after {
+    content: url('../img/icons/icon-paper-plane.svg');
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
 
 section#newsletter input[type="email"] {
     padding: 1em 1.4em;
     border: 0;
     font-size: 1.07rem;
-    width: calc(100% - 62px);
+    width: calc(100% - 54px);
 }
 
 section#newsletter input[type="submit"] {
     cursor: pointer;
     background-color: var(--text-color);
     font-size: 0;
-    height: 54px;
+    height: 53.5px;
     vertical-align: top;
     border: 0;
-    width: 54px;
-
-}
-
-section#newsletter form:after {
-    content: url('../img/icons/icon-paper-plane.svg');
-    position: absolute;
-    right: 16px;
-    top: 16px;
+    width: 53px;
+    margin-left: -7px;
 }
 
 footer {
@@ -493,9 +474,6 @@ section#nav-footer div img {
 --------------------------------------------- */
 
 @media screen and (min-width:992px) {
-    header nav ul li:nth-child(2) {
-        margin-right: 2em;
-    }
 
     section#introduction ul {
         margin-top: 8em;
@@ -532,29 +510,6 @@ section#nav-footer div img {
         display: none;
     }
 
-    header nav ul {
-        gap: 1em;
-    }
-
-    header nav.scrolled ul {
-        background-color: var(--text-color);
-        border-radius: 6px;
-    }
-
-    header nav a:not(.btn) {
-        color: var(--primary-color);
-    }
-
-    header nav li:nth-child(2) img {
-        display: none;
-    }
-
-    header nav.scrolled li#logo {
-        flex: 120px;
-        max-width: 120px;
-        position: relative;
-        top: -14px;
-    }
 
     section#nav-footer {
         grid-template-columns: 1fr 160px 210px;
@@ -579,53 +534,6 @@ section#nav-footer div img {
 @media screen and (max-width:767px) {
     .desktop-only {
         display: none;
-    }
-
-    header nav ul {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: var(--primary-color);
-        gap: 3em;
-        font-size: 0.9rem;
-        box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    header nav div {
-        transition: ease all 0.25s;
-    }
-
-    header nav.scrolled div {
-        background-color: var(--text-color);
-        border-radius: 4px;
-        padding: 0 1em;
-    }
-
-    header nav a:not(.btn) {
-        font-weight: 600;
-        text-transform: uppercase;
-    }
-
-    header nav ul a.btn {
-        background: none;
-        padding: 0;
-        text-transform: uppercase;
-        font-family: 'Inter', sans-serif;
-        font-size: inherit;
-        font-weight: 600;
-    }
-
-    header nav a {
-        color: inherit;
-    }
-
-    header nav li img,
-    header ul a.btn svg {
-        display: block;
-        margin: 0 auto 0.8em;
-        height: 28px;
-        width: 28px;
     }
 
     .btn-primary,
@@ -717,7 +625,6 @@ section#nav-footer div img {
 section#last-evnt {
     padding-top: 10em;
     position: relative;
-    background-image: url('../img/evnt-fond-drawings_gris.svg');
 }
 
 section#last-evnt>ul {
@@ -725,6 +632,50 @@ section#last-evnt>ul {
     display: grid;
     gap: 2em;
 }
+
+
+.card-hcarousel {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: center;
+    margin-top: 3em;
+    padding-bottom: 3em;
+
+    &>.wrapper {
+        // display: flex;
+        overflow: hidden;
+        width: 80em;
+
+        & .inner {
+            display: flex;
+            grid-gap: 2em;
+            overflow: scroll;
+            scroll-snap-type: both mandatory;
+            scroll-padding: 1rem;
+            overflow-y: hidden;
+
+            &::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+                background-color: $main-color;
+                opacity: 50%;
+
+            }
+
+            &::-webkit-scrollbar {
+                width: 5px;
+                height: 8px;
+                background-color: #F5F5F5;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $sub-color;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
 
 .carousel-evnt {
     display: flex;

@@ -28,6 +28,7 @@
 
 
 .cover-picture__btn {
+
     z-index: 7;
     color: #FCFCFC;
     padding-right: 20px;
@@ -40,20 +41,16 @@
     position: absolute;
     display: flex;
     height: 30px;
-    bottom: 30vh;
+    top: 32vh;
     right: 10px;
-
-    @media (max-width: $medium) {
-        bottom: 20vh;
-
-    }
 }
 
 
 
 .cover-and-info {
-    position: relative;
-    top: -10vh;
+    // position: relative;
+    // top: -10vh;
+    margin-bottom: 10vh;
 }
 
 #profile-up {

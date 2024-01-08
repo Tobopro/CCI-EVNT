@@ -1,7 +1,8 @@
-const slider = document.querySelector('.card-hcarousel .inner');
+const slider = document.querySelector('.card-hcarousel .wrapper .inner');
 let isDown = false;
 let startX;
 let scrollLeft;
+
 
 slider.addEventListener('mousedown', e => {
     isDown = true;
@@ -24,10 +25,4 @@ slider.addEventListener('mousemove', e => {
     const SCROLL_SPEED = 1;
     const walk = (x - startX) * SCROLL_SPEED;
     slider.scrollLeft = scrollLeft - walk;
-});
-
-$(document).ready(function () {
-    if (!$.browser.webkit) {
-        $('.wrapper').html('<p>Sorry! Non webkit users. :(</p>');
-    }
 });

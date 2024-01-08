@@ -3,7 +3,8 @@
 
 <?php
 
-class User {
+class User
+{
     // attributes
     private $id;
 
@@ -139,7 +140,30 @@ class User {
         }
     }
 
+    public function setUserData($db)
+    {
 
+
+        $query = $db->prepare(
+            "UPDATE users
+        SET lastName = :lastName, firstName = :firstName, description = :description, profilePicture = :profilePicture, banner = :banner, city = :city, isPublic = :isPublic, incomingEventDisplay = :incomingEventDisplay, pastEventDisplay = :pastEventDisplay, counterEventDisplay = :counterEventDisplay
+        WHERE idUser = :idUser"
+        );
+
+        $query->execute([
+            "idUser" => $this->id,
+            "lastName" => $this->lastName,
+            "firstName" => $this->firstName,
+            "description" => $this->description,
+            "profilePicture" => $this->profilePicture,
+            "banner" => $this->coverPicture,
+            "city" => $this->city,
+            // "isPublic" => $this->isPublic,
+            // "incomingEventDisplay" => $this->incomingEventDisplay,
+            // "pastEventDisplay" => $this->pastEventDisplay,
+            // "counterEventDisplay" => $this->counterEventDisplay
+        ]);
+    }
 }
 
 ?>

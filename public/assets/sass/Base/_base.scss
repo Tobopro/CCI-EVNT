@@ -1,24 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Chivo:ital@1&family=Open+Sans&display=swap');
 @import "../Utils/mixins";
 
-body {
-    margin-top: 10vh;
-    background-color: #fcfcfc;
-    min-width: 150px;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 .body-background {
-    background-image: url(../img/backgrounds/Background-mobile.svg);
-
-    @media (min-width: $small) {
-        background-image: url(../img/backgrounds/Background-medium.svg);
-    }
-
-    @media (min-width: $medium) {
-        background-image: url(../img/backgrounds/Background-medium.svg);
-    }
+    background-image: url(../img/evnt-fond-drawings_gris.svg);
+    // margin-top: 10vh;
+    background-color: #fcfcfc;
+    min-width: 150px;
+    background-size: contain;
 }
 
 
@@ -44,7 +33,6 @@ li {
 a {
     text-decoration: none;
     color: white;
-
 }
 
 ul {
@@ -60,11 +48,15 @@ p {
 }
 
 
-.title {
+h2,
+h3,
+h4,
+h5,
+h6 {
     @include title-font;
 }
 
 
-.text-content {
+body {
     @include text-content-font;
 }
