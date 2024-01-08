@@ -7,32 +7,32 @@ require_once __DIR__ . "..\controllers\functions.php";
 abstract class UserModel
 {
     // attributes
-    protected $id;
+    protected ?int $id;
     //register form attributes
-    protected $email;
-    protected $password;
-    protected $firstName;
-    protected $lastName;
-    protected $city;
-    protected $description;
-    protected $profilePicture;
-    protected $coverPicture;
-    protected $preferredCategories;
-    protected $isBanned;
-    protected $participationCount;
-    protected $creationCount;
-    protected $evntsToCome;
-    protected $evntsParticipated;
-    protected $evntsCreated;
-    protected $evntsLiked;
-    protected $friends;
-    protected $friendRequests;
-    protected $friendRequestsSent;
-    protected $blockedUsers;
-    protected $showFutureEvnts;
-    protected $showPastEvnts;
-    protected $showEvntScores;
-    protected $isPublic;
+    protected ?string $email;
+    protected ?string $password;
+    protected ?string $firstName;
+    protected ?string $lastName;
+    protected ?string $city;
+    protected ?string $description;
+    protected ?int $profilePicture;
+    protected ?int $coverPicture;
+    protected ?array $preferredCategories;
+    protected ?bool $isBanned;
+    protected ?int $participationCount;
+    protected ?int $creationCount;
+    protected ?array $evntsToCome;
+    protected ?array $evntsParticipated;
+    protected ?array $evntsCreated;
+    protected ?array $evntsLiked;
+    protected ?array $friends;
+    protected ?array $friendRequests;
+    // protected $friendRequestsSent;
+    protected ?array $blockedUsers;
+    protected ?bool $showFutureEvnts;
+    protected ?bool $showPastEvnts;
+    protected ?bool $showEvntScores;
+    protected ?bool $isPublic;
 
     // methods 
 

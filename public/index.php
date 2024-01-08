@@ -19,7 +19,7 @@
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <script defer src="../leaflet/leaflet.js"></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
@@ -30,6 +30,7 @@
 </head>
 
 <?php
+use controllers\UsersController;
 session_start();
 require_once '../controllers/functions.php';
 ?>
@@ -73,7 +74,10 @@ if (isset($_GET['url'])) {
             require '../views/legal.php';
             break;
         case 'creation_profil':
-            require '../views/profile_creation_page.php';
+            require '../Controllers/UserController.php';
+            require_once base_path('Controllers/ProductsController.php');
+            $controller = new UsersController();
+            $controller->index();
             break;
         default:
             require '../views/homepage.php';

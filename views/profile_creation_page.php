@@ -1,6 +1,6 @@
 <main>
     <h2>Création de compte</h2>
-    <form action="?url=creation_profil" method="POST">
+    <form action=<?php $actionUrl ?> method="POST">
         <label for="lastName">Nom:</label>
         <input type="text" name="lastName" required>
 
