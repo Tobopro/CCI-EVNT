@@ -3,12 +3,8 @@
 namespace models;
 
 require_once __DIR__ . "..\controllers\functions.php";
-require_once __DIR__ . "..\controllers\UsersController.php";
-use controllers\UsersController;
 
-
-
-class Users
+abstract class Users
 {
     // attributes
     protected $id;
