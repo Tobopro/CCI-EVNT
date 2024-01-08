@@ -21,7 +21,7 @@ class Users
     protected $description;
     protected $profilePicture;
     protected $coverPicture;
-    protected $prefferedCategories;
+    protected $preferredCategories;
     protected $isBanned;
     protected $participationsCount;
     protected $creationsCount;
@@ -34,6 +34,10 @@ class Users
     protected $friendRequestsSent;
     protected $blockedUsers;
     protected $blockedBy;
+    protected $showFutureEvnts;
+    protected $showPastEvnts;
+    protected $showEvntScores;
+    protected $isPublic;
 
     // methods 
 
@@ -149,6 +153,22 @@ class Users
     {
         return $this->blockedBy;
     }
+    public function getisDisplayFutureEvnts(): bool
+    {
+        return $this->showFutureEvnts;
+    }
+    public function getisDisplayPastEvnts(): bool
+    {
+        return $this->showPastEvnts;
+    }
+    public function getisDisplayEvntScores(): bool
+    {
+        return $this->showEvntScores;
+    }
+    public function getisPublic(): bool
+    {
+        return $this->isPublic;
+    }
 
 
     public function logIn($db)
@@ -239,8 +259,8 @@ class Users
         //need to add email and password check
 
         if (!$this->isRegisteredInDb($db)) {
-            $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :prefferedCategories)");
-            $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'prefferedCategories' => $this->prefferedCategories]);
+            $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
+            $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
             $query = null;
 
             $this->loadData($db);
@@ -258,7 +278,7 @@ class Users
 
         $query = $db->prepare(
             "UPDATE users
-        SET lastName = :lastName, firstName = :firstName, description = :description, profilePicture = :profilePicture, banner = :banner, city = :city, isPublic = :isPublic, incomingEventDisplay = :incomingEventDisplay, pastEventDisplay = :pastEventDisplay, counterEventDisplay = :counterEventDisplay
+        SET lastName = :lastName, firstName = :firstName, description = :description, profilePicture = :profilePicture, coverPicture = :coverPicture, city = :city, isPublic = :isPublic, showFutureEvnts = :showFutureEvnts, showPastEvnts = :showPastEvnts, showEvntScores = :showEvntScores
         WHERE idUser = :idUser"
         );
 
@@ -268,12 +288,12 @@ class Users
             "firstName" => $this->firstName,
             "description" => $this->description,
             "profilePicture" => $this->profilePicture,
-            "banner" => $this->coverPicture,
+            "coverPicture" => $this->coverPicture,
             "city" => $this->city,
-            // "isPublic" => $this->isPublic,
-            // "incomingEventDisplay" => $this->incomingEventDisplay,
-            // "pastEventDisplay" => $this->pastEventDisplay,
-            // "counterEventDisplay" => $this->counterEventDisplay
+            "isPublic" => $this->isPublic,
+            "showFutureEvnts" => $this->showFutureEvnts,
+            "showPastEvnts" => $this->showPastEvnts,
+            "showEvntScores" => $this->showEvntScores
         ]);
     }
 
