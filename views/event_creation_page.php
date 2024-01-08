@@ -7,7 +7,6 @@ if (function_exists('connection_dbb')) {
     $query->execute();
     $categories = $query->fetchAll(PDO::FETCH_ASSOC);
 
-}
 
 ?>
 <main>

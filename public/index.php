@@ -53,7 +53,7 @@ if (isset($_GET['url'])) {
             require '../views/homepage.php';
             break;
         case 'dashboard':
-            require '../views/dashboard_page.php';
+            require '../controllers/dashboard.php';
             break;
         case 'profile':
             require '../views/profile_page.php';
@@ -90,10 +90,12 @@ if (isset($_GET['url'])) {
 <?php
 
 if ($_GET['url'] === 'home') {
-    echo "<script src='./assets/javascript/card-hcarousel.js'></script>";
+    echo "<script defer src='./assets/javascript/card-hcarousel.js'></script>";
 }
 
-include('../views/footer.php');
+if  ($_GET['url'] !== 'home') {
+   include('../views/footer.php');
+}
 
 ?>
 
