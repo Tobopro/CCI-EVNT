@@ -44,6 +44,37 @@ class User
         $this->password = $password;
     }
 
+    public function hydrate(array $data): User
+    {
+        $user = new User(
+            $data['firstName'],
+            $data['lastName'],
+            $data['email'],
+            $data['password']
+        );
+        $user->id = $data['id'] ?? null;
+        $user->city = $data['city'] ?? null;
+        $user->description = $data['description'] ?? null;
+        $user->profilePicture = $data['profilePicture'] ?? null;
+        $user->coverPicture = $data['coverPicture'] ?? null;
+        $user->preferredCategories = $data['preferredCategories'] ?? null;
+        $user->isBanned = $data['isBanned'] ?? null;
+        $user->participationCount = $data['participationCount'] ?? null;
+        $user->creationCount = $data['creationCount'] ?? null;
+        $user->evntsToCome = $data['evntsToCome'] ?? null;
+        $user->evntsParticipated = $data['evntsParticipated'] ?? null;
+        $user->evntsCreated = $data['evntsCreated'] ?? null;
+        $user->evntsLiked = $data['evntsLiked'] ?? null;
+        $user->friends = $data['friends'] ?? null;
+        $user->friendRequests = $data['friendRequests'] ?? null;
+        $user->blockedUsers = $data['blockedUsers'] ?? null;
+        $user->showFutureEvnts = $data['showFutureEvnts'] ?? null;
+        $user->showPastEvnts = $data['showPastEvnts'] ?? null;
+        $user->showEvntScores = $data['showEvntScores'] ?? null;
+        $user->isPublic = $data['isPublic'] ?? null;
+
+        return $user;
+    }
 
     public function getEmail(): string
     {
