@@ -1,7 +1,7 @@
 <?php
+require_once __DIR__ . '/../bootstrap/app.php';
 use controllers\UsersController;
 
-require_once __DIR__ . '/../bootstrap/app.php';
 ?>
 
 <!DOCTYPE html>
@@ -44,11 +44,8 @@ if (!empty($_GET)) {
         echo "<body class = body-background>";
     }
 }
-?>
-<?php
+
 include("../views/header.php");
-?>
-<?php
 
 if (isset($_GET['url'])) {
     switch ($_GET['url']) {
@@ -76,34 +73,26 @@ if (isset($_GET['url'])) {
         case 'mentions':
             require '../views/legal.php';
             break;
-        case 'creation_profil':
+        case 'creation_profile':
             require_once base_path('Controllers/UsersController.php');
             $controller = new UsersController();
             $controller->create();
             break;
         default:
-            require '../views/homepage.php';
+            echo "Error 404";
             break;
     }
 } else {
     require '../views/homepage.php';
 }
 
-?>
-<?php
-
-if ($_GET['url'] === 'home') {
-    echo "<script defer src='./assets/javascript/card-hcarousel.js'></script>";
-}
-
-if ($_GET['url'] !== 'home') {
-    include('../views/footer.php');
-}
-
-?>
-<?php
-if ($_GET['url'] !== 'home') {
-    echo "</body>";
+if (!empty($_GET)) {
+    if ($_GET['url'] !== 'home') {
+        include('../views/footer.php');
+        echo "</body>";
+    } elseif ($_GET['url'] === 'home' or $_GET['']) {
+        echo "<script defer src='./assets/javascript/card-hcarousel.js'></script>";
+    }
 }
 ?>
 

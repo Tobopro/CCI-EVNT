@@ -1,5 +1,4 @@
 <header>
-
     <nav class="navigation ">
         <div class="row  align-items-center px-2 justify-content-between ">
             <div class="col-1 ">
@@ -24,20 +23,13 @@
                     <i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>
                 </a>
             </div>
-
-
-
-
         </div>
-
 
         <div class=" navigation__bottom align-items-center ">
             <div class=""><a href="?url=carte"><i class="fa-solid fa-map fa-2xl yellow-icon "></i></a></div>
             <div class=""><a href="?url=creation_EVNT"><i class="fas fa-plus fa-2xl yellow-icon"></i></a></div>
             <div class=""><a href="?url=dashboard"><i class="fa-solid fa-grip-vertical fa-2xl yellow-icon"></i></a>
             </div>
-
         </div>
     </nav>
-
 </header>
