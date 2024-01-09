@@ -4,19 +4,19 @@
     <form action=<?php echo $actionURL ?> method="POST">
         <input type="text" name="action" value="store" hidden>
         <label for="lastName">Nom:</label>
-        <input type="text" name="lastName" required>
+        <input id="lastName" type="text" name="lastName" required>
 
         <label for="firstName">Prénom:</label>
-        <input type="text" name="firstName" required>
+        <input id="firstName" type="text" name="firstName" required>
 
         <label for="mail">Email:</label>
-        <input type="email" name="mail" required>
+        <input id="mail" type="email" name="mail" required>
 
         <label for="password">Mot de passe:</label>
-        <input type="password" name="password" required>
+        <input id="password" type="password" name="password" required>
 
         <label for="password">Confirmer le mot de passe:</label>
-        <input type="password" name="passwordConfirmation" required>
+        <input id="password" type="password" name="passwordConfirmation" required>
 
         <button type="submit">Valider</button>
     </form>

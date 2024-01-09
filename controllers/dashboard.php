@@ -1,8 +1,7 @@
 <?php
 
 use Classes\Evnt;
-use \Helpers\DB;
-require_once("../helpers/DB.php");
+
 require_once("classes/Evnt.php");
 
 

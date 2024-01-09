@@ -1,3 +1,9 @@
+<?php
+use controllers\UsersController;
+
+require_once __DIR__ . '/../bootstrap/app.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -12,39 +18,34 @@
     <link rel="stylesheet" href="./assets/sass/main.css">
     <!-- Highest Praise font  -->
     <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
-    <link rel="stylesheet" href="../leaflet/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
     <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
 
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-    <script defer src="../leaflet/leaflet.js"></script>
+        </script>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
-    <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script>
+    <!-- <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script> -->
     <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
 
 
 </head>
 
-<?php
-use controllers\UsersController;
-
-require_once __DIR__ . '/../bootstrap/app.php';
-?>
 
 <?php
 if ($_GET['url'] !== 'home') {
     echo "<body class = body-background>";
 }
 ?>
-
 <?php
 include("../views/header.php");
 ?>
-
 <?php
 
 if (isset($_GET['url'])) {
@@ -93,13 +94,11 @@ if ($_GET['url'] === 'home') {
     echo "<script defer src='./assets/javascript/card-hcarousel.js'></script>";
 }
 
-if  ($_GET['url'] !== 'home') {
-   include('../views/footer.php');
+if ($_GET['url'] !== 'home') {
+    include('../views/footer.php');
 }
 
 ?>
-
-
 <?php
 if ($_GET['url'] !== 'home') {
     echo "</body>";
