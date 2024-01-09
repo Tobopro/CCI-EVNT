@@ -24,41 +24,41 @@
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
                     <?php foreach ($eventsToDisplay as $event): ?>
-                        <div class="card-desktop col-5">
-                            <div class="card-desktop__top">
-                                <img class="card-desktop__top-img" src="assets/img/new-years-party-is-being-celebrated.jpg"
-                                    alt="">
-                                <div class="card-desktop__top-cat">
+                    <div class="card-desktop col-5">
+                        <div class="card-desktop__top">
+                            <img class="card-desktop__top-img" src="assets/img/new-years-party-is-being-celebrated.jpg"
+                                alt="">
+                            <div class="card-desktop__top-cat">
 
-                                </div>
                             </div>
-                            <div class="card-desktop__bot">
-                                <div class="card-desktop__bot-left">
-                                    <div class="card-desktop__bot-left-content">
-                                        <h3>
-                                            <?= $event['title']; ?>
-                                        </h3>
-                                        <h5>
-                                            <?= $event['description']; ?>
-                                        </h5>
-                                    </div>
-                                    <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de l'Evnt</a>
+                        </div>
+                        <div class="card-desktop__bot">
+                            <div class="card-desktop__bot-left">
+                                <div class="card-desktop__bot-left-content">
+                                    <h3>
+                                        <?= $event['title']; ?>
+                                    </h3>
+                                    <h5>
+                                        <?= $event['description']; ?>
+                                    </h5>
                                 </div>
-                                <div class="card-desktop__bot-right">
-                                    <div class="card-desktop__bot-right-i">
-                                        <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                        <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                    </div>
-                                    <div class="card-desktop__bot-right-u">
-                                        <i class="fa-solid fa-user"></i>
-                                        <p>
-                                            <?= $event['nbParticipants']; ?>
-                                        </p>
-                                    </div>
+                                <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de l'Evnt</a>
+                            </div>
+                            <div class="card-desktop__bot-right">
+                                <div class="card-desktop__bot-right-i">
+                                    <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
+                                    <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
+                                </div>
+                                <div class="card-desktop__bot-right-u">
+                                    <i class="fa-solid fa-user"></i>
+                                    <p>
+                                        <?= $event['nbParticipants']; ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                        <br>
+                    </div>
+                    <br>
                     <?php endforeach; ?>
                     <div class="justify-content-center d-flex">
                         <p>
