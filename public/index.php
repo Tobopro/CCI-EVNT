@@ -41,7 +41,12 @@ use controllers\UsersController;
 <?php
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
-        echo "<body class = body-background>";
+        $body = "<body class = 'body-background";
+        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
+            $body .= " with-no-margin";
+        }
+        $body .= "'>";
+        echo $body;
     }
 }
 
