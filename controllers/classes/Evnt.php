@@ -22,7 +22,7 @@ class Evnt {
     {
  
         $this->title = $title;
-        $this->dateEvnt = $dateEvnt;
+        $this->dateEvnt = new DateTime($dateEvnt);
         $this->adress = $adress;
         $this->description = $description;
         $this->price = $price;
@@ -156,7 +156,8 @@ class Evnt {
 
     public function createEvent($db)
         {
-            $result = $db->exec("INSERT INTO events (title, dateEvnt, adress, description,  price, priceInfo, nbParticipants, isFreeEntry, idUser, idCategory, urlImage, nbLike, nbReport) VALUES ('$this->title', '$this->dateEvnt', '$this->adress', '$this->description',  '$this->price',' ', '$this->nbParticipants', '$this->isFreeEntry', '$this->idUser', '$this->idCategory', '$this->urlImage', '$this->nbLike', '$this->nbReport')");
+             $formattedDate = $this->dateEvnt->format('Y-m-d H:i:s');
+            $result = $db->exec("INSERT INTO events (title, dateEvnt, adress, description,  price, priceInfo, nbParticipants, isFreeEntry, idUser, idCategory, urlImage, nbLike, nbReport) VALUES ('$this->title', '$formattedDate', '$this->adress', '$this->description',  '$this->price',' ', '$this->nbParticipants', '$this->isFreeEntry', '$this->idUser', '$this->idCategory', '$this->urlImage', '$this->nbLike', '$this->nbReport')");
 
             if ($result !== false) {
                 $message = "Votre évènement a bien été créé";
