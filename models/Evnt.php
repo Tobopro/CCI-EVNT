@@ -176,6 +176,14 @@ class Evnt {
             }
         }
 
+    public function deleteEvent($db, $eventId)
+{
+    $result = $db->exec("DELETE FROM events WHERE idEvent = $eventId");
+
+    return $result !== false;
+}
+
+
     public static function getAllEvents($db)
     {
         $result = $db->query("SELECT * FROM events");
@@ -185,7 +193,7 @@ class Evnt {
 
     public static function getEventById($db, $id)
     {
-        $result = $db->query("SELECT * FROM events WHERE id = $id");
+        $result = $db->query("SELECT * FROM events WHERE idEvent = $id");
         $event = $result->fetch();
         return $event;
     }
