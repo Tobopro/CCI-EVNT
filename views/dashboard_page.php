@@ -1,3 +1,5 @@
+
+
 <main>
     <section id="filter" class="container-fluid">
         <!-- Selection Filter -->
@@ -21,12 +23,7 @@
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
                     <?php foreach ($eventsToDisplay as $eventData): ?>
-                        <?php
-                        // Créer une nouvelle instance de la classe Evnt
-                        $eventInstance = new \Models\Evnt();
-                        // Hydrater l'instance avec les données de l'événement
-                        $eventInstance->hydrate($eventData);
-                        ?>
+                    
                         <div class="card-desktop col-5">
                             <div class="card-desktop__top">
                                 <img class="card-desktop__top-img" src="assets/img/new-years-party-is-being-celebrated.jpg" alt="">
