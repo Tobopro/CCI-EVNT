@@ -2,7 +2,7 @@
 
 class Auth
 {
-    const SESSION_KEY = 'current_user_id';
+    const SESSION_KEY = 'sessionKey';
 
     private static ?array $user = null;
 
@@ -12,7 +12,7 @@ class Auth
 
         if (self::$user === null and $id) {
             self::$user = DB::fetch(
-                "SELECT * FROM users WHERE id = :id LIMIT 1",
+                "SELECT * FROM users WHERE idUser = :id LIMIT 1",
                 ['id' => $id]
             );
 

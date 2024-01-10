@@ -1,7 +1,7 @@
 <main>
     <?php displayErrorsAndMessages(); ?>
     <h2>Création de compte</h2>
-    <form action=<?php echo $actionURL ?> method="POST">
+    <form action=<?php echo $actionUrl ?> method="POST">
         <input type="text" name="action" value="store" hidden>
         <label for="lastName">Nom:</label>
         <input id="lastName" type="text" name="lastName" required>

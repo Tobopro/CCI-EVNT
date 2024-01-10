@@ -26,7 +26,7 @@ use controllers\UsersController;
 
     <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-        </script>
+    </script>
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
@@ -42,9 +42,9 @@ use controllers\UsersController;
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
         $body = "<body class = 'body-background";
-        // if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
-        //     $body .= " with-no-margin";
-        // }
+        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
+            $body .= " with-no-margin";
+        }
         $body .= "'>";
         echo $body;
     }
@@ -61,7 +61,7 @@ if (isset($_GET['url'])) {
             require '../controllers/dashboard.php';
             break;
         case 'profile':
-            $_SESSION['sessionKey'] = 11;
+            $_SESSION['sessionKey'] = 14;
             $controller = new UsersController();
             $controller->index();
             break;
@@ -72,7 +72,8 @@ if (isset($_GET['url'])) {
             require '../views/event_creation_page.php';
             break;
         case 'edition_profil':
-            require '../views/profile_edit_page.php';
+            $controller = new UsersController();
+            $controller->edit();
             break;
         case 'carte':
             require '../views/mobile_map_page.php';

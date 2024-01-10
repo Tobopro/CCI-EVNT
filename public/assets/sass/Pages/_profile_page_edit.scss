@@ -15,35 +15,7 @@
 
 
     &__btn {
-
-        & a {
-            z-index: 7;
-            color: #FCFCFC;
-            padding-right: 20px;
-            padding-left: 20px;
-            padding-bottom: 3px;
-            border-radius: 20px;
-            margin-top: 2vh;
-            border: none;
-            background-color: $sub-color;
-            position: absolute;
-            display: flex;
-            height: 30px;
-            top: 32vh;
-            right: 10px;
-
-            &:hover {
-                background-color: $main-color;
-                color: $sub-color;
-            }
-        }
-
-
-
-        & p {
-            text-align: center;
-            margin: auto;
-        }
+        //
     }
 
     &::before {
@@ -219,4 +191,27 @@ input:checked+.slider:before {
     -webkit-transform: translateX(21px);
     -ms-transform: translateX(21px);
     transform: translateX(21px);
+}
+
+
+input[type=submit] {
+    z-index: 7;
+    color: #FCFCFC;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 3px;
+    border-radius: 20px;
+    margin-top: 2vh;
+    border: none;
+    background-color: $sub-color;
+    position: absolute;
+    display: flex;
+    height: 30px;
+    top: 32vh;
+    right: 10px;
+
+    &:hover {
+        background-color: $main-color;
+        color: $sub-color;
+    }
 }

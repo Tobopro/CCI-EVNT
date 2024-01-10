@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Models\User;
 use DB;
+use Auth;
 
 class UsersController
 {
@@ -14,17 +15,12 @@ class UsersController
 
     public function index()
     {
-        $data = DB::fetch(
-            "SELECT * FROM users WHERE idUser = :id",
-            ['id' => $_SESSION['sessionKey']]
-        );
-        $user = User::hydrate($data[0]);
-        var_dump($user);
+        $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_page.php');
     }
     public function create()
     {
-        $actionURL = self::URL_HANDLER;
+        $actionUrl = self::URL_HANDLER;
         require_once base_path('Views/profile_creation_page.php');
     }
 
@@ -50,7 +46,9 @@ class UsersController
     }
     public function edit()
     {
-        //
+        $actionUrl = self::URL_HANDLER;
+        $user = User::hydrate(Auth::getCurrentUser());
+        require_once base_path('Views/profile_edit_page.php');
     }
     public function update()
     {

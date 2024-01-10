@@ -250,34 +250,6 @@ class User
         return $result['isBanned'];
     }
 
-    public function loadData($db)
-    {
-        $query = $db->prepare("SELECT * FROM users WHERE email = :email");
-        $query->execute(['email' => $this->email]);
-        $result = $query->fetch();
-        $query = null;
-
-        $this->id = $result['id'];
-        $this->firstName = $result['firstName'];
-        $this->lastName = $result['lastName'];
-        $this->city = $result['city'];
-        $this->description = $result['description'];
-        $this->profilePicture = $result['profilePicture'];
-        $this->coverPicture = $result['coverPicture'];
-        $this->isBanned = $result['isBanned'];
-        $this->participationsCount = $result['participationsCount'];
-        $this->creationsCount = $result['creationsCount'];
-        $this->prefferedCategories = $result['prefferedCategories'];
-        $this->evntsToCome = $result['evntsToCome'];
-        $this->evntsParticipated = $result['evntsParticipated'];
-        $this->evntsCreated = $result['evntsCreated'];
-        $this->evntsLiked = $result['evntsLiked'];
-        $this->friends = $result['friends'];
-        $this->friendRequests = $result['friendRequests'];
-        $this->friendRequestsSent = $result['friendRequestsSent'];
-        $this->blockedUsers = $result['blockedUsers'];
-        $this->blockedBy = $result['blockedBy'];
-    }
 
     public function register($db)
     {
@@ -335,3 +307,34 @@ class User
 //     "showPastEvnts" => $this->showPastEvnts,
 //     "showEvntScores" => $this->showEvntScores
 // ]);
+
+
+// Encore utile ????
+// public function loadData($db)
+// {
+//     $query = $db->prepare("SELECT * FROM users WHERE email = :email");
+//     $query->execute(['email' => $this->email]);
+//     $result = $query->fetch();
+//     $query = null;
+
+//     $this->id = $result['id'];
+//     $this->firstName = $result['firstName'];
+//     $this->lastName = $result['lastName'];
+//     $this->city = $result['city'];
+//     $this->description = $result['description'];
+//     $this->profilePicture = $result['profilePicture'];
+//     $this->coverPicture = $result['coverPicture'];
+//     $this->isBanned = $result['isBanned'];
+//     $this->participationsCount = $result['participationsCount'];
+//     $this->creationsCount = $result['creationsCount'];
+//     $this->prefferedCategories = $result['prefferedCategories'];
+//     $this->evntsToCome = $result['evntsToCome'];
+//     $this->evntsParticipated = $result['evntsParticipated'];
+//     $this->evntsCreated = $result['evntsCreated'];
+//     $this->evntsLiked = $result['evntsLiked'];
+//     $this->friends = $result['friends'];
+//     $this->friendRequests = $result['friendRequests'];
+//     $this->friendRequestsSent = $result['friendRequestsSent'];
+//     $this->blockedUsers = $result['blockedUsers'];
+//     $this->blockedBy = $result['blockedBy'];
+// }
