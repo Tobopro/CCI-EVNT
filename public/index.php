@@ -72,6 +72,9 @@ if (isset($_GET['url'])) {
         case 'edition_profil':
             require '../views/profile_edit_page.php';
             break;
+        case 'my_events':
+            require '../controllers/myEventsController.php';
+            break;
         case 'carte':
             require '../views/mobile_map_page.php';
             break;

@@ -4,10 +4,10 @@ Use \DateTime;
 class Evnt {
     protected ?int $id ;
     protected ?string $title;
-    protected ?DateTime $dateEvnt;
+    protected ?string $dateEvnt;
     protected ?string $adress;
     protected ?string $description;
-    protected ?string $price;
+    protected ?float $price;
     protected ?string $priceInfo;
     protected ?int $nbParticipants;
     protected ?bool $isFreeEntry;
@@ -22,7 +22,7 @@ class Evnt {
     {
  
         $this->title = $title;
-        $this->dateEvnt = new DateTime($dateEvnt);
+        $this->dateEvnt = $dateEvnt;
         $this->adress = $adress;
         $this->description = $description;
         $this->price = $price;
@@ -44,7 +44,7 @@ class Evnt {
     {
         return $this->title;
     }
-    public function getDateEvnt(): DateTime
+    public function getDateEvnt(): string
     {
         return $this->dateEvnt;
     }
@@ -76,7 +76,7 @@ class Evnt {
     {
         return $this->idUser;
     }
-    public function getIdCategory(): int
+    public function getIdCategory(): ?int
     {
         return $this->idCategory;
     }
@@ -100,7 +100,7 @@ class Evnt {
     {
         $this->title = $title;
     }
-    public function setDateEvnt(DateTime $dateEvnt): void
+    public function setDateEvnt(string $dateEvnt): void
     {
         $this->dateEvnt = $dateEvnt;
     }
@@ -154,9 +154,17 @@ class Evnt {
         $this->nbReport = $nbReport;
     }
 
+    public static function index($db)
+    {
+        $result = $db->query("SELECT * FROM events");
+        $events = $result->fetchAll();
+        return $events;
+      
+    }
+
     public function createEvent($db)
         {
-             $formattedDate = $this->dateEvnt->format('Y-m-d H:i:s');
+             $formattedDate = $this->dateEvnt;
             $result = $db->exec("INSERT INTO events (title, dateEvnt, adress, description,  price, priceInfo, nbParticipants, isFreeEntry, idUser, idCategory, urlImage, nbLike, nbReport) VALUES ('$this->title', '$formattedDate', '$this->adress', '$this->description',  '$this->price',' ', '$this->nbParticipants', '$this->isFreeEntry', '$this->idUser', '$this->idCategory', '$this->urlImage', '$this->nbLike', '$this->nbReport')");
 
             if ($result !== false) {
@@ -192,19 +200,19 @@ class Evnt {
     public static function hydrate(array $data)
     {
         $evnt = new Evnt(
-            $data['title'],
-            $data['dateEvnt'],
-            $data['adress'],
-            $data['description'],
-            $data['price'],
-            $data['priceInfo'],
-            $data['nbParticipants'],
-            $data['isFreeEntry'],
-            $data['idUser'],
-            $data['idCategory'],
-            $data['urlImage'],
-            $data['nbLike'],
-            $data['nbReport']
+            $data['title'] ?? '',
+           $data['dateEvnt'] ?? '',
+            $data['adress'] ?? '',
+            $data['description'] ?? '',
+            $data['price'] ?? null,
+            $data['priceInfo'] ?? '',
+            $data['nbParticipants'] ?? '',
+            $data['isFreeEntry'] ?? '',
+            $data['idUser'] ?? null,
+            $data['idCategory'] ?? null,
+            $data['urlImage'] ?? '',
+            $data['nbLike'] ?? 0,
+            $data['nbReport'] ?? 0
         );
 
         return $evnt;

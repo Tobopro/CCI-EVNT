@@ -9,9 +9,10 @@
     }
 
     ?>
+<?php  ?>
 
     <div id="creation-form" class="container">
-        <form action="../controllers/creation_event_process.php" method="POST">
+<form action="handlers/evnt_creation_handler.php" method="POST">
             <div class="row d-flex  justify-content-between  ">
                 <!--Title box-->
                 <div class="mb-4 mb-lg-4 col-12 offset-0 col-lg-8 offset-lg-2 order-lg-0">
