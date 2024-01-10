@@ -1,5 +1,5 @@
 <?php 
-namespace Classes;
+namespace Models;
 Use \DateTime;
 class Evnt {
     protected int $id ;
@@ -173,6 +173,18 @@ class Evnt {
         $result = $db->query("SELECT * FROM events");
         $events = $result->fetchAll();
         return $events;
+    }
+
+      public function hydrate (array $data)
+    {
+        foreach ($data as $key => $value)
+        {
+            $method = 'set'.ucfirst($key);
+            if(method_exists($this,$method))
+            {
+                $this->$method($value);
+            }
+        }
     }
 }
 
