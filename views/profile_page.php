@@ -14,12 +14,17 @@
                     <img src="./assets/img/portrait.jpg" alt="">
                 </div>
                 <div id="profile-name" class="col-2 col-lg-1  ms-md-5 ms-lg-0 position-relative  mt-lg-0 text-center ">
-                    <p>Doe <br> John</p>
+                    <p>
+                        <?php echo $user->getLastName() ?><br>
+                        <?php echo $user->getFirstName() ?>
+                    </p>
                 </div>
                 <div id="profile-numbers" class="col-3 col-md-4 col-lg-1 offset-2 offset-lg-6  mt-lg-0">
                     <div class="row">
                         <div class="col-12   ">
-                            <p>Ville : Strasbourg</p>
+                            <p>
+                                <?php echo $user->getCity() ?>
+                            </p>
                         </div>
                         <div class="col-12 d-block d-lg-none ">
                             <p>X Abonnés</p>

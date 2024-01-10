@@ -44,12 +44,12 @@ class User
         $this->password = $password;
     }
 
-    public function hydrate(array $data): User
+    public static function hydrate(array $data): User
     {
         $user = new User(
             $data['firstName'],
             $data['lastName'],
-            $data['email'],
+            $data['mail'],
             $data['password']
         );
         $user->id = $data['id'] ?? null;
@@ -76,47 +76,47 @@ class User
         return $user;
     }
 
-    public function getEmail(): string
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
 
-    public function getFirstName(): string
+    public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
-    public function getLastName(): string
+    public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
-    public function getProfilePicture(): string
+    public function getProfilePicture(): ?string
     {
         return $this->profilePicture;
     }
 
-    public function getCoverPicture(): string
+    public function getCoverPicture(): ?string
     {
         return $this->coverPicture;
     }
 
-    public function getPreferredCategories(): array
+    public function getPreferredCategories(): ?array
     {
         return $this->preferredCategories;
     }
@@ -126,42 +126,42 @@ class User
         return $this->isBanned;
     }
 
-    public function getParticipationsCount(): int
+    public function getParticipationsCount(): ?int
     {
         return $this->participationCount;
     }
 
-    public function getCreationsCount(): int
+    public function getCreationsCount(): ?int
     {
         return $this->creationCount;
     }
 
-    public function getEvntsToCome(): array
+    public function getEvntsToCome(): ?array
     {
         return $this->evntsToCome;
     }
 
-    public function getEvntsParticipated(): array
+    public function getEvntsParticipated(): ?array
     {
         return $this->evntsParticipated;
     }
 
-    public function getEvntsCreated(): array
+    public function getEvntsCreated(): ?array
     {
         return $this->evntsCreated;
     }
 
-    public function getEvntsLiked(): array
+    public function getEvntsLiked(): ?array
     {
         return $this->evntsLiked;
     }
 
-    public function getFriends(): array
+    public function getFriends(): ?array
     {
         return $this->friends;
     }
 
-    public function getFriendRequests(): array
+    public function getFriendRequests(): ?array
     {
         return $this->friendRequests;
     }
@@ -171,20 +171,20 @@ class User
     //     return $this->friendRequestsSent;
     // }
 
-    public function getBlockedUsers(): array
+    public function getBlockedUsers(): ?array
     {
         return $this->blockedUsers;
     }
 
-    public function getisDisplayFutureEvnts(): bool
+    public function getisDisplayFutureEvnts(): ?bool
     {
         return $this->showFutureEvnts;
     }
-    public function getisDisplayPastEvnts(): bool
+    public function getisDisplayPastEvnts(): ?bool
     {
         return $this->showPastEvnts;
     }
-    public function getisDisplayEvntScores(): bool
+    public function getisDisplayEvntScores(): ?bool
     {
         return $this->showEvntScores;
     }
@@ -196,7 +196,6 @@ class User
     {
         $this->city = $city;
     }
-
 
     public function logIn($db)
     {
@@ -224,7 +223,7 @@ class User
     public function isRegisteredInDb($db)
     {
         $query = $db->prepare("SELECT * FROM users WHERE email = :email");
-        $query->execute(['email' => $this->email]);
+        $query->execute(['mail' => $this->email]);
         $result = $query->fetch();
         $query = null;
 

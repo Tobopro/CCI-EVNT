@@ -14,7 +14,13 @@ class UsersController
 
     public function index()
     {
-
+        $data = DB::fetch(
+            "SELECT * FROM users WHERE idUser = :id",
+            ['id' => $_SESSION['sessionKey']]
+        );
+        $user = User::hydrate($data[0]);
+        var_dump($user);
+        require_once base_path('Views/profile_page.php');
     }
     public function create()
     {
