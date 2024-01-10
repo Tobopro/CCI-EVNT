@@ -1,8 +1,8 @@
 <?php
 
-use Classes\Evnt;
+use Models\Evnt;
 
-require_once("classes/Evnt.php");
+require_once("../models/Evnt.php");
 
 
 
@@ -11,6 +11,8 @@ $db = DB::getDB();
 
 // Assuming Evnt::getAllEvents returns an array of events
 $events = Evnt::getAllEvents($db);
+
+
 
 
 $itemsPerPage = 8;
@@ -27,9 +29,11 @@ $totalEvents = count($events);
 $itemsPerPage = 8;
 $totalPages = ceil($totalEvents / $itemsPerPage);
 
+foreach ($eventsToDisplay as $eventData): 
+$eventInstance= Evnt::hydrate($eventData);
+endforeach;
 
 
 
 // Include your view
 include('../views/dashboard_page.php');
-?>

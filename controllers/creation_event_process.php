@@ -1,8 +1,8 @@
 <?php
-use Classes\Evnt;
-use \Helpers\DB;
+use Models\Evnt;
+use DB;
 require_once("../helpers/DB.php");
-require_once("classes/Evnt.php");
+require_once("../models/Evnt.php");
 
 session_start();
 require("functions.php");

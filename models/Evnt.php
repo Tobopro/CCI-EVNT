@@ -1,21 +1,21 @@
 <?php 
-namespace Classes;
+namespace Models;
 Use \DateTime;
 class Evnt {
-    protected int $id ;
-    protected string $title;
-    protected DateTime $dateEvnt;
-    protected string $adress;
-    protected string $description;
-    protected ?float $price;
+    protected ?int $id ;
+    protected ?string $title;
+    protected ?DateTime $dateEvnt;
+    protected ?string $adress;
+    protected ?string $description;
+    protected ?string $price;
     protected ?string $priceInfo;
     protected ?int $nbParticipants;
-    protected bool $isFreeEntry;
-    protected int $idUser;
-    protected int $idCategory;
-    protected string $urlImage;
-    protected int $nbLike;
-    protected int $nbReport;
+    protected ?bool $isFreeEntry;
+    protected ?int $idUser;
+    protected ?int $idCategory;
+    protected ?string $urlImage;
+    protected ?int $nbLike;
+    protected ?int $nbReport;
    
 
     public function __construct($title, $dateEvnt, $adress, $description, $price, $priceInfo, $nbParticipants, $isFreeEntry, $idUser, $idCategory,  $urlImage, $nbLike, $nbReport)
@@ -173,6 +173,34 @@ class Evnt {
         $result = $db->query("SELECT * FROM events");
         $events = $result->fetchAll();
         return $events;
+    }
+
+    public static function getEventById($db, $id)
+    {
+        $result = $db->query("SELECT * FROM events WHERE id = $id");
+        $event = $result->fetch();
+        return $event;
+    }
+
+    public static function hydrate(array $data)
+    {
+        $evnt = new Evnt(
+            $data['title'],
+            $data['dateEvnt'],
+            $data['adress'],
+            $data['description'],
+            $data['price'],
+            $data['priceInfo'],
+            $data['nbParticipants'],
+            $data['isFreeEntry'],
+            $data['idUser'],
+            $data['idCategory'],
+            $data['urlImage'],
+            $data['nbLike'],
+            $data['nbReport']
+        );
+
+        return $evnt;
     }
 }
 
