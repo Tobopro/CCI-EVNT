@@ -67,7 +67,7 @@ if (isset($_GET['url'])) {
             require '../views/evnt-page.php';
             break;
         case 'creation_EVNT':
-            require '../views/event_creation_page.php';
+            require '../controllers/creation_evnt.php';
             break;
         case 'edition_profil':
             require '../views/profile_edit_page.php';

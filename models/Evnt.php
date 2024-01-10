@@ -182,6 +182,13 @@ class Evnt {
         return $event;
     }
 
+   public static function getCategories ($db)   
+    {
+         $result = $db->query("SELECT * FROM categories");
+         $categories = $result->fetchAll();
+         return $categories;
+    }
+
     public static function hydrate(array $data)
     {
         $evnt = new Evnt(
