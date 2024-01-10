@@ -1,8 +1,8 @@
 <?php
 
-use Classes\Evnt;
+use Models\Evnt;
 
-require_once("classes/Evnt.php");
+require_once("../models/Evnt.php");
 
 
 
