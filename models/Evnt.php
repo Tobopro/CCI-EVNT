@@ -10,7 +10,7 @@ class Evnt {
     protected ?float $price;
     protected ?string $priceInfo;
     protected ?int $nbParticipants;
-    protected ?bool $isFreeEntry;
+    protected ?int $isFreeEntry;
     protected ?int $idUser;
     protected ?int $idCategory;
     protected ?string $urlImage;
@@ -68,11 +68,11 @@ class Evnt {
     {
         return $this->nbParticipants;
     }
-    public function getIsFreeEntry(): bool
+    public function getIsFreeEntry(): ?int
     {
         return $this->isFreeEntry;
     }
-    public function getIdUser(): int
+    public function getIdUser(): ?int
     {
         return $this->idUser;
     }
@@ -80,15 +80,15 @@ class Evnt {
     {
         return $this->idCategory;
     }
-    public function getUrlImage(): string
+    public function getUrlImage(): ?string
     {
         return $this->urlImage;
     }
-    public function getNbLike(): int
+    public function getNbLike(): ?int
     {
         return $this->nbLike;
     }
-    public function getNbReport(): int
+    public function getNbReport(): ?int
     {
         return $this->nbReport;
     }
@@ -124,7 +124,7 @@ class Evnt {
     {
         $this->nbParticipants = $nbParticipants;
     }
-    public function setIsFreeEntry(bool $isFreeEntry): void
+    public function setIsFreeEntry(?int $isFreeEntry): void
     {
         $this->isFreeEntry = $isFreeEntry;
     }

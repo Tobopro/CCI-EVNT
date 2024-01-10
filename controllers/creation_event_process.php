@@ -1,6 +1,5 @@
 <?php
 use Models\Evnt;
-use DB;
 
 require_once("/laragon/www/CCI-EVNT/models/Evnt.php");
 require_once("/laragon/www/CCI-EVNT/helpers/class/DB.php");
@@ -18,13 +17,14 @@ $event_adress_register = isset($_POST["adress"]) ? $_POST["adress"] : "";
 $event_description_register = isset($_POST["description"]) ? $_POST["description"] : "";
 $event_category_register = isset($_POST["category"]) ? $_POST["category"] : "";
 $event_price_register = isset($_POST["price"]) ? $_POST["price"] : "";
-$is_free_entry_register = isset($_POST["isFree"]) ? $_POST["isFree"] : "";
+
+
+$is_free_entry_register = isset($_POST["isFree"]) ? ($_POST["isFree"] ? 1 : 0) : 0;
+var_dump($is_free_entry_register);
 $event_nbplace_register = isset($_POST["nbplace"]) ? $_POST["nbplace"] : "";
 
 
 
-
-$event_category_register = "1";
 
 
 if (!empty($event_name_register) &&
@@ -33,7 +33,6 @@ if (!empty($event_name_register) &&
     !empty($event_description_register) &&
     !empty($event_price_register) &&
     !empty($event_nbplace_register) && 
-    !empty($is_free_entry_register) &&
     !empty($event_category_register)) {
 
     $event = new Evnt(
@@ -56,11 +55,12 @@ if (!empty($event_name_register) &&
     $event->createEvent($db);
     $message = "Votre évènement a bien été créé";
     $type_message = "success";
-     header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+    header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+    var_dump($event);
 
 } else {
     $message = "Vous n'avez pas bien rempli les informations";
     $type_message = "danger";
-     header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
-    
+    header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+     var_dump($event);
 }
