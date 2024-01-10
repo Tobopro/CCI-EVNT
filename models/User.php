@@ -52,7 +52,7 @@ class User
             $data['mail'],
             $data['password']
         );
-        $user->id = $data['id'] ?? null;
+        $user->id = $data['idUser'] ?? null;
         $user->city = $data['city'] ?? null;
         $user->description = $data['description'] ?? null;
         $user->profilePicture = $data['profilePicture'] ?? null;
@@ -197,28 +197,11 @@ class User
         $this->city = $city;
     }
 
-    public function logIn($db)
+    public function getUserId(): ?int
     {
-        if ($this->isRegisteredInDb($db)) {
-            if ($this->checkPassword($db)) {
-                if (!$this->isBanned($db)) {
-
-                    $this->loadData($db);
-                    $_SESSION['auth'] = true;
-                    $_SESSION['user'] = $this;
-
-                } else {
-                    $_SESSION['banned'] = true;
-                }
-
-            } else {
-                $_SESSION['auth'] = false;
-            }
-
-        } else {
-            $_SESSION['email_exists'] = false;
-        }
+        return $this->id;
     }
+
 
     public function isRegisteredInDb($db)
     {
@@ -251,37 +234,28 @@ class User
     }
 
 
-    public function register($db)
-    {
+    // public function register($db)
+    // {
 
-        //need to add email and password check
+    //     //need to add email and password check
 
-        if (!$this->isRegisteredInDb($db)) {
-            $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
-            $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
-            $query = null;
+    //     if (!$this->isRegisteredInDb($db)) {
+    //         $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
+    //         $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
+    //         $query = null;
 
-            $this->loadData($db);
-            $_SESSION['auth'] = true;
-            $_SESSION['user'] = $this;
+    //         $this->loadData($db);
+    //         $_SESSION['auth'] = true;
+    //         $_SESSION['user'] = $this;
 
-        } else {
-            $_SESSION['email_exists'] = true;
-        }
-    }
+    //     } else {
+    //         $_SESSION['email_exists'] = true;
+    //     }
+    // }
 
     public function save()
     {
-        return DB::statement(
-            "INSERT INTO users (firstName, lastName, mail, password)"
-            . "VALUES (:firstName, :lastName, :mail, :password)",
-            [
-                'firstName' => $this->firstName,
-                'lastName' => $this->lastName,
-                'mail' => $this->email,
-                'password' => $this->password,
-            ]
-        );
+
     }
 
 
@@ -337,4 +311,27 @@ class User
 //     $this->friendRequestsSent = $result['friendRequestsSent'];
 //     $this->blockedUsers = $result['blockedUsers'];
 //     $this->blockedBy = $result['blockedBy'];
+// }
+
+// public function logIn($db)
+// {
+//     if ($this->isRegisteredInDb($db)) {
+//         if ($this->checkPassword($db)) {
+//             if (!$this->isBanned($db)) {
+
+//                 $this->loadData($db);
+//                 $_SESSION['auth'] = true;
+//                 $_SESSION['user'] = $this;
+
+//             } else {
+//                 $_SESSION['banned'] = true;
+//             }
+
+//         } else {
+//             $_SESSION['auth'] = false;
+//         }
+
+//     } else {
+//         $_SESSION['email_exists'] = false;
+//     }
 // }

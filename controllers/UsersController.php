@@ -9,8 +9,8 @@ use Auth;
 class UsersController
 {
 
-    const URL_CREATE = __DIR__ . '?=creation_profile';
-    const URL_INDEX = __DIR__ . '?=profile';
+    const URL_CREATE = '/?url=creation_profile';
+    const URL_INDEX = '/?url=profile';
     const URL_HANDLER = '/handlers/user-handler.php';
 
     public function index()
@@ -52,12 +52,45 @@ class UsersController
     }
     public function update()
     {
-        //
+        $id = $_POST['id'] ?? null;
+        $user = $this->getUserById(intval($id));
+
+        // Update the product in DB
+        $result = $user->save();
+        if ($result === false) {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+        } else {
+            success('Le produit a bien été modifié.');
+        }
+        redirectAndExit(self::URL_INDEX);
+
     }
     public function delete()
     {
         //
     }
 
+    protected function getUserById(?int $id): User
+    {
+        if (!$id) {
+            errors('404. Page introuvable');
+            redirectAndExit(self::URL_INDEX);
+        }
+
+        $user = DB::fetch(
+            "SELECT * FROM users WHERE idUser = :idUser",
+            ['idUser' => $id]
+        );
+        if ($user === false) {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            redirectAndExit(self::URL_INDEX);
+        }
+        if (empty($user)) {
+            errors('404. Page introuvable');
+            redirectAndExit(self::URL_INDEX);
+        }
+
+        return User::hydrate($user[0]);
+    }
 
 }

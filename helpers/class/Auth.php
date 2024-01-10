@@ -12,8 +12,8 @@ class Auth
 
         if (self::$user === null and $id) {
             self::$user = DB::fetch(
-                "SELECT * FROM users WHERE idUser = :id LIMIT 1",
-                ['id' => $id]
+                "SELECT * FROM users WHERE idUser = :idUser LIMIT 1",
+                ['idUser' => $id]
             );
 
             if (self::$user === false) {

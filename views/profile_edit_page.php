@@ -1,7 +1,8 @@
 <main>
     <?php displayErrorsAndMessages(); ?>
-    <form action="<?php echo $actionUrl ?>">
+    <form action="<?php echo $actionUrl ?>" method="POST">
         <input type="text" name="action" value="update" hidden>
+        <input type="text" name="id" value="<?php echo $user->getUserId(); ?>" hidden>
         <div class="cover-and-info-edit">
             <div class="cover-edit-picture">
                 <div class="cover-edit-picture__btn">
@@ -62,24 +63,21 @@
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts"
-                            <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showFutureEvnts" <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts"
-                            <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showPastEvnts" <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores"
-                            <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showEvntScores" <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
