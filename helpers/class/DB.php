@@ -20,6 +20,36 @@ class DB
         return self::$db;
     }
 
+    public static function update(
+        string $table,
+        array $data,
+        int|string|null $identifier = null,
+        $identifierName = 'id'
+    ): bool {
+        // Check identifier and remove it from data
+        $identifier = $identifier ?? $data[$identifierName] ?? null;
+        unset($data[$identifierName]);
+        if (empty($identifier)) {
+            return false;
+        }
+
+        $keys = array_keys($data);
+        $updates = [];
+        foreach ($keys as $key) {
+            $updates[] = "$key = :$key";
+        }
+        $updates = implode(', ', $updates);
+
+        // Inject identifier in data
+        $data[$identifierName] = $identifier;
+
+        return DB::statement(
+            "UPDATE $table SET $updates"
+            . " WHERE $identifierName = :$identifierName",
+            $data,
+        );
+    }
+
     public static function fetch(
         string $sql,
         array $params = [],

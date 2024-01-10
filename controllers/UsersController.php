@@ -55,7 +55,40 @@ class UsersController
         $id = $_POST['id'] ?? null;
         $user = $this->getUserById(intval($id));
 
-        // Update the product in DB
+        if (isset($_POST['lastName'])) {
+            $user->setLastName($_POST['lastName'] ?: '');
+        }
+        if (isset($_POST['label'])) {
+            $user->setFirstName($_POST['firstName'] ?: '');
+        }
+        if (isset($_POST['description'])) {
+            $user->setDescription($_POST['description'] ?: '');
+        }
+        if (isset($_POST['picture'])) {
+            $user->setProfilePicture($_POST['picture'] ?: '');
+        }
+        if (isset($_POST['city'])) {
+            $user->setCity($_POST['city'] ?: 0);
+        }
+        if (isset($_POST['showFutureEvnts'])) {
+            $user->setShowFutureEvnts($_POST['showFutureEvnts'] = 'on' ? 1 : 0);
+        }
+        if (isset($_POST['showPastEvnts'])) {
+            $user->setShowPastEvnts($_POST['showPastEvnts'] = 'on' ? 1 : 0);
+        }
+        if (isset($_POST['showEvntScores'])) {
+            $user->setShowEvntScores($_POST['showEvntScores'] = 'on' ? 1 : 0);
+        }
+        if (isset($_POST['coverPicture'])) {
+            $user->setShowEvntScores($_POST['coverPicture'] ?: null);
+        }
+        if (isset($_POST['isPublic'])) {
+            $user->setIsPublic($_POST['isPublic'] = 'on' ? 1 : 0);
+        }
+
+
+
+        // Update the user in DB
         $result = $user->save();
         if ($result === false) {
             errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');

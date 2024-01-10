@@ -6,21 +6,26 @@ use DB;
 
 class User
 {
-    // attributes
+    const TABLE_NAME = "users";
     protected ?int $id;
-    //register form attributes
-    protected ?string $email;
-    protected ?string $password;
-    protected ?string $firstName;
     protected ?string $lastName;
-    protected ?string $city;
+    protected ?string $firstName;
     protected ?string $description;
-    protected ?int $profilePicture;
-    protected ?int $coverPicture;
-    protected ?array $preferredCategories;
-    protected ?bool $isBanned;
-    protected ?int $participationCount;
+    protected ?string $profilePicture;
+    protected ?string $email;
+    protected ?string $city;
+    protected ?string $password;
     protected ?int $creationCount;
+    protected ?int $participationCount;
+    protected ?bool $isBanned;
+    protected ?array $lastActivity;
+    protected ?int $reportedCount;
+    protected ?bool $showFutureEvnts;
+    protected ?bool $showPastEvnts;
+    protected ?bool $showEvntScores;
+    protected ?int $coverPicture;
+    protected ?bool $isPublic;
+    protected ?array $preferredCategories;
     protected ?array $evntsToCome;
     protected ?array $evntsParticipated;
     protected ?array $evntsCreated;
@@ -29,12 +34,27 @@ class User
     protected ?array $friendRequests;
     // protected $friendRequestsSent;
     protected ?array $blockedUsers;
-    protected ?bool $showFutureEvnts;
-    protected ?bool $showPastEvnts;
-    protected ?bool $showEvntScores;
-    protected ?bool $isPublic;
+    protected array $changedFields = [];
 
     // methods 
+
+    public function toArray()
+    {
+        return [
+            'lastName' => $this->lastName,
+            'firstName' => $this->firstName,
+            'description' => $this->description,
+            'picture' => $this->profilePicture,
+            'city' => $this->city,
+            'showFutureEvnts' => $this->showFutureEvnts,
+            'showPastEvnts' => $this->showPastEvnts,
+            'showEvntScore' => $this->showEvntScores,
+            'coverPicture' => $this->coverPicture,
+            'isPublic' => $this->isPublic
+        ];
+    }
+
+
 
     public function __construct(?string $firstName, ?string $lastName, ?string $mail, ?string $password)
     {
@@ -53,14 +73,14 @@ class User
             $data['password']
         );
         $user->id = $data['idUser'] ?? null;
-        $user->city = $data['city'] ?? null;
         $user->description = $data['description'] ?? null;
-        $user->profilePicture = $data['profilePicture'] ?? null;
+        $user->profilePicture = $data['picture'] ?? null;
+        $user->city = $data['city'] ?? null;
+        $user->creationCount = $data['creationCount'] ?? null;
+        $user->participationCount = $data['participationCount'] ?? null;
+        $user->isBanned = $data['isBanned'] ?? null;
         $user->coverPicture = $data['coverPicture'] ?? null;
         $user->preferredCategories = $data['preferredCategories'] ?? null;
-        $user->isBanned = $data['isBanned'] ?? null;
-        $user->participationCount = $data['participationCount'] ?? null;
-        $user->creationCount = $data['creationCount'] ?? null;
         $user->evntsToCome = $data['evntsToCome'] ?? null;
         $user->evntsParticipated = $data['evntsParticipated'] ?? null;
         $user->evntsCreated = $data['evntsCreated'] ?? null;
@@ -202,6 +222,51 @@ class User
         return $this->id;
     }
 
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    public function setProfilePicture(string $profilePicture): void
+    {
+        $this->profilePicture = $profilePicture;
+    }
+
+    public function setShowFutureEvnts(bool $showFutureEvnts): void
+    {
+        $this->showFutureEvnts = $showFutureEvnts;
+    }
+
+    public function setShowPastEvnts(bool $showPastEvnts): void
+    {
+        $this->showPastEvnts = $showPastEvnts;
+    }
+
+    public function setShowEvntScores(bool $showEvntScores): void
+    {
+        $this->showEvntScores = $showEvntScores;
+    }
+
+    public function setCoverPicture(int $coverPicture): void
+    {
+        $this->coverPicture = $coverPicture;
+    }
+
+    public function setIsPublic(bool $isPublic): void
+    {
+        $this->isPublic = $isPublic;
+    }
+
 
     public function isRegisteredInDb($db)
     {
@@ -233,33 +298,52 @@ class User
         return $result['isBanned'];
     }
 
-
-    // public function register($db)
-    // {
-
-    //     //need to add email and password check
-
-    //     if (!$this->isRegisteredInDb($db)) {
-    //         $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
-    //         $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
-    //         $query = null;
-
-    //         $this->loadData($db);
-    //         $_SESSION['auth'] = true;
-    //         $_SESSION['user'] = $this;
-
-    //     } else {
-    //         $_SESSION['email_exists'] = true;
-    //     }
-    // }
-
-    public function save()
+    public function save($forced = false): int|false
     {
+        if ($this->id ?? null) {
+            // Update
+            if ($forced) {
+                return DB::update(self::TABLE_NAME, $this->toArray(), $this->id);
+            } elseif ($this->changedFields) {
+                $toArray = $this->toArray();
+                $updates = [];
+                foreach ($this->changedFields as $key) {
+                    if (array_key_exists($key, $toArray)) {
+                        $updates[$key] = $toArray[$key];
+                    }
+                }
 
+                return DB::update(self::TABLE_NAME, $updates, $this->id);
+            }
+        }
+
+        return 0;
     }
 
 
 }
+
+
+
+// public function register($db)
+// {
+
+//     //need to add email and password check
+
+//     if (!$this->isRegisteredInDb($db)) {
+//         $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
+//         $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
+//         $query = null;
+
+//         $this->loadData($db);
+//         $_SESSION['auth'] = true;
+//         $_SESSION['user'] = $this;
+
+//     } else {
+//         $_SESSION['email_exists'] = true;
+//     }
+// }
+
 
 // Future update query
 
