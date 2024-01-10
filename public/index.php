@@ -69,11 +69,14 @@ if (isset($_GET['url'])) {
             require '../views/evnt-page.php';
             break;
         case 'creation_EVNT':
-            require '../views/event_creation_page.php';
+            require '../controllers/creation_evnt.php';
             break;
         case 'edition_profil':
             $controller = new UsersController();
             $controller->edit();
+            break;
+        case 'my_events':
+            require '../controllers/myEventsController.php';
             break;
         case 'carte':
             require '../views/mobile_map_page.php';

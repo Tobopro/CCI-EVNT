@@ -1,8 +1,9 @@
 <?php
 use Models\Evnt;
 use DB;
-require_once("../helpers/DB.php");
-require_once("../models/Evnt.php");
+
+require_once("/laragon/www/CCI-EVNT/models/Evnt.php");
+require_once("/laragon/www/CCI-EVNT/helpers/class/DB.php");
 
 session_start();
 require("functions.php");
@@ -55,9 +56,11 @@ if (!empty($event_name_register) &&
     $event->createEvent($db);
     $message = "Votre évènement a bien été créé";
     $type_message = "success";
-    header('Location: ../public/index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+     header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+
 } else {
     $message = "Vous n'avez pas bien rempli les informations";
     $type_message = "danger";
-    header('Location: ../public/index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+     header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
+    
 }
