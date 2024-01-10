@@ -3,77 +3,45 @@
 require_once("../models/Evnt.php");
 require_once("../helpers/class/DB.php");
 
-
-
 Use Models\Evnt;
-
-
 
 $db = DB::getDB();
 $allevnts = Evnt::getAllEvents($db);
 
 
-echo '<table border="1">
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Address</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Price Info</th>
-            <th>Participants</th>
-            <th>Free Entry</th>
-            <th>User ID</th>
-            <th>Category ID</th>
-            <th>Image URL</th>
-            <th>Likes</th>
-            <th>Reports</th>
-        </tr>
-    </thead>
-    <tbody>';
-
+echo '<div class="container-fluid">';
+echo '<div class="row d-flex justify-content-center">';
+echo '<h2 class="title-section">Tous les événements</h2>';
 foreach ($allevnts as $event) {
-    $idEvent=$event['idEvent'];
+    $idEvent = $event['idEvent'];
     $event = Evnt::hydrate($event);
-    echo '<tr>
-            <td>' . $event->getTitle() . '</td>
-            <td>' . $event->getDateEvnt() . '</td>
-            <td>' . $event->getAdress() . '</td>
-            <td>' . $event->getDescription() . '</td>
-            <td>' . $event->getPrice() . '</td>
-            <td>' . $event->getPriceInfo() . '</td>
-            <td>' . $event->getNbParticipants() . '</td>
-            <td>' . ($event->getIsFreeEntry() ? 'Yes' : 'No') . '</td>
-            <td>' . $event->getIdUser() . '</td>
-            <td>' . $event->getIdCategory() . '</td>
-            <td>' . $event->getUrlImage() . '</td>
-            <td>' . $event->getNbLike() . '</td>
-            <td>' . $event->getNbReport() . '</td>
-            <td><a style="color:yellow; background-color:black" href="edit.php?id=' . $idEvent . '">Edit</a></td>
-            <td><a style="color:yellow; background-color:black" href="handlers/evnt_delete_handler.php?id=' . $idEvent . '">Delete</a></td>
-        </tr>';
+
+    echo '<article class="evnt-single col-3 m-5">
+        <a href="">
+            <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                alt="photographie d\'un groupe de fêtard" />
+            <div class="padding-evnt">
+                <ul class="details-evnt">
+                    <!-- Ville -->
+                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> ' . $event->getAdress() . '</li>
+                    <!-- Date -->
+                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> ' . $event->getDateEvnt() . '</li>
+                    <!-- Participants -->
+                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> ' . $event->getNbParticipants() . '/' . $event->getNbParticipants() . '</li>
+                </ul>
+                <h3>' . $event->getTitle() . '</h3>
+                <ul class="liste-categories">';
+                
+               
+
+    echo '</ul>
+             <a class="btn btn-danger" href="handlers/evnt_delete_handler.php?id=' . $idEvent . '">Delete</a>
+            </div>
+        </a>
+    </article>';
 }
 
-echo '</tbody>
-</table>';
+echo '</div>';
+echo '</div>';
 
-
-
-
-// foreach ($test as $key => $value) {
-//     echo $value->getTitle();
-//     echo $value->getDateEvnt()->format('Y-m-d H:i:s');
-//     echo $value->getAdress();
-//     echo $value->getDescription();
-//     echo $value->getPrice();
-//     echo $value->getPriceInfo();
-//     echo $value->getNbParticipants();
-//     echo $value->getIsFreeEntry();
-//     echo $value->getIdUser();
-//     echo $value->getIdCategory();
-//     echo $value->getUrlImage();
-//     echo $value->getNbLike();
-//     echo $value->getNbReport();
-//     echo "<br>";
-// }
+?>
