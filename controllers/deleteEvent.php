@@ -7,35 +7,38 @@ use Models\Evnt;
 
 if (isset($_GET['id'])) {
     $eventId = $_GET['id'];
-    $db = DB::getDB(); // Adjust this based on your database connection method
+    $db = DB::getDB(); // Ajustez cela en fonction de votre méthode de connexion à la base de données
 
-    // Check if the event exists
+    // Vérifiez si l'événement existe
     $event = Evnt::getEventById($db, $eventId);
     if (!$event) {
-        echo "Event not found!";
+        echo "Événement non trouvé !";
         exit;
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Handle form submission to delete the event from the database
-        $event= Evnt::hydrate($event);
+        // Gérez la soumission du formulaire pour supprimer l'événement de la base de données
+        $event = Evnt::hydrate($event);
         $result = $event->deleteEvent($db, $eventId);
 
         if ($result) {
-            // Redirect to the events list page after deleting
+            // Redirigez vers la page de liste des événements après la suppression
             header("Location: ../index.php?url=my_events");
             exit;
         } else {
-            echo "Error deleting the event!";
+            echo "Erreur lors de la suppression de l'événement !";
         }
     }
 
-    // Display confirmation form for deleting the event
-    echo "Are you sure you want to delete the event?";
+    // Affiche le formulaire de confirmation de suppression de l'événement
+    echo '<div style="text-align: center; margin-top: 50px;">';
+    echo '<h2>Confirmer la suppression de l\'événement</h2>';
+    echo '<p>Êtes-vous sûr de vouloir supprimer cet événement ?</p>';
     echo '<form method="POST" action="evnt_delete_handler.php?id=' . $eventId . '">';
-    echo '<button type="submit">Delete Event</button>';
+    echo '<button class="btn btn-danger" type="submit">Supprimer l\'événement</button>';
     echo '</form>';
+    echo '</div>';
 } else {
-    echo "Event ID not provided!";
+    echo "ID de l'événement non fourni !";
 }
 ?>
