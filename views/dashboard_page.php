@@ -22,7 +22,7 @@
             </div>
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
-                    <?php foreach ($eventsToDisplay as $eventData): ?>
+                    <?php foreach ($hydratedEvents as $hydratedEvent): ?>
                     
                         <div class="card-desktop col-5">
                             <div class="card-desktop__top">
@@ -32,8 +32,8 @@
                             <div class="card-desktop__bot">
                                 <div class="card-desktop__bot-left">
                                     <div class="card-desktop__bot-left-content">
-                                        <h3><?= $eventInstance->getTitle(); ?></h3>
-                                        <h5><?= $eventInstance->getDescription(); ?></h5>
+                                        <h3><?= $hydratedEvent->getTitle(); ?></h3>
+                                        <h5><?= $hydratedEvent->getDescription(); ?></h5>
                                     </div>
                                     <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de l'Evnt</a>
                                 </div>
@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="card-desktop__bot-right-u">
                                         <i class="fa-solid fa-user"></i>
-                                        <p><?= $eventInstance->getNbParticipants(); ?></p>
+                                        <p><?= $hydratedEvent->getNbParticipants(); ?></p>
                                     </div>
                                 </div>
                             </div>
