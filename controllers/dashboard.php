@@ -31,6 +31,7 @@ $totalPages = ceil($totalEvents / $itemsPerPage);
 
 foreach ($eventsToDisplay as $eventData): 
 $eventInstance= Evnt::hydrate($eventData);
+$hydratedEvents[] = $eventInstance;
 endforeach;
 
 
