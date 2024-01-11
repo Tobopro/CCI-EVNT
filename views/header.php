@@ -17,12 +17,32 @@
                 </a>
             </div>
 
-            <div class="col-5 col-lg-3 p-2 text-end offset-lg-0 login-register">
-                <a href="?url=profile">
-                    <div class="navigation__hidden d-lg-inline-block">Se connecter/s'inscrire</div>
-                    <i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>
-                </a>
-            </div>
+            <?php
+if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
+    // Utilisateur connecté
+  
+    echo '<div class="col-4 col-lg-3 p-2 text-end offset-lg-0 login-register">';
+   
+    echo '<a href="?url=logout">';
+    echo '<i class="fa-solid fa-circle-xmark fa-2xl px-2 yellow-icon d-inline-block  "></i>';
+    echo '</a>';
+    
+    echo '<a href="?url=profile">';
+    echo '<div class="navigation__hidden d-lg-inline-block">' . $_SESSION['firstName'] . ' ' . $_SESSION['lastName'] . '</div>';
+    echo '<i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>';
+    echo '</a>';
+    echo '</div>';
+} else {
+    // Utilisateur non connecté
+    echo '<div class="col-5 col-lg-3 p-2 text-end offset-lg-0 login-register">';
+    echo '<a href="?url=profile">';
+    echo '<div class="navigation__hidden d-lg-inline-block">Se connecter/s\'inscrire</div>';
+    echo '<i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>';
+    echo '</a>';
+    echo '</div>';
+}
+?>
+            
         </div>
 
         <div class=" navigation__bottom align-items-center ">

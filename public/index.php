@@ -37,6 +37,7 @@ use controllers\UsersController;
 
 
 <?php
+
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
         $body = "<body class = 'body-background";
@@ -54,6 +55,9 @@ if (isset($_GET['url'])) {
     switch ($_GET['url']) {
         case 'home':
             require '../views/homepage.php';
+            break;
+        case 'login':
+            require '../controllers/loginController.php';
             break;
         case 'dashboard':
             require '../controllers/dashboard.php';
