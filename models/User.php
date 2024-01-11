@@ -96,6 +96,13 @@ class User
         return $user;
     }
 
+    public static function getAllUsers($db)
+    {
+        $result = $db->query("SELECT * FROM users");
+        $users = $result->fetchAll();
+        return $users;
+    } 
+
     public function getEmail(): ?string
     {
         return $this->email;

@@ -18,5 +18,6 @@ require_once __DIR__ . '/../helpers/class/Auth.php';
 require_once __DIR__ . "/../Models/User.php";
 require_once __DIR__ . "/../Controllers/UsersController.php";
 
+
 // Start sessions
 session_start();
