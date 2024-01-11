@@ -35,8 +35,11 @@ if (isset($_SESSION['auth']) && $_SESSION['auth'] === true) {
 } else {
     // Utilisateur non connecté
     echo '<div class="col-5 col-lg-3 p-2 text-end offset-lg-0 login-register">';
-    echo '<a href="?url=profile">';
+    echo '<a href="?url=logout">';
+
     echo '<div class="navigation__hidden d-lg-inline-block">Se connecter/s\'inscrire</div>';
+    echo '</a>';
+    echo '<a href="?url=profile">';
     echo '<i class="fa-solid fa-circle-user fa-2xl px-2 yellow-icon d-inline-block  "></i>';
     echo '</a>';
     echo '</div>';

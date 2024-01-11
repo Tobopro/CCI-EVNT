@@ -59,6 +59,9 @@ if (isset($_GET['url'])) {
         case 'login':
             require '../controllers/loginController.php';
             break;
+        case 'logout':
+            require '../controllers/logoutController.php';
+            break;
         case 'dashboard':
             require '../controllers/dashboard.php';
             break;
