@@ -20,11 +20,11 @@ class User
     protected ?bool $isBanned;
     protected ?array $lastActivity;
     protected ?int $reportedCount;
-    protected ?bool $showFutureEvnts;
-    protected ?bool $showPastEvnts;
-    protected ?bool $showEvntScores;
+    protected ?int $showFutureEvnts;
+    protected ?int $showPastEvnts;
+    protected ?int $showEvntScores;
     protected ?int $coverPicture;
-    protected ?bool $isPublic;
+    protected ?int $isPublic;
     protected ?array $preferredCategories;
     protected ?array $evntsToCome;
     protected ?array $evntsParticipated;
@@ -62,6 +62,7 @@ class User
         $this->lastName = $lastName;
         $this->email = $mail;
         $this->password = $password;
+        $this->city = 'Strasbourg';
     }
 
     public static function hydrate(array $data): User
@@ -212,11 +213,6 @@ class User
     {
         return $this->isPublic;
     }
-    public function setCity(?string $city): void
-    {
-        $this->city = $city;
-    }
-
     public function getUserId(): ?int
     {
         return $this->id;
@@ -224,47 +220,51 @@ class User
 
     public function setLastName(string $lastName): void
     {
-        $this->lastName = $lastName;
+        $this->setFields('lastName', $lastName);
     }
 
     public function setFirstName(string $firstName): void
     {
-        $this->firstName = $firstName;
+        $this->setFields('firstName', $firstName);
     }
 
     public function setDescription(string $description): void
     {
-        $this->description = $description;
+        $this->setFields('description', $description);
+    }
+    public function setCity(?string $city): void
+    {
+        $this->setFields('city', $city);
     }
 
     public function setProfilePicture(string $profilePicture): void
     {
-        $this->profilePicture = $profilePicture;
+        $this->setFields('profilePicture', $profilePicture);
     }
 
-    public function setShowFutureEvnts(bool $showFutureEvnts): void
+    public function setShowFutureEvnts(int $showFutureEvnts): void
     {
-        $this->showFutureEvnts = $showFutureEvnts;
+        $this->setFields('showFutureEvnts', $showFutureEvnts);
     }
 
-    public function setShowPastEvnts(bool $showPastEvnts): void
+    public function setShowPastEvnts(int $showPastEvnts): void
     {
-        $this->showPastEvnts = $showPastEvnts;
+        $this->setFields('showPastEvnts', $showPastEvnts);
     }
 
-    public function setShowEvntScores(bool $showEvntScores): void
+    public function setShowEvntScores(int $showEvntScores): void
     {
-        $this->showEvntScores = $showEvntScores;
+        $this->setFields('showEvntScores', $showEvntScores);
     }
 
     public function setCoverPicture(int $coverPicture): void
     {
-        $this->coverPicture = $coverPicture;
+        $this->setFields('coverPicture', $coverPicture);
     }
 
-    public function setIsPublic(bool $isPublic): void
+    public function setIsPublic(int $isPublic): void
     {
-        $this->isPublic = $isPublic;
+        $this->setFields('isPublic', $isPublic);
     }
 
 
@@ -303,7 +303,7 @@ class User
         if ($this->id ?? null) {
             // Update
             if ($forced) {
-                return DB::update(self::TABLE_NAME, $this->toArray(), $this->id);
+                return DB::update(self::TABLE_NAME, $this->toArray(), $this->id, 'idUser');
             } elseif ($this->changedFields) {
                 $toArray = $this->toArray();
                 $updates = [];
@@ -313,13 +313,20 @@ class User
                     }
                 }
 
-                return DB::update(self::TABLE_NAME, $updates, $this->id);
+                return DB::update(self::TABLE_NAME, $updates, $this->id, 'idUser');
             }
         }
 
         return 0;
     }
 
+    protected function setFields($name, $value)
+    {
+        if (property_exists($this, $name) and isset($this->$name) and $this->$name != $value) {
+            $this->changedFields[] = $name;
+        }
+        $this->$name = $value;
+    }
 
 }
 

@@ -26,11 +26,11 @@
                     </div>
                 </a>
                 <div id="profile-name" class="col-2  ms-md-5 ms-lg-0 position-relative ">
-                    <label for="firstName">Nom :</label>
-                    <input type="text" id="firstName" value="<?php echo $user->getFirstName() ?>">
+                    <label for="lastName">Nom :</label>
+                    <input type="text" id="lastName" name="lastName" value="<?php echo $user->getLastName() ?>">
                     <br>
-                    <label for="lastName">Prénom :</label>
-                    <input type="text" id="lastName" value="<?php echo $user->getLastName() ?>">
+                    <label for="firstName">Prénom :</label>
+                    <input type="text" id="firstName" name="firstName" value="<?php echo $user->getFirstName() ?>">
                 </div>
                 <div id="profile-edit-numbers" class="col-4 col-md-4 col-lg-2 offset-2 offset-lg-6">
                     <div class="row">
@@ -63,21 +63,24 @@
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts" <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showFutureEvnts"
+                            <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts" <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showPastEvnts"
+                            <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores" <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showEvntScores"
+                            <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>

@@ -43,6 +43,12 @@ class DB
         // Inject identifier in data
         $data[$identifierName] = $identifier;
 
+        var_dump($updates);
+        echo '<br>';
+        echo '<br>';
+        var_dump($data);
+        echo '<br>';
+        echo '<br>';
         return DB::statement(
             "UPDATE $table SET $updates"
             . " WHERE $identifierName = :$identifierName",
