@@ -8,6 +8,7 @@ require_once('/laragon/www/CCI-EVNT/bootstrap/app.php');
 
 
 Use \DateTime;
+use DB;
 class Evnt {
     protected ?int $id ;
     protected ?string $title;
@@ -87,6 +88,27 @@ class Evnt {
     {
         return $this->idCategory;
     }
+
+    public function getCategoryName(): ?string
+    {
+        
+        $idCategory= $this->getIdCategory();
+        if (isset($idCategory)){
+        $db= DB::getDB();
+        $result = $db->query("SELECT * FROM categories WHERE idCategory = $idCategory");
+        $categoryName = $result->fetch();
+        $categoryName = $categoryName['name'];
+      
+        echo $categoryName;
+        return $categoryName;
+        } else {
+            return null;
+        }
+
+        
+    }
+
+
     public function getUrlImage(): ?string
     {
         return $this->urlImage;
@@ -145,6 +167,8 @@ class Evnt {
     {
         $this->idCategory = $idCategory;
     }
+
+    
 
     public function setUrlImage(string $urlImage): void
     {
