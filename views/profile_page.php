@@ -1,6 +1,5 @@
 <main>
     <?php displayErrorsAndMessages();
-    var_dump($_SESSION['POST']);
     ?>
     <div class="cover-and-info">
         <div class="cover-picture">

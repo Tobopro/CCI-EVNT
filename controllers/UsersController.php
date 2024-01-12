@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use App;
 use Models\User;
 use DB;
 use Auth;
@@ -107,7 +108,14 @@ class UsersController
     }
     public function delete()
     {
+        $id = $_POST['id'] ?? null;
+        $product = $this->getUserById($id);
 
+        // Delete a product in DB
+        $product->delete();
+        LogoutController::logOut();
+        App::terminate();
+        redirectAndExit("/?url=home");
     }
 
     protected function getUserById(?int $id): User

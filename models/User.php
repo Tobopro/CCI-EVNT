@@ -340,6 +340,18 @@ class User
 
         return 0;
     }
+    public function delete(): int|false
+    {
+        return self::staticDelete($this->id);
+    }
+
+    public static function staticDelete(int $id): int|false
+    {
+        return DB::statement(
+            "DELETE FROM users WHERE idUser = :idUser",
+            ['idUser' => $id],
+        );
+    }
 
     protected function setFields($name, $value)
     {
