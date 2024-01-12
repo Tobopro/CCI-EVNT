@@ -18,6 +18,8 @@
                             <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> <?= $hydratedEvent->getNbParticipants() ?>/<?= $hydratedEvent->getNbParticipants() ?></li>
                         </ul>
                         <h3><?= $hydratedEvent->getTitle() ?></h3>
+                        <p><?= substr($hydratedEvent->getDescription(), 0
+                        , 25) . '...' ?></p>
                         <ul class="liste-categories">
                            <?php $hydratedEvent->getCategoryName()?>
                         </ul>
