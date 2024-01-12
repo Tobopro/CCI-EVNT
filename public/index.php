@@ -63,7 +63,9 @@ if (isset($_GET['url'])) {
             require '../controllers/logoutController.php';
             break;
         case 'dashboard':
-            require '../controllers/dashboard.php';
+       
+            $controller = new DashboardController();
+            $controller->index();
             break;
         case 'profile':
             $_SESSION['sessionKey'] = 14;
