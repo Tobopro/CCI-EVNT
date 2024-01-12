@@ -1,5 +1,7 @@
 <main>
-    <?php displayErrorsAndMessages(); ?>
+    <?php displayErrorsAndMessages();
+    var_dump($_SESSION);
+    ?>
     <div class="cover-and-info">
         <div class="cover-picture">
             <button class="cover-picture__btn">
@@ -22,7 +24,7 @@
                 </div>
                 <div id="profile-numbers" class="col-3 col-md-4 col-lg-1 offset-2 offset-lg-6  mt-lg-0">
                     <div class="row">
-                        <div class="col-12   ">
+                        <div class="col-12">
                             <p>
                                 <?php echo $user->getCity() ?>
                             </p>

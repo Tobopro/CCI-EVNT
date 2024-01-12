@@ -24,7 +24,9 @@ use controllers\UsersController;
     <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
@@ -41,9 +43,9 @@ use controllers\UsersController;
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
         $body = "<body class = 'body-background";
-        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
-            $body .= " with-no-margin";
-        }
+        // if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
+        //     $body .= " with-no-margin";
+        // }
         $body .= "'>";
         echo $body;
     }
