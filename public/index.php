@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../bootstrap/app.php';
 use controllers\UsersController;
+use Controllers\LogoutController;
+use Controllers\LoginController;
+
 
 ?>
 
@@ -57,10 +60,11 @@ if (isset($_GET['url'])) {
             require '../views/homepage.php';
             break;
         case 'login':
-            require '../controllers/loginController.php';
-            break;
+          $controller = new LoginController();
+            $controller->show();
         case 'logout':
-            require '../controllers/logoutController.php';
+            $controller = new LogoutController();
+            $controller->logOut();
             break;
         case 'dashboard':
        

@@ -1,8 +1,12 @@
 <?php
 
+
+require_once('/laragon/www/CCI-EVNT/bootstrap/app.php');
+
+
 use Models\Evnt;
 
-require_once("../models/Evnt.php");
+
 
 class DashboardController {
 
