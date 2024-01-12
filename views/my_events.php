@@ -19,7 +19,7 @@
                         </ul>
                         <h3><?= $hydratedEvent->getTitle() ?></h3>
                         <ul class="liste-categories">
-                            <!-- Add your category logic here -->
+                           <?php $hydratedEvent->getCategoryName()?>
                         </ul>
                             <a class="btn btn-danger" href="handlers/evnt_delete_handler.php?id=<?= $hydratedEvent->getId() ?>">Delete</a>
 

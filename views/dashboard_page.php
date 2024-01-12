@@ -45,7 +45,7 @@
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
                     <?php foreach ($hydratedEvents as $hydratedEvent): ?>
-                        <article class="evnt-single">
+                        <article class="evnt-single mb-2">
                             <a href="">
                                 <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
                                     alt="photographie d'un groupe de fêtard" />
@@ -57,8 +57,8 @@
                                     </ul>
                                     <h3><?= $hydratedEvent->getTitle(); ?></h3>
                                     <ul class="liste-categories">
-                                        <li>Catégorie 1</li>
-                                        <li>Catégorie 2</li>
+                                        <li><?php $hydratedEvent->getCategoryName();?></li>
+                                        
                                     </ul>
                                 </div>
                             </a>
