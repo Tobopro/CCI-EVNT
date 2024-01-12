@@ -1,5 +1,12 @@
 <?php 
+
+
 namespace Models;
+
+require_once('../bootstrap/app.php');
+use DB;
+
+
 Use \DateTime;
 class Evnt {
     protected ?int $id ;
@@ -154,14 +161,6 @@ class Evnt {
         $this->nbReport = $nbReport;
     }
 
-    public static function index($db)
-    {
-        $result = $db->query("SELECT * FROM events");
-        $events = $result->fetchAll();
-        return $events;
-      
-    }
-
     public function createEvent($db)
         {
              $formattedDate = $this->dateEvnt;
@@ -225,5 +224,8 @@ class Evnt {
 
         return $evnt;
     }
+
+   
+
 }
 

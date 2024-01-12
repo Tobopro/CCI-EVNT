@@ -4,9 +4,16 @@
     <section id="filter" class="container-fluid">
         <!-- Selection Filter -->
         <div class="row bg-warning d-flex justify-content-end mt-md-3 border rounded mx-0 mx-lg-5 py-2">
-            <div class="col-5 offset-7  col-md-3 offset-md-9 col-lg-2 offset-lg-10 d-flex align-items-center justify-content-center">
-                <i class="fa-solid fa-arrow-down-short-wide fa" style="color: #000000;"></i> Filter par
-            </div>
+          
+     
+        
+        <form action="" method="GET">
+                 <label for="search">Rechercher: </label>
+    <input id="search" type="text" name="search" value="<?php $searchField ?>">
+      <input type="hidden" name="url" value="dashboard">
+       <input type="submit" value="Rechercher">    
+
+    </form>
         </div>
     </section>
 
