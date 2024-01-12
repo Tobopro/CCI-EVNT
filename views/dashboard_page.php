@@ -1,7 +1,22 @@
 
 
+
+
 <main>
-    <section id="filter" class="container-fluid">
+
+  <?php
+    if (isset($_GET['message']) && isset($_GET['type_message'])) {
+        echo '<div class="alert   mx-5 alert-' . $_GET['type_message'] . ' alert-dismissible fade show" role="alert">
+    <strong>' . $_GET['message'] . '</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+    }
+
+    ?>
+
+
+
+<section id="filter" class="container-fluid">
         <!-- Selection Filter -->
         <div class="row bg-warning d-flex justify-content-end mt-md-3 border rounded mx-0 mx-lg-5 py-2">
           
