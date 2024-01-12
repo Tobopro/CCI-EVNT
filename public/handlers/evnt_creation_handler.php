@@ -1,3 +1,8 @@
 <?php 
-require_once(str_replace('\\', '/', dirname(dirname(__DIR__))) . "/controllers/creation_event_process.php");
 
+
+require_once __DIR__.'/../../bootstrap/app.php';
+
+use Controllers\CreationEventController;
+
+CreationEventController::createEvent();

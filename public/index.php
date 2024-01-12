@@ -3,6 +3,7 @@ require_once __DIR__ . '/../bootstrap/app.php';
 use controllers\UsersController;
 use Controllers\LogoutController;
 use Controllers\LoginController;
+use Controllers\CreationEventController;
 
 
 ?>
@@ -80,7 +81,8 @@ if (isset($_GET['url'])) {
             require '../views/evnt-page.php';
             break;
         case 'creation_EVNT':
-            require '../controllers/creation_evnt.php';
+            $controller = new CreationEventController();
+            $controller->form();
             break;
         case 'edition_profil':
             $controller = new UsersController();
