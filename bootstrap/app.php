@@ -22,6 +22,12 @@ require_once __DIR__ . "/../controllers/DashboardController.php";
 require_once __DIR__ . "/../controllers/LogoutController.php";
 require_once __DIR__ . "/../controllers/LoginController.php";
 require_once __DIR__ . "/../controllers/CreationEventController.php";
+require_once __DIR__ . "/../controllers/LegalController.php";
+require_once __DIR__ . "/../controllers/HomepageController.php";
+require_once __DIR__ . "/../controllers/EventPageController.php";
+require_once __DIR__ . "/../controllers/AllEventsController.php";
+require_once __DIR__ . "/../controllers/MobileMapController.php";
+require_once __DIR__ . "/../controllers/ErrorController.php";
 
 
 
