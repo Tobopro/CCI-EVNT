@@ -21,6 +21,8 @@ require_once __DIR__ . "/../Controllers/UsersController.php";
 require_once __DIR__ . "/../controllers/DashboardController.php";
 require_once __DIR__ . "/../controllers/LogoutController.php";
 require_once __DIR__ . "/../controllers/LoginController.php";
+require_once __DIR__ . "/../controllers/CreationEventController.php";
+
 
 
 
