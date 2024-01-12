@@ -6,23 +6,23 @@
             <form action=<?php echo $actionUrl ?> method="POST">
                 <input type="text" name="action" value="store" hidden>
                 <div class="form-group">
-                    <label for="lastName">Nom:</label>
+                    <label for="lastName">Nom</label>
                     <input class="form-control" id="lastName" type="text" name="lastName" required>
                 </div>
                 <div class="form-group">
-                    <label for="firstName">Prénom:</label>
+                    <label for="firstName">Prénom</label>
                     <input class="form-control" id="firstName" type="text" name="firstName" required>
                 </div>
                 <div class="form-group">
-                    <label for="mail">Email:</label>
+                    <label for="mail">Email</label>
                     <input class="form-control" id="mail" type="email" name="mail" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Mot de passe:</label>
+                    <label for="password">Mot de passe</label>
                     <input class="form-control" id="password" type="password" name="password" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Confirmer le mot de passe:</label>
+                    <label for="password">Confirmer le mot de passe</label>
                     <input class="form-control" id="password" type="password" name="passwordConfirmation" required>
                 </div>
                 <br>

@@ -39,6 +39,7 @@ if (isset($_GET['message']) && isset($_GET['type_message'])) {
             <br>
             <br>
             <h2>Vous n'avez pas encore de compte ? </h2>
+            <br>
             <a href="?url=creation_profile" class="btn btn-primary">
                 Créez le !
             </a>

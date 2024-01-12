@@ -86,9 +86,14 @@
             </div>
         </div>
     </form>
-    <form action="<?php echo $actionUrl ?>" method="POST">
-        <input type="text" name="action" value="delete" hidden>
-        <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
-        <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <form action="<?php echo $actionUrl ?>" method="POST">
+                <input type="text" name="action" value="delete" hidden>
+                <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
+                <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
+            </form>
+        </div>
+    </div>
+
 </main>
