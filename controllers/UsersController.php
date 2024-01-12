@@ -15,7 +15,6 @@ class UsersController
 
     public function index()
     {
-
         $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_page.php');
     }
@@ -50,7 +49,6 @@ class UsersController
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
         $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
 
-        $_SESSION['user'] = $user;
         $user->save();
         redirectAndExit('/?url=login');
     }

@@ -335,7 +335,6 @@ class User
             }
         } else {
             // Insert
-            $_SESSION['sql'] = $this->toArray();
             return DB::insert(self::TABLE_NAME, $this->toArray());
         }
 
