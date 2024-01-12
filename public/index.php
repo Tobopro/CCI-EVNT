@@ -1,10 +1,16 @@
 <?php
 require_once __DIR__ . '/../bootstrap/app.php';
+
+use Controllers\AllEventsController;
+use Controllers\EventPageController;
+use Controllers\MobileMapController;
 use controllers\UsersController;
 use Controllers\LogoutController;
 use Controllers\LoginController;
 use Controllers\CreationEventController;
-
+use Controllers\ErrorController;
+use Controllers\HomepageController;
+use Controllers\LegalController;
 
 ?>
 
@@ -62,7 +68,8 @@ include("../views/header.php");
 if (isset($_GET['url'])) {
     switch ($_GET['url']) {
         case 'home':
-            require '../views/homepage.php';
+            $controller = new HomepageController();
+            $controller->show();
             break;
         case 'login':
             $controller = new LoginController();
@@ -81,7 +88,8 @@ if (isset($_GET['url'])) {
             $controller->index();
             break;
         case 'page_EVNT':
-            require '../views/evnt-page.php';
+            $controller = new EventPageController();
+            $controller->show();
             break;
         case 'creation_EVNT':
             $controller = new CreationEventController();
@@ -92,13 +100,16 @@ if (isset($_GET['url'])) {
             $controller->edit();
             break;
         case 'my_events':
-            require '../controllers/myEventsController.php';
+             $controller = new AllEventsController();
+            $controller->display();
             break;
         case 'carte':
-            require '../views/mobile_map_page.php';
+          $controller = new MobileMapController();
+          $controller->show();
             break;
         case 'mentions':
-            require '../views/legal.php';
+            $controller = new LegalController();
+            $controller->show();
             break;
         case 'creation_profile':
             $controller = new UsersController();
@@ -109,11 +120,13 @@ if (isset($_GET['url'])) {
             $controller->delete();
             break;
         default:
-            echo "Error 404";
+           $controller = new ErrorController();
+            $controller->wrongURL();
             break;
     }
 } else {
-    require '../views/homepage.php';
+     $controller = new HomepageController();
+            $controller->show();
 }
 
 if (!empty($_GET)) {

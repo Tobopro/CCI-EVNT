@@ -9,10 +9,6 @@ use Models\Evnt;
 use DB;
 
 
-
-
-
-
 class CreationEventController {
 
     public static function form(){
@@ -67,38 +63,36 @@ class CreationEventController {
                 !empty($event_price_register) &&
                 !empty($event_nbplace_register) && 
                 !empty($event_category_register)) {
-                // Création de l'événement
+                // Creation EVNT
                 $event = new Evnt(
                     $event_name_register,
                     $event_date_register,
                     $event_adress_register,
                     $event_description_register,
                     $event_price_register,
-                    null, // Assuming $event_price_info_register is not used in the constructor
+                    null, // $priceInfoTODO
                     $event_nbplace_register,
                     $is_free_entry_register,
-                    // Assuming you have user and category IDs; replace the values accordingly
-                    1, // Example user ID, replace with your logic
+                    1, // user ID preset, TODO
                     $event_category_register,
                     "", // Assuming $urlImage is not provided in the form
                     0, // Initial likes count
                     0  // Initial reports count
                 );
 
-                // Enregistrement de l'événement
+                // Success
                 $event->createEvent($db);
                 
                 $message = "Votre évènement a bien été créé";
                 $type_message = "success";
                 header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
-                exit(); // Ajout de l'exit après la redirection pour éviter l'exécution du code suivant
+                exit(); 
             }
-
-            // En cas d'échec de la validation, redirection avec le message d'erreur
+            //Error 
             $message = "Il y a eu une erreur.";
             $type_message = "danger";
             header('Location: ../index.php?url=creation_EVNT&'.'message=' . $message . '&type_message=' . $type_message);
-            exit(); // Ajout de l'exit après la redirection pour éviter l'exécution du code suivant
+            exit();
 
         } 
     }
