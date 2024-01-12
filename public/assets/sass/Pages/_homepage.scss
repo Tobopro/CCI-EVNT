@@ -115,6 +115,8 @@ table {
 #footer-homepage h1,
 #homepage h2,
 #footer-homepage h2,
+#newsletter h2,
+.container-homepage h2,
 #homepage h3,
 #footer-homepage h3 {
     font-family: "highest-praise", sans-serif;
@@ -411,6 +413,7 @@ section#newsletter {
     background-color: var(--primary-color);
     // background-image: url('../img/evnt-fond-drawings_jaune.svg');
     color: var(--text-color);
+
 }
 
 section#newsletter form {
