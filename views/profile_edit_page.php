@@ -49,7 +49,6 @@
             </div>
         </div>
 
-        <?php echo $user->getisDisplayPastEvnts() ?>
 
         <div class="container toggle-edit">
             <div class="row mx-3 mt-md-5">
@@ -86,5 +85,10 @@
                 </div>
             </div>
         </div>
+    </form>
+    <form action="<?php echo $actionUrl ?>" method="POST">
+        <input type="text" name="action" value="delete" hidden>
+        <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
+        <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
     </form>
 </main>

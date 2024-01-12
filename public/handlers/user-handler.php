@@ -11,6 +11,7 @@ if (!empty($_POST['action'])) {
         $controller->store();
     } elseif ($_POST['action'] === 'delete') {
         Auth::isAuthOrRedirect();
+        $_SESSION['POST'] = $_POST;
         $controller->delete();
     } elseif ($_POST['action'] === 'update') {
         Auth::isAuthOrRedirect();

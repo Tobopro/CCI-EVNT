@@ -107,7 +107,7 @@ class UsersController
     }
     public function delete()
     {
-        //
+
     }
 
     protected function getUserById(?int $id): User
