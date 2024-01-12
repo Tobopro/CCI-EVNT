@@ -14,7 +14,7 @@ class DashboardController {
     $events = Evnt::getAllEvents($db);
 
     // Number of items wanted by page
-    $itemsPerPage = 8;
+    $itemsPerPage = 3;
 
 
     // Get Current page 

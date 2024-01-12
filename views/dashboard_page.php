@@ -30,33 +30,25 @@
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
                     <?php foreach ($hydratedEvents as $hydratedEvent): ?>
-                    
-                        <div class="card-desktop col-5">
-                            <div class="card-desktop__top">
-                                <img class="card-desktop__top-img" src="assets/img/new-years-party-is-being-celebrated.jpg" alt="">
-                                <div class="card-desktop__top-cat"></div>
-                            </div>
-                            <div class="card-desktop__bot">
-                                <div class="card-desktop__bot-left">
-                                    <div class="card-desktop__bot-left-content">
-                                        <h3><?= $hydratedEvent->getTitle(); ?></h3>
-                                        <h5><?= $hydratedEvent->getDescription(); ?></h5>
-                                    </div>
-                                    <a class="card-desktop__bot-left-btn" href="?url=page_EVNT">Page de l'Evnt</a>
+                        <article class="evnt-single">
+                            <a href="">
+                                <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                                    alt="photographie d'un groupe de fêtard" />
+                                <div class="padding-evnt">
+                                    <ul class="details-evnt">
+                                        <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> <?= $hydratedEvent->getAdress(); ?></li>
+                                        <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> <?= $hydratedEvent->getDateEvnt(); ?></li>
+                                        <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> <?= $hydratedEvent->getNbParticipants(); ?></li>
+                                    </ul>
+                                    <h3><?= $hydratedEvent->getTitle(); ?></h3>
+                                    <ul class="liste-categories">
+                                        <li>Catégorie 1</li>
+                                        <li>Catégorie 2</li>
+                                    </ul>
                                 </div>
-                                <div class="card-desktop__bot-right">
-                                    <div class="card-desktop__bot-right-i">
-                                        <i class="fa-regular fa-heart card-desktop__bot-right-i-like"></i>
-                                        <i class="fa-solid fa-share-nodes card-desktop__bot-right-i-share"></i>
-                                    </div>
-                                    <div class="card-desktop__bot-right-u">
-                                        <i class="fa-solid fa-user"></i>
-                                        <p><?= $hydratedEvent->getNbParticipants(); ?></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
+                            </a>
+                        </article>
+                    <br>
                     <?php endforeach; ?>
                     <div class="justify-content-center d-flex">
                         <p>
