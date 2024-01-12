@@ -11,5 +11,10 @@
         <br>
 
         <input type="submit" value="Se connecter">
+
+        <p>Vous n'avez pas encore de compte ? </p>
+        <a href="?url=creation_profile" class="evnt-confirm-button">
+            Créez le !
+        </a>
     </form>
 </main>

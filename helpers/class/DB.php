@@ -65,8 +65,8 @@ class DB
         // echo '<br>';
         // echo '<br>';
         // var_dump($data);
-        echo '<br>';
-        echo '<br>';
+        // echo '<br>';
+        // echo '<br>';
         return DB::statement(
             "UPDATE $table SET $updates"
             . " WHERE $identifierName = :$identifierName",

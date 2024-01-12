@@ -1,6 +1,6 @@
 <main>
     <?php displayErrorsAndMessages();
-    var_dump($_SESSION['sql']); ?>
+    ?>
     <div class="cover-and-info">
         <div class="cover-picture">
             <button class="cover-picture__btn">

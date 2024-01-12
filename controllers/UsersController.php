@@ -5,7 +5,6 @@ namespace Controllers;
 use Models\User;
 use DB;
 use Auth;
-use App;
 
 class UsersController
 {
@@ -53,7 +52,7 @@ class UsersController
 
         $_SESSION['user'] = $user;
         $user->save();
-        redirectAndExit(self::URL_INDEX);
+        redirectAndExit('/?url=login');
     }
     public function edit()
     {
@@ -79,7 +78,7 @@ class UsersController
             $user->setProfilePicture($_POST['picture'] ?: '');
         }
         if (isset($_POST['city'])) {
-            $user->setCity($_POST['city'] ?: 0);
+            $user->setCity($_POST['city'] ?: '');
         }
 
         isset($_POST['isPublic']) ? $user->setisPublic(1) : $user->setisPublic(0);
@@ -103,7 +102,7 @@ class UsersController
         if ($result === false) {
             errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
         } else {
-            success('Le produit a bien été modifié.');
+            success('Les informations ont bien été modifiées.');
         }
         redirectAndExit(self::URL_INDEX);
 

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../bootstrap/app.php';
 
 // Check auth
-// Auth::isAuthOrRedirect();
+
 
 if (!empty($_POST['action'])) {
     $controller = new Controllers\UsersController();
@@ -10,8 +10,10 @@ if (!empty($_POST['action'])) {
     if ($_POST['action'] === 'store') {
         $controller->store();
     } elseif ($_POST['action'] === 'delete') {
+        Auth::isAuthOrRedirect();
         $controller->delete();
     } elseif ($_POST['action'] === 'update') {
+        Auth::isAuthOrRedirect();
         $controller->update();
     }
 }
