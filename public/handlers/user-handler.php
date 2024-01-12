@@ -2,7 +2,7 @@
 require_once __DIR__ . '/../../bootstrap/app.php';
 
 // Check auth
-Auth::isAuthOrRedirect();
+// Auth::isAuthOrRedirect();
 
 if (!empty($_POST['action'])) {
     $controller = new Controllers\UsersController();

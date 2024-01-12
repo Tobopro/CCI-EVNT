@@ -1,11 +1,13 @@
+-- Ajout des valeurs par défaut d'affichage et de la colonne coverPicture dans la table users
+
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : mer. 10 jan. 2024 à 15:56
--- Version du serveur : 8.0.30
--- Version de PHP : 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Jan 12, 2024 at 08:59 AM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
@@ -23,13 +25,13 @@ SET time_zone = "+00:00";
 ;
 
 --
--- Base de données : `evnt`
+-- Database: `evnt`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE
@@ -39,7 +41,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO
@@ -49,7 +51,7 @@ VALUES (1, 'Music'), (2, 'Sports'), (3, 'Food and Drink'), (4, 'Technology'), (5
 -- --------------------------------------------------------
 
 --
--- Structure de la table `events`
+-- Table structure for table `events`
 --
 
 CREATE TABLE
@@ -72,7 +74,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `events`
+-- Dumping data for table `events`
 --
 
 INSERT INTO
@@ -354,7 +356,7 @@ VALUES (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isaccepted`
+-- Table structure for table `isaccepted`
 --
 
 CREATE TABLE
@@ -365,7 +367,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isaccepted`
+-- Dumping data for table `isaccepted`
 --
 
 INSERT INTO
@@ -379,7 +381,7 @@ VALUES (1, 1, 1), (2, 2, 1), (3, 3, 0), (4, 4, 1), (5, 5, 0), (6, 6, 1), (7, 7, 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isblocked`
+-- Table structure for table `isblocked`
 --
 
 CREATE TABLE
@@ -389,7 +391,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isblocked`
+-- Dumping data for table `isblocked`
 --
 
 INSERT INTO
@@ -399,7 +401,7 @@ VALUES (10, 1), (5, 2), (1, 4), (6, 4), (2, 6), (7, 6), (3, 8), (8, 8), (4, 10),
 -- --------------------------------------------------------
 
 --
--- Structure de la table `iscategory`
+-- Table structure for table `iscategory`
 --
 
 CREATE TABLE
@@ -409,7 +411,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `iscategory`
+-- Dumping data for table `iscategory`
 --
 
 INSERT INTO
@@ -419,7 +421,7 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isenjoyed`
+-- Table structure for table `isenjoyed`
 --
 
 CREATE TABLE
@@ -429,7 +431,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isenjoyed`
+-- Dumping data for table `isenjoyed`
 --
 
 INSERT INTO
@@ -439,7 +441,7 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isfriend`
+-- Table structure for table `isfriend`
 --
 
 CREATE TABLE
@@ -449,7 +451,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isfriend`
+-- Dumping data for table `isfriend`
 --
 
 INSERT INTO
@@ -459,7 +461,7 @@ VALUES (10, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isliked`
+-- Table structure for table `isliked`
 --
 
 CREATE TABLE
@@ -469,7 +471,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isliked`
+-- Dumping data for table `isliked`
 --
 
 INSERT INTO
@@ -479,7 +481,7 @@ VALUES (10, 1), (1, 2), (2, 3), (3, 4), (4, 5), (5, 6), (6, 7), (7, 8), (8, 9), 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isreported`
+-- Table structure for table `isreported`
 --
 
 CREATE TABLE
@@ -491,7 +493,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isreported`
+-- Dumping data for table `isreported`
 --
 
 INSERT INTO
@@ -551,7 +553,7 @@ VALUES (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `isrepresented`
+-- Table structure for table `isrepresented`
 --
 
 CREATE TABLE
@@ -561,7 +563,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `isrepresented`
+-- Dumping data for table `isrepresented`
 --
 
 INSERT INTO
@@ -571,7 +573,7 @@ VALUES (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8), (9, 9), (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pictures`
+-- Table structure for table `pictures`
 --
 
 CREATE TABLE
@@ -582,7 +584,7 @@ CREATE TABLE
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `pictures`
+-- Dumping data for table `pictures`
 --
 
 INSERT INTO
@@ -636,7 +638,7 @@ VALUES (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE
@@ -653,14 +655,15 @@ CREATE TABLE
         `isBan` tinyint(1) DEFAULT NULL,
         `lastActivity` date DEFAULT NULL,
         `nbReported` int DEFAULT NULL,
-        `showFutureEvnts` tinyint(1) DEFAULT NULL,
-        `showPastEvnts` tinyint(1) DEFAULT NULL,
-        `showEvntScores` tinyint(1) DEFAULT NULL,
+        `isPublic` tinyint(1) NOT NULL DEFAULT '1',
+        `showFutureEvnts` tinyint(1) DEFAULT '1',
+        `showPastEvnts` tinyint(1) DEFAULT '1',
+        `showEvntScores` tinyint(1) DEFAULT '1',
         `coverPicture` varchar(255) DEFAULT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 --
--- Déchargement des données de la table `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO
@@ -677,6 +680,7 @@ INSERT INTO
         `isBan`,
         `lastActivity`,
         `nbReported`,
+        `isPublic`,
         `showFutureEvnts`,
         `showPastEvnts`,
         `showEvntScores`,
@@ -686,192 +690,220 @@ VALUES (
         1,
         'Doe',
         'John',
-        'Description 1',
-        'picture1.jpg',
-        'john.doe@email.com',
-        'password1',
-        '50',
-        '30',
+        'Web Developer',
+        'john_doe.jpg',
+        'john.doe@example.com',
+        'password123',
+        '150',
+        '200',
         0,
-        '2023-05-01',
-        0,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
+        '2024-01-10',
         2,
-        'Smith',
-        'Alice',
-        'Description 2',
-        'picture2.jpg',
-        'alice.smith@email.com',
-        'password2',
-        '40',
-        '20',
-        0,
-        '2023-05-02',
-        2,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        3,
-        'Johnson',
-        'Emma',
-        'Description 3',
-        'picture3.jpg',
-        'emma.johnson@email.com',
-        'password3',
-        '60',
-        '40',
-        0,
-        '2023-05-03',
         1,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        4,
-        'Brown',
-        'Daniel',
-        'Description 4',
-        'picture4.jpg',
-        'daniel.brown@email.com',
-        'password4',
-        '55',
-        '35',
-        0,
-        '2023-05-04',
-        3,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        5,
-        'Miller',
-        'Sophie',
-        'Description 5',
-        'picture5.jpg',
-        'sophie.miller@email.com',
-        'password5',
-        '70',
-        '45',
-        0,
-        '2023-05-05',
-        2,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        6,
-        'Wilson',
-        'James',
-        'Description 6',
-        'picture6.jpg',
-        'james.wilson@email.com',
-        'password6',
-        '75',
-        '50',
-        0,
-        '2023-05-06',
-        0,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        7,
-        'Anderson',
-        'Olivia',
-        'Description 7',
-        'picture7.jpg',
-        'olivia.anderson@email.com',
-        'password7',
-        '65',
-        '42',
-        0,
-        '2023-05-07',
         1,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        8,
-        'Moore',
-        'Ethan',
-        'Description 8',
-        'picture8.jpg',
-        'ethan.moore@email.com',
-        'password8',
-        '80',
-        '55',
-        0,
-        '2023-05-08',
-        2,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        9,
-        'Taylor',
-        'Ava',
-        'Description 9',
-        'picture9.jpg',
-        'ava.taylor@email.com',
-        'password9',
-        '55',
-        '30',
-        0,
-        '2023-05-09',
         1,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    ), (
-        10,
-        'Walker',
-        'Liam',
-        'Description 10',
-        'picture10.jpg',
-        'liam.walker@email.com',
-        'password10',
-        '90',
-        '70',
-        0,
-        '2023-05-10',
-        4,
-        NULL,
-        NULL,
-        NULL,
-        NULL
-    );
+        '1',
+        'cover1.jpg'
+    ),
+
+(
+    2,
+    'Smith',
+    'Alice',
+    'Graphic Designer',
+    'alice_smith.jpg',
+    'alice.smith@example.com',
+    'password456',
+    '120',
+    '180',
+    1,
+    '2024-01-11',
+    0,
+    1,
+    1,
+    0,
+    '2',
+    'cover2.jpg'
+),
+
+(
+    3,
+    'Johnson',
+    'Robert',
+    'Marketing Specialist',
+    'robert_johnson.jpg',
+    'robert.j@example.com',
+    'pass123',
+    '80',
+    '150',
+    0,
+    '2024-01-09',
+    1,
+    1,
+    0,
+    1,
+    '3',
+    'cover3.jpg'
+),
+
+(
+    4,
+    'Brown',
+    'Emily',
+    'Data Scientist',
+    'emily_brown.jpg',
+    'emily.b@example.com',
+    'pwd789',
+    '200',
+    '220',
+    0,
+    '2024-01-12',
+    0,
+    1,
+    1,
+    1,
+    '4',
+    'cover4.jpg'
+),
+
+(
+    5,
+    'Taylor',
+    'Michael',
+    'UX/UI Designer',
+    'michael_taylor.jpg',
+    'michael.t@example.com',
+    'securepwd',
+    '180',
+    '190',
+    1,
+    '2024-01-08',
+    3,
+    1,
+    0,
+    0,
+    '5',
+    'cover5.jpg'
+),
+
+(
+    6,
+    'Anderson',
+    'Sophia',
+    'Software Engineer',
+    'sophia_anderson.jpg',
+    'sophia.a@example.com',
+    'myp@ss',
+    '160',
+    '210',
+    0,
+    '2024-01-11',
+    0,
+    1,
+    1,
+    1,
+    '6',
+    'cover6.jpg'
+),
+
+(
+    7,
+    'Clark',
+    'Matthew',
+    'Content Writer',
+    'matthew_clark.jpg',
+    'matthew.c@example.com',
+    'secure123',
+    '140',
+    '170',
+    0,
+    '2024-01-10',
+    1,
+    1,
+    0,
+    0,
+    '7',
+    'cover7.jpg'
+),
+
+(
+    8,
+    'White',
+    'Olivia',
+    'SEO Specialist',
+    'olivia_white.jpg',
+    'olivia.w@example.com',
+    'password789',
+    '190',
+    '200',
+    1,
+    '2024-01-12',
+    0,
+    1,
+    1,
+    1,
+    '8',
+    'cover8.jpg'
+),
+
+(
+    9,
+    'Miller',
+    'Daniel',
+    'Project Manager',
+    'daniel_miller.jpg',
+    'daniel.m@example.com',
+    'daniel123',
+    '130',
+    '160',
+    0,
+    '2024-01-09',
+    2,
+    1,
+    0,
+    1,
+    '9',
+    'cover9.jpg'
+),
+
+(
+    10,
+    'Hall',
+    'Ava',
+    'Event Planner',
+    'ava_hall.jpg',
+    'ava.h@example.com',
+    'avapwd',
+    '170',
+    '180',
+    1,
+    '2024-01-08',
+    0,
+    1,
+    1,
+    0,
+    '10',
+    'cover10.jpg'
+);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories` ADD PRIMARY KEY (`idCategory`);
 
 --
--- Index pour la table `events`
+-- Indexes for table `events`
 --
 ALTER TABLE `events`
 ADD PRIMARY KEY (`idEvent`),
 ADD KEY `idUser` (`idUser`);
 
 --
--- Index pour la table `isaccepted`
+-- Indexes for table `isaccepted`
 --
 ALTER TABLE `isaccepted`
 ADD
@@ -879,16 +911,15 @@ ADD
 ADD KEY `idEvent` (`idEvent`);
 
 --
--- Index pour la table `isblocked`
+-- Indexes for table `isblocked`
 --
 ALTER TABLE `isblocked`
 ADD
     PRIMARY KEY (`idUser`, `idUser_1`),
-ADD
-    KEY `idUser_1` (`idUser_1`);
+ADD KEY `idUser_1` (`idUser_1`);
 
 --
--- Index pour la table `iscategory`
+-- Indexes for table `iscategory`
 --
 ALTER TABLE `iscategory`
 ADD
@@ -897,7 +928,7 @@ ADD
     KEY `idCategory` (`idCategory`);
 
 --
--- Index pour la table `isenjoyed`
+-- Indexes for table `isenjoyed`
 --
 ALTER TABLE `isenjoyed`
 ADD
@@ -906,16 +937,15 @@ ADD
     KEY `idCategory` (`idCategory`);
 
 --
--- Index pour la table `isfriend`
+-- Indexes for table `isfriend`
 --
 ALTER TABLE `isfriend`
 ADD
     PRIMARY KEY (`idUser`, `idUser_1`),
-ADD
-    KEY `idUser_1` (`idUser_1`);
+ADD KEY `idUser_1` (`idUser_1`);
 
 --
--- Index pour la table `isliked`
+-- Indexes for table `isliked`
 --
 ALTER TABLE `isliked`
 ADD
@@ -923,16 +953,15 @@ ADD
 ADD KEY `idEvent` (`idEvent`);
 
 --
--- Index pour la table `isreported`
+-- Indexes for table `isreported`
 --
 ALTER TABLE `isreported`
 ADD
     PRIMARY KEY (`idUser`, `idUser_1`),
-ADD
-    KEY `idUser_1` (`idUser_1`);
+ADD KEY `idUser_1` (`idUser_1`);
 
 --
--- Index pour la table `isrepresented`
+-- Indexes for table `isrepresented`
 --
 ALTER TABLE `isrepresented`
 ADD
@@ -941,67 +970,67 @@ ADD
     KEY `idPicture` (`idPicture`);
 
 --
--- Index pour la table `pictures`
+-- Indexes for table `pictures`
 --
 ALTER TABLE `pictures` ADD PRIMARY KEY (`idPicture`);
 
 --
--- Index pour la table `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users` ADD PRIMARY KEY (`idUser`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE
     `categories` MODIFY `idCategory` int NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 11;
 
 --
--- AUTO_INCREMENT pour la table `events`
+-- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE
     `events` MODIFY `idEvent` int NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 27;
 
 --
--- AUTO_INCREMENT pour la table `pictures`
+-- AUTO_INCREMENT for table `pictures`
 --
 ALTER TABLE
     `pictures` MODIFY `idPicture` int NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 11;
 
 --
--- AUTO_INCREMENT pour la table `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE
     `users` MODIFY `idUser` int NOT NULL AUTO_INCREMENT,
     AUTO_INCREMENT = 11;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `events`
+-- Constraints for table `events`
 --
 ALTER TABLE `events`
 ADD
     CONSTRAINT `events_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isaccepted`
+-- Constraints for table `isaccepted`
 --
 ALTER TABLE `isaccepted`
 ADD
     CONSTRAINT `isaccepted_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isblocked`
+-- Constraints for table `isblocked`
 --
 ALTER TABLE `isblocked`
 ADD
@@ -1010,7 +1039,7 @@ ADD
     CONSTRAINT `isblocked_ibfk_2` FOREIGN KEY (`idUser_1`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isenjoyed`
+-- Constraints for table `isenjoyed`
 --
 ALTER TABLE `isenjoyed`
 ADD
@@ -1019,7 +1048,7 @@ ADD
     CONSTRAINT `isenjoyed_ibfk_2` FOREIGN KEY (`idCategory`) REFERENCES `categories` (`idCategory`);
 
 --
--- Contraintes pour la table `isfriend`
+-- Constraints for table `isfriend`
 --
 ALTER TABLE `isfriend`
 ADD
@@ -1028,14 +1057,14 @@ ADD
     CONSTRAINT `isfriend_ibfk_2` FOREIGN KEY (`idUser_1`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isliked`
+-- Constraints for table `isliked`
 --
 ALTER TABLE `isliked`
 ADD
     CONSTRAINT `isliked_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isreported`
+-- Constraints for table `isreported`
 --
 ALTER TABLE `isreported`
 ADD
@@ -1044,7 +1073,7 @@ ADD
     CONSTRAINT `isreported_ibfk_2` FOREIGN KEY (`idUser_1`) REFERENCES `users` (`idUser`);
 
 --
--- Contraintes pour la table `isrepresented`
+-- Constraints for table `isrepresented`
 --
 ALTER TABLE `isrepresented`
 ADD

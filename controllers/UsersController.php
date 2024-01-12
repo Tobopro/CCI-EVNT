@@ -5,6 +5,7 @@ namespace Controllers;
 use Models\User;
 use DB;
 use Auth;
+use App;
 
 class UsersController
 {
@@ -15,6 +16,7 @@ class UsersController
 
     public function index()
     {
+
         $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_page.php');
     }
@@ -35,14 +37,23 @@ class UsersController
         }
 
         $user = new User(
-            $_POST['firstName'] ?? null,
-            $_POST['lastName'] ?? null,
-            $_POST['mail'] ?? null,
+            $_POST['firstName'],
+            $_POST['lastName'],
+            $_POST['mail'],
             $_POST['password']
         );
+        $user->setDescription(($_POST['description'] ?? null) ?: '');
+        $user->setProfilePicture($_POST['picture'] ?? null);
+        $user->setCity(($_POST['city'] ?? null) ?: '');
+        $user->setCoverPicture(($_POST['coverPicture'] ?? null) ?: rand(0, 10));
+        $user->setIsPublic(($_POST['isPublic'] ?? null) ?: 1);
+        $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
+        $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
+        $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
 
-        $user->setCity("Strasbourg");
+        $_SESSION['user'] = $user;
         $user->save();
+        redirectAndExit(self::URL_INDEX);
     }
     public function edit()
     {
@@ -54,8 +65,6 @@ class UsersController
     {
         $id = $_POST['id'] ?? null;
         $user = $this->getUserById(intval($id));
-        $_SESSION['user'] = $user;
-        $_SESSION['POST'] = $_POST;
 
         if (isset($_POST['lastName'])) {
             $user->setLastName($_POST['lastName'] ?: '');
@@ -73,6 +82,8 @@ class UsersController
             $user->setCity($_POST['city'] ?: 0);
         }
 
+        isset($_POST['isPublic']) ? $user->setisPublic(1) : $user->setisPublic(0);
+
         isset($_POST['showFutureEvnts']) ? $user->setShowFutureEvnts(1) : $user->setShowFutureEvnts(0);
 
         isset($_POST['showPastEvnts']) ? $user->setShowPastEvnts(1) : $user->setShowPastEvnts(0);
@@ -83,7 +94,6 @@ class UsersController
             $user->setShowEvntScores($_POST['coverPicture'] ?: null);
         }
 
-        isset($_POST['isPublic']) ? $user->setisPublic(1) : $user->setisPublic(0);
 
 
 
@@ -95,7 +105,7 @@ class UsersController
         } else {
             success('Le produit a bien été modifié.');
         }
-        // redirectAndExit(self::URL_INDEX);
+        redirectAndExit(self::URL_INDEX);
 
     }
     public function delete()

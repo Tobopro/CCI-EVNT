@@ -45,10 +45,12 @@ class User
             'firstName' => $this->firstName,
             'description' => $this->description,
             'picture' => $this->profilePicture,
+            'mail' => $this->email,
             'city' => $this->city,
+            'password' => $this->password,
             'showFutureEvnts' => $this->showFutureEvnts,
             'showPastEvnts' => $this->showPastEvnts,
-            'showEvntScore' => $this->showEvntScores,
+            'showEvntScores' => $this->showEvntScores,
             'coverPicture' => $this->coverPicture,
             'isPublic' => $this->isPublic
         ];
@@ -58,11 +60,10 @@ class User
 
     public function __construct(?string $firstName, ?string $lastName, ?string $mail, ?string $password)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->email = $mail;
-        $this->password = $password;
-        $this->city = 'Strasbourg';
+        $this->setFirstName($firstName);
+        $this->setLastName($lastName);
+        $this->setMail($mail);
+        $this->setPassword($password);
     }
 
     public static function hydrate(array $data): User
@@ -102,7 +103,7 @@ class User
         $result = $db->query("SELECT * FROM users");
         $users = $result->fetchAll();
         return $users;
-    } 
+    }
 
     public function getEmail(): ?string
     {
@@ -239,37 +240,47 @@ class User
     {
         $this->setFields('description', $description);
     }
-    public function setCity(?string $city): void
+
+    public function setMail(string $mail): void
+    {
+        $this->setFields('email', $mail);
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->setFields('password', $password);
+    }
+    public function setCity(string $city): void
     {
         $this->setFields('city', $city);
     }
 
-    public function setProfilePicture(string $profilePicture): void
+    public function setProfilePicture(?string $profilePicture): void
     {
         $this->setFields('profilePicture', $profilePicture);
     }
 
-    public function setShowFutureEvnts(int $showFutureEvnts): void
+    public function setShowFutureEvnts(?int $showFutureEvnts): void
     {
         $this->setFields('showFutureEvnts', $showFutureEvnts);
     }
 
-    public function setShowPastEvnts(int $showPastEvnts): void
+    public function setShowPastEvnts(?int $showPastEvnts): void
     {
         $this->setFields('showPastEvnts', $showPastEvnts);
     }
 
-    public function setShowEvntScores(int $showEvntScores): void
+    public function setShowEvntScores(?int $showEvntScores): void
     {
         $this->setFields('showEvntScores', $showEvntScores);
     }
 
-    public function setCoverPicture(int $coverPicture): void
+    public function setCoverPicture(?int $coverPicture): void
     {
         $this->setFields('coverPicture', $coverPicture);
     }
 
-    public function setIsPublic(int $isPublic): void
+    public function setIsPublic(?int $isPublic): void
     {
         $this->setFields('isPublic', $isPublic);
     }
@@ -322,6 +333,10 @@ class User
 
                 return DB::update(self::TABLE_NAME, $updates, $this->id, 'idUser');
             }
+        } else {
+            // Insert
+            $_SESSION['sql'] = $this->toArray();
+            return DB::insert(self::TABLE_NAME, $this->toArray());
         }
 
         return 0;
@@ -333,6 +348,7 @@ class User
             $this->changedFields[] = $name;
         }
         $this->$name = $value;
+
     }
 
 }

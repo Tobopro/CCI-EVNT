@@ -1,4 +1,5 @@
-<form action="handlers/user_login.php" method="POST">
+<main>
+    <form action="handlers/user_login.php" method="POST">
         <input type="text" name="action" value="check" hidden>
 
         <label for="input-login">E-mail</label>
@@ -11,3 +12,4 @@
 
         <input type="submit" value="Se connecter">
     </form>
+</main>
