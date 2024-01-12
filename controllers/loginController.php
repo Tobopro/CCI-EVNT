@@ -27,12 +27,16 @@ Class LoginController {
                     header('Location: /index.php?url=dashboard');
                 }
                 else{
-                    echo'Mauvaises Informations';
+                     $message = "Votre e-mail ou mot de passe est invalide.";
+                    $type_message = "danger";
+                    header('Location: ../index.php?url=login&' . 'message=' . $message . '&type_message=' . $type_message);
                 }
             } 
         } 
         else{
-            echo'Veuillez remplir les informations';
+             $message = "Une erreur est survenue.";
+                    $type_message = "danger";
+                    header('Location: ../index.php?url=login&' . 'message=' . $message . '&type_message=' . $type_message);
         }
         }
 
