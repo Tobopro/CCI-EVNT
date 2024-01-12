@@ -1,4 +1,5 @@
 <?php
+displayErrorsAndMessages();
 if (isset($_GET['message']) && isset($_GET['type_message'])) {
     echo '<div class="alert   mx-5 alert-' . $_GET['type_message'] . ' alert-dismissible fade show" role="alert">
     <strong>' . $_GET['message'] . '</strong>
@@ -34,8 +35,10 @@ if (isset($_GET['message']) && isset($_GET['type_message'])) {
             <button type="submit" class="btn btn-primary">Se connecter</button>
 
 
-
-            <p>Vous n'avez pas encore de compte ? </p>
+            <br>
+            <br>
+            <br>
+            <h2>Vous n'avez pas encore de compte ? </h2>
             <a href="?url=creation_profile" class="btn btn-primary">
                 Créez le !
             </a>

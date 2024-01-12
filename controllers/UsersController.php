@@ -51,6 +51,7 @@ class UsersController
         $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
 
         $user->save();
+        success("Le compte a bien été crée");
         redirectAndExit('/?url=login');
     }
     public function edit()

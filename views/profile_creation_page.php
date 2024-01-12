@@ -1,23 +1,33 @@
 <main>
-    <?php displayErrorsAndMessages(); ?>
-    <h2>Création de compte</h2>
-    <form action=<?php echo $actionUrl ?> method="POST">
-        <input type="text" name="action" value="store" hidden>
-        <label for="lastName">Nom:</label>
-        <input id="lastName" type="text" name="lastName" required>
-
-        <label for="firstName">Prénom:</label>
-        <input id="firstName" type="text" name="firstName" required>
-
-        <label for="mail">Email:</label>
-        <input id="mail" type="email" name="mail" required>
-
-        <label for="password">Mot de passe:</label>
-        <input id="password" type="password" name="password" required>
-
-        <label for="password">Confirmer le mot de passe:</label>
-        <input id="password" type="password" name="passwordConfirmation" required>
-
-        <button type="submit">Valider</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <?php displayErrorsAndMessages(); ?>
+            <h2>Création de compte</h2>
+            <form action=<?php echo $actionUrl ?> method="POST">
+                <input type="text" name="action" value="store" hidden>
+                <div class="form-group">
+                    <label for="lastName">Nom:</label>
+                    <input class="form-control" id="lastName" type="text" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">Prénom:</label>
+                    <input class="form-control" id="firstName" type="text" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="mail">Email:</label>
+                    <input class="form-control" id="mail" type="email" name="mail" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe:</label>
+                    <input class="form-control" id="password" type="password" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Confirmer le mot de passe:</label>
+                    <input class="form-control" id="password" type="password" name="passwordConfirmation" required>
+                </div>
+                <br>
+                <button class="btn btn-primary" type="submit">Valider</button>
+            </form>
+        </div>
+    </div>
 </main>
