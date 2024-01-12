@@ -27,7 +27,10 @@ class LoginController
                     $_SESSION['auth'] = true;
                     $_SESSION[Auth::SESSION_KEY] = $user['idUser'];
 
-                    header('Location: /index.php?url=dashboard');
+                    $message = "Bonjour " . $_SESSION['firstName'];
+                    $type_message = "success";
+                    header('Location: ../index.php?url=dashboard&' . 'message=' . $message . '&type_message=' . $type_message);
+                    exit;
                 } else {
                     $message = "Votre e-mail ou mot de passe est invalide.";
                     $type_message = "danger";
