@@ -1,3 +1,7 @@
 <?php 
-require_once(str_replace('\\', '/', dirname(dirname(__DIR__))) . "/controllers/loginProcessController.php");
+require_once __DIR__.'/../../bootstrap/app.php';
+
+use Controllers\LoginController;
+
+LoginController::logIn();
 

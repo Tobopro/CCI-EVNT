@@ -66,6 +66,7 @@ class Auth
         unset($_SESSION[self::getSessionUserIdKey()]);
     }
 
+
     public static function logIn()
     {
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -92,8 +93,4 @@ class Auth
         }
     }
 
-    public static function logOut(): void
-    {
-        session_destroy();
-    }
 }

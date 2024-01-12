@@ -9,7 +9,6 @@
     }
 
     ?>
-<?php  ?>
 
     <div id="creation-form" class="container">
 <form action="handlers/evnt_creation_handler.php" method="POST">

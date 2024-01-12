@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/../bootstrap/app.php';
 use controllers\UsersController;
+use Controllers\LogoutController;
+use Controllers\LoginController;
+
 
 ?>
 
@@ -24,9 +27,11 @@ use controllers\UsersController;
     <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
 
 
+    <script defer src="assets/javascript/script-login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        </script>
+
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
@@ -59,13 +64,14 @@ if (isset($_GET['url'])) {
             require '../views/homepage.php';
             break;
         case 'login':
-            require '../controllers/loginController.php';
-            break;
+            $controller = new LoginController();
+            $controller->show();
         case 'logout':
-            require '../controllers/logoutController.php';
+            $controller = new LogoutController();
+            $controller->logOut();
             break;
         case 'dashboard':
-       
+
             $controller = new DashboardController();
             $controller->index();
             break;
