@@ -1,5 +1,13 @@
 <?php
 
+namespace Controllers;
 
-Auth::logOut();
-header('Location: ?url=login');
+Class LogoutController {
+
+ public static function logOut(): void
+    {
+        session_destroy();
+        header('Location: ?url=login');
+    }
+}
+

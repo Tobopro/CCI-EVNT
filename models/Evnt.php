@@ -3,8 +3,8 @@
 
 namespace Models;
 
-require_once('../bootstrap/app.php');
-use DB;
+require_once('/laragon/www/CCI-EVNT/bootstrap/app.php');
+
 
 
 Use \DateTime;
