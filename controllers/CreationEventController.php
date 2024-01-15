@@ -39,19 +39,19 @@ class CreationEventController {
             $event_description_register = str_replace('"', '\"', $event_description_register);
             $event_adress_register = str_replace('"', '\"', $event_adress_register);
 
-            if (strlen($event_name_register) < 5 ) {
+            if (strlen($event_name_register) < 5 ){
                 $message = "Le titre doit contenir au moins 5 lettres et ne peut contenir que des lettres, des chiffres, des apostrophes et des guillemets.";
                 $type_message = "danger";
                 header('Location: ../index.php?url=creation_EVNT&' . 'message=' . $message . '&type_message=' . $type_message);
-            } elseif (strlen($event_description_register) < 10) {
+            } elseif (strlen($event_description_register) < 10){
                 $message = "La description doit contenir au moins 10 lettres et ne peut contenir que des lettres, des chiffres, des apostrophes et des guillemets.";
                 $type_message = "danger";
                 header('Location: ../index.php?url=creation_EVNT&' . 'message=' . $message . '&type_message=' . $type_message);
-            } elseif ($event_price_register < 0) {
+            } elseif ($event_price_register < 0){
                 $message = "Le prix ne peut pas être négatif. Si l'événement est gratuit, remplissez 0.";
                 $type_message = "danger";
                 header('Location: ../index.php?url=creation_EVNT&' . 'message=' . $message . '&type_message=' . $type_message);
-            } elseif (empty($event_adress_register)) {
+            } elseif (empty($event_adress_register)){
                 $message = "Veuillez entrer une adresse.";
                 $type_message = "danger";
                 header('Location: ../index.php?url=creation_EVNT&' . 'message=' . $message . '&type_message=' . $type_message);
