@@ -91,6 +91,9 @@ if (isset($_GET['url'])) {
             $controller = new EventPageController();
             $controller->show();
             break;
+        case 'evnt':
+            $controller = new EventPageController();
+            $controller->evntPage();
         case 'creation_EVNT':
             $controller = new CreationEventController();
             $controller->form();
@@ -100,12 +103,12 @@ if (isset($_GET['url'])) {
             $controller->edit();
             break;
         case 'my_events':
-             $controller = new AllEventsController();
+            $controller = new AllEventsController();
             $controller->display();
             break;
         case 'carte':
-          $controller = new MobileMapController();
-          $controller->show();
+            $controller = new MobileMapController();
+            $controller->show();
             break;
         case 'mentions':
             $controller = new LegalController();
@@ -120,13 +123,13 @@ if (isset($_GET['url'])) {
             $controller->delete();
             break;
         default:
-           $controller = new ErrorController();
+            $controller = new ErrorController();
             $controller->wrongURL();
             break;
     }
 } else {
-     $controller = new HomepageController();
-            $controller->show();
+    $controller = new HomepageController();
+    $controller->show();
 }
 
 if (!empty($_GET)) {
