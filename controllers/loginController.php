@@ -20,7 +20,7 @@ class LoginController
             $allUsers = User::getAllUsers($db);
 
             foreach ($allUsers as $user) {
-                if ($user['mail'] == $email && $user['password'] == $password) {
+                if ($user['mail'] == $email && password_verify($password, $user['password'])) {
                     $_SESSION['firstName'] = $user['firstName'];
                     $_SESSION['lastName'] = $user['lastName'];
                     $_SESSION['email'] = $user['mail'];

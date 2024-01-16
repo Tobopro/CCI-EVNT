@@ -8,6 +8,7 @@ if (!empty($_POST['action'])) {
     $controller = new Controllers\UsersController();
 
     if ($_POST['action'] === 'store') {
+        Auth::isGuestOrRedirect();
         $controller->store();
     } elseif ($_POST['action'] === 'delete') {
         Auth::isAuthOrRedirect();

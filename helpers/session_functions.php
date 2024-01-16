@@ -40,10 +40,10 @@ function displayErrorsAndMessages()
     if (isset($_SESSION['errors'])) {
         if (is_array($_SESSION['errors'])) {
             foreach ($_SESSION['errors'] as $error) {
-                echo '<p class="color-red">' . $error . '</p>';
+                echo '<p class="alert alert-danger" role="alert">' . $error . '</p>';
             }
         } else {
-            echo '<p class="color-red">' . $_SESSION['errors'] . '</p>';
+            echo '<p class="alert alert-danger" role="alert">' . $_SESSION['errors'] . '</p>';
         }
 
         unset($_SESSION['errors']);
@@ -53,10 +53,10 @@ function displayErrorsAndMessages()
     if (isset($_SESSION['success'])) {
         if (is_array($_SESSION['success'])) {
             foreach ($_SESSION['success'] as $success) {
-                echo '<p class="color-green">' . $success . '</p>';
+                echo '<p class="alert alert-success" role="alert">' . $success . '</p>';
             }
         } else {
-            echo '<p class="color-green">' . $_SESSION['success'] . '</p>';
+            echo '<p class="alert alert-success" role="alert">' . $_SESSION['success'] . '</p>';
         }
 
         unset($_SESSION['success']);

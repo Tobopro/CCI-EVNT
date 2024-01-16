@@ -70,6 +70,9 @@
                     </div>
                     <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
                         <div id="submit-box" class=" mx-2 fs-1 w-100">
+                            <form action="evnt-handler.php" method="POST"></form>
+                            <input type="text" name="action" value="join" hidden>
+                            <input type="text" name="id" value="<?php echo $evnt->getId() ?>" hidden>
                             <button type="submit" class=" w-100  evnt-confirm-button">Rejoindre l'Evnt</button>
                         </div>
                     </a>

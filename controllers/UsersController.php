@@ -35,12 +35,25 @@ class UsersController
             redirectAndExit(self::URL_CREATE);
         }
 
+        // Check User
+        $users = DB::fetch("SELECT * FROM users WHERE mail = :mail;", ['mail' => $_POST['mail']]);
+        if ($users === false) {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            redirectAndExit(self::URL_CREATE);
+        } elseif (count($users) >= 1) {
+            errors('Cette adresse email est déjà utilisée.');
+            redirectAndExit(self::URL_CREATE);
+        }
+
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $user = new User(
             $_POST['firstName'],
             $_POST['lastName'],
             $_POST['mail'],
-            $_POST['password']
+            $password
         );
+
+
         $user->setDescription(($_POST['description'] ?? null) ?: '');
         $user->setProfilePicture($_POST['picture'] ?? null);
         $user->setCity(($_POST['city'] ?? null) ?: '');
