@@ -60,10 +60,6 @@
     }
 }
 
-.cover-and-info-edit {
-    position: relative;
-    top: -10vh;
-}
 
 #profile-edit-up {
     color: #FCFCFC;
@@ -210,4 +206,11 @@ input:checked+.slider:before {
     -webkit-transform: translateX(21px);
     -ms-transform: translateX(21px);
     transform: translateX(21px);
+}
+
+.edit-page-delete {
+    margin-top: 2em;
+    ;
+    display: flex;
+    justify-content: center;
 }

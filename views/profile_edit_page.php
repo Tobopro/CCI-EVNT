@@ -25,19 +25,22 @@
                             alt="modification de photo de profil">
                     </div>
                 </a>
-                <div id="profile-name" class="col-2  ms-md-5 ms-lg-0 position-relative ">
-                    <label for="lastName">Nom :</label>
-                    <input type="text" id="lastName" name="lastName" value="<?php echo $user->getLastName() ?>">
-                    <br>
-                    <label for="firstName">Prénom :</label>
-                    <input type="text" id="firstName" name="firstName" value="<?php echo $user->getFirstName() ?>">
+                <div id="profile-name"
+                    class="col-9  ms-md-5 ms-lg-0 position-relative d-sm-flex justify-content-between">
+                    <div class="d-flex flex-column">
+                        <label for="lastName">Nom :</label>
+                        <input type="text" id="lastName" name="lastName" value="<?php echo $user->getLastName() ?>">
+                        <br>
+                        <label for="firstName">Prénom :</label>
+                        <input type="text" id="firstName" name="firstName" value="<?php echo $user->getFirstName() ?>">
+                    </div>
+                    <div class="d-flex flex-column">
+                        <label for="city">Ville :</label>
+                        <input type="text" id="city" name="city" value="<?php echo $user->getCity() ?>">
+                    </div>
                 </div>
-                <div id="profile-edit-numbers" class="col-4 col-md-4 col-lg-2 offset-2 offset-lg-6">
+                <div id="profile-edit-numbers">
                     <div class="row">
-                        <div class="col-12 ">
-                            <label for="city">Ville :</label>
-                            <input type="text" id="city" name="city" value="<?php echo $user->getCity() ?>">
-                        </div>
                         <div class="col-12 d-block d-lg-none ">
                             X Abonnés
                         </div>
@@ -62,38 +65,32 @@
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts"
-                            <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showFutureEvnts" <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts"
-                            <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showPastEvnts" <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores"
-                            <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showEvntScores" <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
             </div>
         </div>
     </form>
-    <div class="container">
-        <div class="row">
-            <form action="<?php echo $actionUrl ?>" method="POST">
-                <input type="text" name="action" value="delete" hidden>
-                <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
-                <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
-            </form>
-        </div>
+    <div class="edit-page-delete">
+        <form action="<?php echo $actionUrl ?>" method="POST">
+            <input type="text" name="action" value="delete" hidden>
+            <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
+            <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
+        </form>
     </div>
-
 </main>

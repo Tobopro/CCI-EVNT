@@ -7,12 +7,12 @@
                     et dolore magna aliqua. </p>
 
                 <?php if (!Auth::getCurrentUser()): ?>
-                <a href="?url=creation_profile" class="btn btn-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
-                        <path
-                            d="M 12 4 A 4 4 0 0 0 12 12 A 4 4 0 0 0 12 4 z M 12 14 C 5.9 14 4 18 4 18 L 4 20 L 20 20 L 20 18 C 20 18 18.1 14 12 14 z" />
-                    </svg> Je crée mon compte EVNT
-                </a>
+                    <a href="?url=creation_profile" class="btn btn-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24px" height="24px">
+                            <path
+                                d="M 12 4 A 4 4 0 0 0 12 12 A 4 4 0 0 0 12 4 z M 12 14 C 5.9 14 4 18 4 18 L 4 20 L 20 20 L 20 18 C 20 18 18.1 14 12 14 z" />
+                        </svg> Je crée mon compte EVNT
+                    </a>
                 <?php endif ?>
 
                 <ul>
