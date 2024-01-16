@@ -8,12 +8,12 @@
        
             <article class="evnt-single col-3 m-5">
                 <a href="">
-                    <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                    <img class="img-une" src="<?php echo $hydratedUser->getProfilePicture() ?>"
                         alt="photographie d'un groupe de fêtard" />
                     <div class="padding-evnt">
                         <ul class="details-evnt">
-                            <li> <?= $hydratedUser->getEmail() ?></li>
-                            <li> <?= $hydratedUser->getFirstName() ?></li>
+                            <li> <?php echo $hydratedUser->getEmail() ?></li>
+                            <li> <?php echo $hydratedUser->getFirstName() ?></li>
                             
                             <div class="container">
 

@@ -55,9 +55,9 @@ class UsersController
 
 
         $user->setDescription(($_POST['description'] ?? null) ?: '');
-        $user->setProfilePicture($_POST['picture'] ?? null);
+        $user->setProfilePicture($_POST['picture'] ?? 'assets/img/profile-pictures/profiledefault.jpg');
         $user->setCity(($_POST['city'] ?? null) ?: '');
-        $user->setCoverPicture(($_POST['coverPicture'] ?? null) ?: rand(0, 10));
+        $user->setCoverPicture(($_POST['coverPicture'] ?? 'assets/img/profile-pictures/cover-pictures/coverdefault.jpg'));
         $user->setIsPublic(($_POST['isPublic'] ?? null) ?: 1);
         $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);

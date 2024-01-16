@@ -6,12 +6,12 @@
                     <p>Modifier</p>
                 </a>
             </button>
-            <img src="./assets/img/tourne-disque-tournant-vinyle-vintage.jpg" alt="">
+            <img src="<?php echo $user->getCoverPicture() ?>" alt="">
         </div>
         <div class="container-fluid">
             <div id="profile-up" class="row ">
                 <div id="profile-picture" class="col-3 col-lg-2 mx-lg-5 mx-md-1 mx-0">
-                    <img src="./assets/img/portrait.jpg" alt="">
+                    <img src="<?php echo $user->getProfilePicture() ?>" alt="">
                 </div>
                 <div id="profile-name" class="col-2 col-lg-1  ms-md-5 ms-lg-0 position-relative  mt-lg-0 text-center ">
                     <p>
