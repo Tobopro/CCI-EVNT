@@ -1,6 +1,8 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
-        <h2 class="title-section">Tous les événements</h2>
+        <h2 class="title-section col-6">Tous les utilisateurs</h2>
+        <a class="col-6" href="index.php?url=my_events"><h2 class="title-section">Tous les événements</h2></a>
+        
     
         <?php foreach ($hydratedUsers as $hydratedUser) : ?>
        

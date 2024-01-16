@@ -26,6 +26,10 @@ class LoginController
                     $_SESSION['email'] = $user['mail'];
                     $_SESSION['auth'] = true;
                     $_SESSION[Auth::SESSION_KEY] = $user['idUser'];
+                    if($email == 'admin@admin.fr')
+                    {
+                        $_SESSION['admin'] = true;
+                    }
 
                     $message = "Bonjour " . $_SESSION['firstName'];
                     $type_message = "success";

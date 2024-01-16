@@ -5,6 +5,7 @@ namespace Controllers;
 require_once __DIR__ . '/../bootstrap/app.php';
 
 Use Models\Evnt;
+use Auth;
 use DB;
 
 
@@ -12,6 +13,8 @@ use DB;
 Class AllEventsController{
         public static function display(){
 
+            if (isset($_SESSION['admin'])) {
+                if($_SESSION['admin']==true){
             $db = DB::getDB();
             $allevnts = Evnt::getAllEvents($db);
 
@@ -23,5 +26,10 @@ Class AllEventsController{
             endforeach;
 
             include('../views/my_events.php');
+            } 
+            }else{
+                Auth::isAdminOrRedirect();
+            }
+            
         }
 }
