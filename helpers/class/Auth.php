@@ -39,20 +39,21 @@ class Auth
         if (!Auth::getCurrentUser()) {
             // Not Auth Or account not exists
             errors('Vous devez être connecté pour accèder à cette page.');
-            redirectAndExit('?url=login');
+            redirectAndExit(__DIR__ . "?url/login");
         }
     }
 
-        public static function isAdminOrRedirect(): void
+    public static function isAdminOrRedirect(): void
     {
         // Check user is auth
         if (!Auth::getCurrentUser() && !isset($_SESSION['admin'])) {
             // Not Auth Or account not exists
             errors('Vous devez être admin pour accèder à cette page.');
             redirectAndExit('/index.php?url=login');
-        }else{ 
+        } else {
             errors('Vous devez être admin pour accèder à cette page.');
-            redirectAndExit('/index.php?url=login');}
+            redirectAndExit('/index.php?url=login');
+        }
     }
 
     public static function isGuestOrRedirect(): void

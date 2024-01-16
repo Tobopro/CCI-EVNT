@@ -1,10 +1,15 @@
 <?php
+namespace Models;
 
 require_once __DIR__ . "/../bootstrap/app.php";
 
-use Models\User;
+use DB;
 
-class Attendee extends User
+class Attendee
 {
-    //
+    const PARTIPCATING_TALBE = "isAccepted";
+    public function join(?array $data)
+    {
+        return DB::insert(self::PARTIPCATING_TALBE, $data);
+    }
 }
