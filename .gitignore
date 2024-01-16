@@ -4,3 +4,4 @@ vendor/
 #SASS
 public/assets/sass/main.css
 public/assets/sass/main.css.map
+Views/test.php
