@@ -6,15 +6,20 @@
             <div class="evnt-page">
                 <div class="evnt-page__left-block">
                     <div class="box--yellow evnt-page__title">
-                        <h1 class="main-title">Jeux de sociétés en folies</h1>
+                        <h1 class="">
+                            <?php echo $evnt->getTitle() ?>
+                        </h1>
                     </div>
                     <div class="evnt-page__date-cost">
                         <div class="box--yellow evnt-page__date">
-                            <p>13 septembre, 2024<br>
-                                19:00</p>
+                            <p>
+                                <?php echo $evnt->getDateEvnt(); ?>
+                            </p>
                         </div>
                         <div class="box--yellow evnt-page__cost">
-                            <p>Gratuit</p>
+                            <p>
+                                <?php echo $evnt->getIsFreeEntry() ? "Gratauit" : "Payant" ?>
+                            </p>
                         </div>
                     </div>
                     <div class="evnt-page__participant-desc">
@@ -39,13 +44,9 @@
                         </div>
                         <div>
                             <div class="evnt-page__description box--yellow">
-                                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam neque labore quas
-                                    eligendi?
-                                    Cumque
-                                    perspiciatis fugit minima, aspernatur non alias sed repudiandae quisquam tenetur
-                                    quis, praesentium
-                                    repellat
-                                    corrupti, modi rerum!</p>
+                                <p>
+                                    <?php echo $evnt->getDescription() ?>
+                                </p>
                             </div>
                             <div class="evnt-page__icon">
                                 <a href=""
@@ -62,7 +63,9 @@
                 </div>
                 <div class="evnt-page__right-block ">
                     <div class="box--yellow evnt-page__adress ">
-                        <p>234 Av. de Colmar, 67021 Strasbourg</p>
+                        <p>
+                            <?php echo $evnt->getAdress(); ?>
+                        </p>
                         <div id="map" class="evnt-map"></div>
                     </div>
                     <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
