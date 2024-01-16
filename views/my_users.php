@@ -22,7 +22,7 @@
                                     <form action="/handlers/user-handler.php" method="POST">
                                         <input type="text" name="action" value="delete" hidden>
                                         <input type="text" name="id" value="<?php echo $id ?>" hidden>
-                                        <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
+                                        <button type="submit" class="btn btn-danger">Supprimer le compte</button>
                                     </form>
                                 </div>
                             </div>

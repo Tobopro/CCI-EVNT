@@ -121,15 +121,16 @@ class UsersController
         redirectAndExit("/?url=home");
     }
 
-      public static function deleteById($id)
+    public function deleteAsAdmin()
     {
-        $user = $this->getUserById($id);
+        $id = $_POST['id'] ?? null;
+        $product = $this->getUserById($id);
+
         // Delete a product in DB
-        $user->delete();
-        LogoutController::logOut();
-        App::terminate();
-        redirectAndExit("/?url=home");
+        $product->delete();
     }
+
+
 
     protected function getUserById(?int $id): User
     {
