@@ -11,8 +11,8 @@ class User
     protected ?string $lastName;
     protected ?string $firstName;
     protected ?string $description;
-    protected ?string $profilePicture;
-    protected ?string $email;
+    protected ?string $picture;
+    protected ?string $mail;
     protected ?string $city;
     protected ?string $password;
     protected ?int $creationCount;
@@ -44,8 +44,8 @@ class User
             'lastName' => $this->lastName,
             'firstName' => $this->firstName,
             'description' => $this->description,
-            'picture' => $this->profilePicture,
-            'mail' => $this->email,
+            'picture' => $this->picture,
+            'mail' => $this->mail,
             'city' => $this->city,
             'password' => $this->password,
             'showFutureEvnts' => $this->showFutureEvnts,
@@ -76,7 +76,7 @@ class User
         );
         $user->id = $data['idUser'] ?? null;
         $user->description = $data['description'] ?? null;
-        $user->profilePicture = $data['picture'] ?? null;
+        $user->picture = $data['picture'] ?? null;
         $user->city = $data['city'] ?? null;
         $user->creationCount = $data['creationCount'] ?? null;
         $user->participationCount = $data['participationCount'] ?? null;
@@ -107,7 +107,7 @@ class User
 
     public function getEmail(): ?string
     {
-        return $this->email;
+        return $this->mail;
     }
 
     public function getPassword(): ?string
@@ -137,7 +137,7 @@ class User
 
     public function getProfilePicture(): ?string
     {
-        return $this->profilePicture;
+        return $this->picture;
     }
 
     public function getCoverPicture(): ?string
@@ -195,11 +195,6 @@ class User
         return $this->friendRequests;
     }
 
-    // public function getFriendRequestsSent(): array
-    // {
-    //     return $this->friendRequestsSent;
-    // }
-
     public function getBlockedUsers(): ?array
     {
         return $this->blockedUsers;
@@ -243,7 +238,7 @@ class User
 
     public function setMail(string $mail): void
     {
-        $this->setFields('email', $mail);
+        $this->setFields('mail', $mail);
     }
 
     public function setPassword(string $password): void
@@ -258,7 +253,7 @@ class User
 
     public function setProfilePicture(?string $profilePicture): void
     {
-        $this->setFields('profilePicture', $profilePicture);
+        $this->setFields('picture', $profilePicture);
     }
 
     public function setShowFutureEvnts(?int $showFutureEvnts): void
@@ -293,35 +288,7 @@ class User
 
 
 
-    public function isRegisteredInDb($db)
-    {
-        $query = $db->prepare("SELECT * FROM users WHERE email = :email");
-        $query->execute(['mail' => $this->email]);
-        $result = $query->fetch();
-        $query = null;
 
-        return $result;
-    }
-
-    public function checkPassword($db)
-    {
-        $query = $db->prepare("SELECT password FROM users WHERE email = :email");
-        $query->execute(['email' => $this->email]);
-        $result = $query->fetch();
-        $query = null;
-
-        return $this->password === $result['password'];
-    }
-
-    public function isBanned($db)
-    {
-        $query = $db->prepare("SELECT isBanned FROM users WHERE email = :email");
-        $query->execute(['email' => $this->email]);
-        $result = $query->fetch();
-        $query = null;
-
-        return $result['isBanned'];
-    }
 
     public function save($forced = false): int|false
     {
@@ -337,7 +304,7 @@ class User
                         $updates[$key] = $toArray[$key];
                     }
                 }
-
+                var_dump($updates);
                 return DB::update(self::TABLE_NAME, $updates, $this->id, 'idUser');
             }
         } else {
@@ -376,11 +343,11 @@ class User
 // public function register($db)
 // {
 
-//     //need to add email and password check
+//     //need to add mail and password check
 
 //     if (!$this->isRegisteredInDb($db)) {
-//         $query = $db->prepare("INSERT INTO users (email, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:email, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
-//         $query->execute(['email' => $this->email, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
+//         $query = $db->prepare("INSERT INTO users (mail, password, firstName, lastName, city, description, profilePicture, coverPicture, prefferedCategories) VALUES (:mail, :password, :firstName, :lastName, :city, :description, :profilePicture, :coverPicture, :preferredCategories)");
+//         $query->execute(['mail' => $this->mail, 'password' => $this->password, 'firstName' => $this->firstName, 'lastName' => $this->lastName, 'city' => $this->city, 'description' => $this->description, 'profilePicture' => $this->profilePicture, 'coverPicture' => $this->coverPicture, 'preferredCategories' => $this->preferredCategories]);
 //         $query = null;
 
 //         $this->loadData($db);
@@ -388,7 +355,7 @@ class User
 //         $_SESSION['user'] = $this;
 
 //     } else {
-//         $_SESSION['email_exists'] = true;
+//         $_SESSION['mail_exists'] = true;
 //     }
 // }
 
@@ -418,8 +385,8 @@ class User
 // Encore utile ????
 // public function loadData($db)
 // {
-//     $query = $db->prepare("SELECT * FROM users WHERE email = :email");
-//     $query->execute(['email' => $this->email]);
+//     $query = $db->prepare("SELECT * FROM users WHERE mail = :mail");
+//     $query->execute(['mail' => $this->mail]);
 //     $result = $query->fetch();
 //     $query = null;
 
@@ -464,6 +431,36 @@ class User
 //         }
 
 //     } else {
-//         $_SESSION['email_exists'] = false;
+//         $_SESSION['mail_exists'] = false;
 //     }
-// }
+// }   
+// public function checkPassword($db)
+    // {
+    //     $query = $db->prepare("SELECT password FROM users WHERE mail = :mail");
+    //     $query->execute(['mail' => $this->mail]);
+    //     $result = $query->fetch();
+    //     $query = null;
+
+    //     return $this->password === $result['password'];
+    // }
+
+    // public function isBanned($db)
+    // {
+    //     $query = $db->prepare("SELECT isBanned FROM users WHERE mail = :mail");
+    //     $query->execute(['mail' => $this->mail]);
+    //     $result = $query->fetch();
+    //     $query = null;
+
+    //     return $result['isBanned'];
+    // }
+
+    
+    // public function isRegisteredInDb($db)
+    // {
+    //     $query = $db->prepare("SELECT * FROM users WHERE mail = :mail");
+    //     $query->execute(['mail' => $this->mail]);
+    //     $result = $query->fetch();
+    //     $query = null;
+
+    //     return $result;
+    // }

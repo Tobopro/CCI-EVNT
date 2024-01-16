@@ -16,12 +16,21 @@ if (!empty($_POST['action'])) {
         } else {
             $controller->delete();
         }
+    } elseif ($_POST['action'] === 'displayUpdateForm') {
+        Auth::isAdminOrRedirect();
+        $controller->displayUpdateAll();
+        exit;
+    } elseif ($_POST['action'] === 'UpdateAsAdmin') {
+        Auth::isAdminOrRedirect();
+
+        $controller->updateAsAdmin();
+
+
     } elseif ($_POST['action'] === 'update') {
         Auth::isAuthOrRedirect();
         $controller->update();
     }
 }
-
 
 if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
     redirectAndExit('/index.php?url=my_users');

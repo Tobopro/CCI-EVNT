@@ -46,13 +46,16 @@ class Auth
     public static function isAdminOrRedirect(): void
     {
         // Check user is auth
-        if (!Auth::getCurrentUser() && !isset($_SESSION['admin'])) {
+        if (!Auth::getCurrentUser() || !isset($_SESSION['admin'] )|| $_SESSION['admin']==!true) {
             // Not Auth Or account not exists
             errors('Vous devez être admin pour accèder à cette page.');
             redirectAndExit('/index.php?url=login');
+<<<<<<< HEAD
         } else {
             errors('Vous devez être admin pour accèder à cette page.');
             redirectAndExit('/index.php?url=login');
+=======
+>>>>>>> dea8b0bc24c16dbcb1dd0b01265738b0f2eff5e3
         }
     }
 

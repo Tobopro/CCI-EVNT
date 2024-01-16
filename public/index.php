@@ -126,6 +126,10 @@ if (isset($_GET['url'])) {
             $controller = new UsersController();
             $controller->delete();
             break;
+        case 'my_users_update':
+            $controller = new UsersController();
+            $controller->displayUpdateAll();
+            break;
         default:
             $controller = new ErrorController();
             $controller->wrongURL();
