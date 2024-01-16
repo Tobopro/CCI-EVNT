@@ -250,6 +250,7 @@ class User
     {
         $this->setFields('password', $password);
     }
+    
     public function setCity(string $city): void
     {
         $this->setFields('city', $city);
@@ -284,6 +285,12 @@ class User
     {
         $this->setFields('isPublic', $isPublic);
     }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
 
 
     public function isRegisteredInDb($db)

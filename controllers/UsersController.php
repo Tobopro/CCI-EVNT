@@ -73,6 +73,8 @@ class UsersController
         $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_edit_page.php');
     }
+
+
     public function update()
     {
         $id = $_POST['id'] ?? null;
@@ -132,6 +134,17 @@ class UsersController
         redirectAndExit("/?url=home");
     }
 
+    public function deleteAsAdmin()
+    {
+        $id = $_POST['id'] ?? null;
+        $product = $this->getUserById($id);
+
+        // Delete a product in DB
+        $product->delete();
+    }
+
+
+
     protected function getUserById(?int $id): User
     {
         if (!$id) {
@@ -154,5 +167,24 @@ class UsersController
 
         return User::hydrate($user[0]);
     }
+
+     public static function display(){
+
+            $db = DB::getDB();
+            $allusers = User::getAllUsers($db);
+
+            foreach ($allusers as $user) :
+                $idUser = $user['idUser'];
+                $user = User::hydrate($user);
+                $user->setId($idUser); // Affectez l'ID à la propriété de l'objet
+                $hydratedUsers[] = $user;
+            endforeach;
+
+            include('../views/my_users.php');
+        }
+
+        
+
+        
 
 }

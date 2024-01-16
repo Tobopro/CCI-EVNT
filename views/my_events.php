@@ -1,6 +1,7 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
-        <h2 class="title-section">Tous les événements</h2>
+        <h2 class="title-section col-6">Tous les événements</h2>
+        <a class="col-6" href="index.php?url=my_users"><h2 class="title-section">Tous les utilisateurs</h2></a>
     
         <?php foreach ($hydratedEvents as $hydratedEvent) : ?>
        
@@ -23,7 +24,7 @@
                         <ul class="liste-categories">
                            <?php $hydratedEvent->getCategoryName()?>
                         </ul>
-                            <a class="btn btn-danger" href="handlers/evnt_delete_handler.php?id=<?= $hydratedEvent->getId() ?>">Delete</a>
+                            <a class="btn btn-danger" href="handlers/evnt_delete_handler.php?id=<?= $hydratedEvent->getId() ?>">Supprimer</a>
 
                     </div>
                 </a>

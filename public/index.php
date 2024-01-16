@@ -106,6 +106,10 @@ if (isset($_GET['url'])) {
             $controller = new AllEventsController();
             $controller->display();
             break;
+        case 'my_users':
+            $controller = new UsersController();
+            $controller->display();
+        break;
         case 'carte':
             $controller = new MobileMapController();
             $controller->show();
