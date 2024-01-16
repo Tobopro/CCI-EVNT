@@ -23,7 +23,7 @@ class User
     protected ?int $showFutureEvnts;
     protected ?int $showPastEvnts;
     protected ?int $showEvntScores;
-    protected ?int $coverPicture;
+    protected ?string $coverPicture;
     protected ?int $isPublic;
     protected ?array $preferredCategories;
     protected ?array $evntsToCome;
@@ -271,7 +271,7 @@ class User
         $this->setFields('showEvntScores', $showEvntScores);
     }
 
-    public function setCoverPicture(?int $coverPicture): void
+    public function setCoverPicture(?string $coverPicture): void
     {
         $this->setFields('coverPicture', $coverPicture);
     }
@@ -304,7 +304,7 @@ class User
                         $updates[$key] = $toArray[$key];
                     }
                 }
-                var_dump($updates);
+        
                 return DB::update(self::TABLE_NAME, $updates, $this->id, 'idUser');
             }
         } else {

@@ -16,6 +16,7 @@ if (!empty($_POST['action'])) {
         } else {
             $controller->delete();
         }
+
     } elseif ($_POST['action'] === 'displayUpdateForm') {
         Auth::isAdminOrRedirect();
         $controller->displayUpdateAll();
@@ -24,7 +25,6 @@ if (!empty($_POST['action'])) {
         Auth::isAdminOrRedirect();
 
         $controller->updateAsAdmin();
-
 
     } elseif ($_POST['action'] === 'update') {
         Auth::isAuthOrRedirect();
