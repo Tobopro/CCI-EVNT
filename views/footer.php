@@ -12,8 +12,8 @@
             <div class="col-4 col-lg-2 offset-2 offset-lg-3"><a href="?url=mentions">Mentions Légales</a></div>
             <div class="col-5 col-lg-3 offset-1 offset-lg-2"><a href="">CGU/CGV</a></div>
             <div class="col-4 col-lg-2 offset-2 offset-lg-3"><a href="">Contactez-nous</a></div>
-            <?php if(isset($_SESSION['auth'])){
-                if($_SESSION['auth']==true){
+            <?php if(isset($_SESSION['admin'])){
+                if($_SESSION['admin']==true){
                     echo ' <div class="col-5 col-lg-3 offset-1 offset-lg-2"><a href="?url=my_events">Back-Office</a></div>';
                     }
                     }
