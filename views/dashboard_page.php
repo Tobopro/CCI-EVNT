@@ -1,10 +1,6 @@
-
-
-
-
 <main>
 
-  <?php
+    <?php
     if (isset($_GET['message']) && isset($_GET['type_message'])) {
         echo '<div class="alert   mx-5 alert-' . $_GET['type_message'] . ' alert-dismissible fade show" role="alert">
     <strong>' . $_GET['message'] . '</strong>
@@ -16,19 +12,19 @@
 
 
 
-<section id="filter" class="container-fluid">
+    <section id="filter" class="container-fluid">
         <!-- Selection Filter -->
         <div class="row bg-warning d-flex justify-content-end mt-md-3 border rounded mx-0 mx-lg-5 py-2">
-          
-     
-        
-        <form action="" method="GET">
-                 <label for="search">Rechercher: </label>
-    <input id="search" type="text" name="search" value="<?php $searchField ?>">
-      <input type="hidden" name="url" value="dashboard">
-       <input type="submit" value="Rechercher">    
 
-    </form>
+
+
+            <form action="" method="GET">
+                <label for="search">Rechercher: </label>
+                <input id="search" type="text" name="search" value="<?php $searchField ?>">
+                <input type="hidden" name="url" value="dashboard">
+                <input type="submit" value="Rechercher">
+
+            </form>
         </div>
     </section>
 
@@ -44,26 +40,38 @@
             </div>
             <div class="col-lg-4 col-12 events_event p-0 me-lg-3">
                 <div class="events_event__cards row">
-                    <?php foreach ($hydratedEvents as $hydratedEvent): ?>
+                    <?php foreach ($hydratedEvents as $hydratedEvent):
+
+                        ?>
+
                         <article class="evnt-single mb-2">
-                            <a href="">
+                            <a href="<?php echo '?url=evnt&id=' . $hydratedEvent->getId() ?>">
                                 <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
                                     alt="photographie d'un groupe de fêtard" />
                                 <div class="padding-evnt">
                                     <ul class="details-evnt">
-                                        <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> <?= $hydratedEvent->getAdress(); ?></li>
-                                        <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> <?= $hydratedEvent->getDateEvnt(); ?></li>
-                                        <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> <?= $hydratedEvent->getNbParticipants(); ?></li>
+                                        <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
+                                            <?= $hydratedEvent->getAdress(); ?>
+                                        </li>
+                                        <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" />
+                                            <?= $hydratedEvent->getDateEvnt(); ?>
+                                        </li>
+                                        <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" />
+                                            <?= $hydratedEvent->getNbParticipants(); ?>
+                                        </li>
                                     </ul>
-                                    <h3><?= $hydratedEvent->getTitle(); ?></h3>
+                                    <h3>
+                                        <?= $hydratedEvent->getTitle(); ?>
+                                    </h3>
                                     <ul class="liste-categories">
-                                        <li><?php $hydratedEvent->getCategoryName();?></li>
-                                        
+                                        <li>
+                                            <?php $hydratedEvent->getCategoryName(); ?>
+                                        </li>
                                     </ul>
                                 </div>
                             </a>
                         </article>
-                    <br>
+                        <br>
                     <?php endforeach; ?>
                     <div class="justify-content-center d-flex">
                         <p>

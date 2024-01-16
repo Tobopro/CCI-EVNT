@@ -28,25 +28,24 @@ use Controllers\LegalController;
     <link rel="stylesheet" href="./assets/sass/main.css">
     <!-- Highest Praise font  -->
     <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
+
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-    <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
-
-
     <script defer src="assets/javascript/script-login.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+        </script>
 
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
-    <!-- <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script> -->
     <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
 
-
+    <!-- <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
 </head>
 
 
@@ -55,7 +54,7 @@ use Controllers\LegalController;
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
         $body = "<body class = 'body-background";
-        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil') {
+        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil' or $_GET['url'] === 'evnt') {
             $body .= " with-no-margin";
         }
         $body .= "'>";
@@ -91,6 +90,10 @@ if (isset($_GET['url'])) {
             $controller = new EventPageController();
             $controller->show();
             break;
+        case 'evnt':
+            $controller = new EventPageController();
+            $controller->evntPage();
+            break;
         case 'creation_EVNT':
             $controller = new CreationEventController();
             $controller->form();
@@ -100,7 +103,7 @@ if (isset($_GET['url'])) {
             $controller->edit();
             break;
         case 'my_events':
-             $controller = new AllEventsController();
+            $controller = new AllEventsController();
             $controller->display();
             break;
         case 'my_users':
@@ -108,8 +111,8 @@ if (isset($_GET['url'])) {
             $controller->display();
         break;
         case 'carte':
-          $controller = new MobileMapController();
-          $controller->show();
+            $controller = new MobileMapController();
+            $controller->show();
             break;
         case 'mentions':
             $controller = new LegalController();
@@ -124,13 +127,13 @@ if (isset($_GET['url'])) {
             $controller->delete();
             break;
         default:
-           $controller = new ErrorController();
+            $controller = new ErrorController();
             $controller->wrongURL();
             break;
     }
 } else {
-     $controller = new HomepageController();
-            $controller->show();
+    $controller = new HomepageController();
+    $controller->show();
 }
 
 if (!empty($_GET)) {

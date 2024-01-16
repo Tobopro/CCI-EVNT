@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 namespace Models;
@@ -7,10 +7,12 @@ require_once('/laragon/www/CCI-EVNT/bootstrap/app.php');
 
 
 
-Use \DateTime;
+use \DateTime;
 use DB;
-class Evnt {
-    protected ?int $id ;
+
+class Evnt
+{
+    protected ?int $id;
     protected ?string $title;
     protected ?string $dateEvnt;
     protected ?string $adress;
@@ -24,11 +26,11 @@ class Evnt {
     protected ?string $urlImage;
     protected ?int $nbLike;
     protected ?int $nbReport;
-   
 
-    public function __construct($title, $dateEvnt, $adress, $description, $price, $priceInfo, $nbParticipants, $isFreeEntry, $idUser, $idCategory,  $urlImage, $nbLike, $nbReport)
+
+    public function __construct($title, $dateEvnt, $adress, $description, $price, $priceInfo, $nbParticipants, $isFreeEntry, $idUser, $idCategory, $urlImage, $nbLike, $nbReport)
     {
- 
+
         $this->title = $title;
         $this->dateEvnt = $dateEvnt;
         $this->adress = $adress;
@@ -42,7 +44,7 @@ class Evnt {
         $this->urlImage = $urlImage;
         $this->nbLike = $nbLike;
         $this->nbReport = $nbReport;
-}
+    }
 
     public function getId(): int
     {
@@ -91,21 +93,21 @@ class Evnt {
 
     public function getCategoryName(): ?string
     {
-        
-        $idCategory= $this->getIdCategory();
-        if (isset($idCategory)){
-        $db= DB::getDB();
-        $result = $db->query("SELECT * FROM categories WHERE idCategory = $idCategory");
-        $categoryName = $result->fetch();
-        $categoryName = $categoryName['name'];
-      
-        echo $categoryName;
-        return $categoryName;
+
+        $idCategory = $this->getIdCategory();
+        if (isset($idCategory)) {
+            $db = DB::getDB();
+            $result = $db->query("SELECT * FROM categories WHERE idCategory = $idCategory");
+            $categoryName = $result->fetch();
+            $categoryName = $categoryName['name'];
+
+            echo $categoryName;
+            return $categoryName;
         } else {
             return null;
         }
 
-        
+
     }
 
 
@@ -168,7 +170,7 @@ class Evnt {
         $this->idCategory = $idCategory;
     }
 
-    
+
 
     public function setUrlImage(string $urlImage): void
     {
@@ -186,25 +188,25 @@ class Evnt {
     }
 
     public function createEvent($db)
-        {
-             $formattedDate = $this->dateEvnt;
-            $result = $db->exec("INSERT INTO events (title, dateEvnt, adress, description,  price, priceInfo, nbParticipants, isFreeEntry, idUser, idCategory, urlImage, nbLike, nbReport) VALUES ('$this->title', '$formattedDate', '$this->adress', '$this->description',  '$this->price',' ', '$this->nbParticipants', '$this->isFreeEntry', '$this->idUser', '$this->idCategory', '$this->urlImage', '$this->nbLike', '$this->nbReport')");
+    {
+        $formattedDate = $this->dateEvnt;
+        $result = $db->exec("INSERT INTO events (title, dateEvnt, adress, description,  price, priceInfo, nbParticipants, isFreeEntry, idUser, idCategory, urlImage, nbLike, nbReport) VALUES ('$this->title', '$formattedDate', '$this->adress', '$this->description',  '$this->price',' ', '$this->nbParticipants', '$this->isFreeEntry', '$this->idUser', '$this->idCategory', '$this->urlImage', '$this->nbLike', '$this->nbReport')");
 
-            if ($result !== false) {
-                $message = "Votre évènement a bien été créé";
-                $type_message = "success";
-                header('Location: creation_event.php?message=' . $message . '&type_message=' . $type_message);
-            } else {
-                echo "Error: " . $db->errorInfo()[2];
-            }
+        if ($result !== false) {
+            $message = "Votre évènement a bien été créé";
+            $type_message = "success";
+            header('Location: creation_event.php?message=' . $message . '&type_message=' . $type_message);
+        } else {
+            echo "Error: " . $db->errorInfo()[2];
         }
+    }
 
     public function deleteEvent($db, $eventId)
-{
-    $result = $db->exec("DELETE FROM events WHERE idEvent = $eventId");
+    {
+        $result = $db->exec("DELETE FROM events WHERE idEvent = $eventId");
 
-    return $result !== false;
-}
+        return $result !== false;
+    }
 
 
     public static function getAllEvents($db)
@@ -221,18 +223,18 @@ class Evnt {
         return $event;
     }
 
-   public static function getCategories ($db)   
+    public static function getCategories($db)
     {
-         $result = $db->query("SELECT * FROM categories");
-         $categories = $result->fetchAll();
-         return $categories;
+        $result = $db->query("SELECT * FROM categories");
+        $categories = $result->fetchAll();
+        return $categories;
     }
 
     public static function hydrate(array $data)
     {
         $evnt = new Evnt(
             $data['title'] ?? '',
-           $data['dateEvnt'] ?? '',
+            $data['dateEvnt'] ?? '',
             $data['adress'] ?? '',
             $data['description'] ?? '',
             $data['price'] ?? null,
@@ -245,11 +247,11 @@ class Evnt {
             $data['nbLike'] ?? 0,
             $data['nbReport'] ?? 0
         );
+        $evnt->setId($data['idEvent']);
 
         return $evnt;
     }
 
-   
+
 
 }
-
