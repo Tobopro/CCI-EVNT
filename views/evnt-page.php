@@ -75,6 +75,9 @@
                             </form>
                         </div>
                     </a>
+                    <?php 
+                    if($evnt->isParticipatingTo($evnt->getId(),$_SESSION['id'])==NULL);
+                    ?>
                 </div>
             </div>
         </section>
