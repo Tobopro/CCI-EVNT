@@ -25,7 +25,7 @@ class CreationEventController
 
     public static function containsIllegalChars($string)
 {
-    return preg_match('/[#$%^&*()+=\-\[\];,.\/{}|":<>?~\\\\]/', $string);
+    return preg_match('/[#$%^&*()+=\-\[\];,.\/{}|:<>?~\\\\]/', $string);
 }
 
     public static function createEvent(){
