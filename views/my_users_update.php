@@ -1,6 +1,6 @@
  <main>
 
- <h2>Modifier Utilisateur</h2>
+ <h2>Modifier Utilisateur <?php echo $user->getUserId() ?></h2>
 <!-- /handlers/user-handler.php -->
     <form action="handlers/user-handler.php" method="post">
     <input type="text" name="action" value="UpdateAsAdmin" hidden>
