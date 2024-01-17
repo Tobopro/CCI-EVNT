@@ -20,7 +20,11 @@
                 <div class="form-group">
                     <label for="password">Mot de passe</label>
                     <input class="form-control" id="password" type="password" name="password" required>
+                    <p class="text-secondary">Le mot de passe doit contenir au moins 12 caractères dont 1 majuscule, 1
+                        minuscule, 1 caractère
+                        spéciale parmis les suivants : #?!@$%^&*-</p>
                 </div>
+                <br>
                 <div class="form-group">
                     <label for="password">Confirmer le mot de passe</label>
                     <input class="form-control" id="password" type="password" name="passwordConfirmation" required>

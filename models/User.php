@@ -7,6 +7,9 @@ use DB;
 class User
 {
     const TABLE_NAME = "users";
+
+    const DEFAULT_PIC = "assets/img/profile-pictures/profiledefault.jpg";
+    const DEFAULT_COVER = "assets/img/profile-pictures/cover-pictures/coverdefault.jpg";
     protected ?int $id;
     protected ?string $lastName;
     protected ?string $firstName;
@@ -76,12 +79,12 @@ class User
         );
         $user->id = $data['idUser'] ?? null;
         $user->description = $data['description'] ?? null;
-        $user->picture = $data['picture'] ?? null; // TODO change null to const DEFAULT_VALUE
+        $user->picture = $data['picture'] ?? self::DEFAULT_PIC;
         $user->city = $data['city'] ?? null;
         $user->creationCount = $data['creationCount'] ?? null;
         $user->participationCount = $data['participationCount'] ?? null;
         $user->isBanned = $data['isBanned'] ?? null;
-        $user->coverPicture = $data['coverPicture'] ?? null; // TODO change null to const DEFAULT_VALUE
+        $user->coverPicture = $data['coverPicture'] ?? self::DEFAULT_COVER;
         $user->preferredCategories = $data['preferredCategories'] ?? null;
         $user->evntsToCome = $data['evntsToCome'] ?? null;
         $user->evntsParticipated = $data['evntsParticipated'] ?? null;

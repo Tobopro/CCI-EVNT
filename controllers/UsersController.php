@@ -45,24 +45,34 @@ class UsersController
             redirectAndExit(self::URL_CREATE);
         }
 
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        // Validate strong password
+        $password = $_POST['password'];
+        $password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/";
+        if (preg_match($password_regex, $password)) {
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        } else {
+            errors("le mot de passe ne remplie pas les conditions");
+            redirectAndExit(self::URL_CREATE);
+        }
+
         $user = new User(
             $_POST['firstName'],
             $_POST['lastName'],
             $_POST['mail'],
             $password
         );
-
+        // assets/img/profile-pictures/cover-pictures/coverdefault.jpg
+        // assets/img/profile-pictures/profiledefault.jpg
 
         $user->setDescription(($_POST['description'] ?? null) ?: '');
-        $user->setProfilePicture($_POST['picture'] ?? 'assets/img/profile-pictures/profiledefault.jpg');
+        $user->setProfilePicture($_POST['picture'] ?? '');
         $user->setCity(($_POST['city'] ?? null) ?: '');
-        $user->setCoverPicture(($_POST['coverPicture'] ?? 'assets/img/profile-pictures/cover-pictures/coverdefault.jpg'));
+        $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
         $user->setIsPublic(($_POST['isPublic'] ?? null) ?: 1);
         $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
         $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
-
+        var_dump($user);
         $user->save();
         success("Le compte a bien été crée");
         redirectAndExit('/?url=login');
