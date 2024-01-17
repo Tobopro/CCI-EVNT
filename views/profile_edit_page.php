@@ -1,8 +1,8 @@
 <main>
     <?php displayErrorsAndMessages(); ?>
-    <form action="<?php echo $actionUrl ?>" method="POST">
+    <form action="<?php ec($actionUrl)  ?>" method="POST">
         <input type="text" name="action" value="update" hidden>
-        <input type="text" name="id" value="<?php echo $user->getUserId(); ?>" hidden>
+        <input type="text" name="id" value="<?php ec($user->getUserId()) ; ?>" hidden>
         <div class="cover-and-info-edit">
             <div class="cover-edit-picture">
                 <div class="cover-edit-picture__btn">
@@ -29,14 +29,14 @@
                     class="col-9  ms-md-5 ms-lg-0 position-relative d-sm-flex justify-content-between">
                     <div class="d-flex flex-column">
                         <label for="lastName">Nom :</label>
-                        <input type="text" id="lastName" name="lastName" value="<?php echo $user->getLastName() ?>">
+                        <input type="text" id="lastName" name="lastName" value="<?php ec($user->getLastName())  ?>">
                         <br>
                         <label for="firstName">Prénom :</label>
-                        <input type="text" id="firstName" name="firstName" value="<?php echo $user->getFirstName() ?>">
+                        <input type="text" id="firstName" name="firstName" value="<?php ec($user->getFirstName())  ?>">
                     </div>
                     <div class="d-flex flex-column">
                         <label for="city">Ville :</label>
-                        <input type="text" id="city" name="city" value="<?php echo $user->getCity() ?>">
+                        <input type="text" id="city" name="city" value="<?php ec($user->getCity())  ?>">
                     </div>
                 </div>
                 <div id="profile-edit-numbers">
@@ -58,28 +58,31 @@
                 <div class="box--yellow">
                     <p>Profil public</p>
                     <label class="switch">
-                        <input type="checkbox" name="isPublic" <?php echo $user->getisPublic() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="isPublic" <?php ec($user->getisPublic() ? 'checked' : '')  ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts" <?php echo $user->getisDisplayFutureEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showFutureEvnts"
+                            <?php ec($user->getisDisplayFutureEvnts() ? 'checked' : '')  ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts" <?php echo $user->getisDisplayPastEvnts() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showPastEvnts"
+                            <?php ec($user->getisDisplayPastEvnts() ? 'checked' : '')  ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores" <?php echo $user->getisDisplayEvntScores() ? 'checked' : '' ?>>
+                        <input type="checkbox" name="showEvntScores"
+                            <?php ec( $user->getisDisplayEvntScores() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -87,9 +90,9 @@
         </div>
     </form>
     <div class="edit-page-delete">
-        <form action="<?php echo $actionUrl ?>" method="POST">
+        <form action="<?php ec($actionUrl)  ?>" method="POST">
             <input type="text" name="action" value="delete" hidden>
-            <input type="text" name="id" value="<?php echo $_SESSION[Auth::SESSION_KEY] ?>" hidden>
+            <input type="text" name="id" value="<?php ec($_SESSION[Auth::SESSION_KEY])  ?>" hidden>
             <button type="submit" class="btn btn-danger">Supprimer mon compte</button>
         </form>
     </div>

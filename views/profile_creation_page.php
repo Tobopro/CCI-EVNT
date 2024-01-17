@@ -3,7 +3,7 @@
         <div class="row">
             <?php displayErrorsAndMessages(); ?>
             <h2>Création de compte</h2>
-            <form action=<?php echo $actionUrl ?> method="POST">
+            <form action=<?php ec($actionUrl) ?> method="POST">
                 <input type="text" name="action" value="store" hidden>
                 <div class="form-group">
                     <label for="lastName">Nom</label>
