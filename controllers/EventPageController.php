@@ -60,6 +60,41 @@ class EventPageController
 
     }
 
+        public function leavingEvnt()
+    {
+       $id = $_POST['id'] ?? null;
+        $user = $_SESSION[Auth::SESSION_KEY] ?? null;
+        $data = [
+            "idUser" => $user,
+            "idEvent" => $id,
+            "isAccepted" => 0
+        ];
+
+        $where = 'idEvent = :id AND idUser = :idUser';
+        $params = ['id' => $id, 'idUser' => $user];
+        $whereAndParams = "$where " . implode(' ', array_keys($params));
+
+        //check evnt
+        $evnt = DB::fetch("SELECT * FROM events WHERE idEvent = :id;", ['id' => $id]);
+        if (!$evnt or count($evnt) > 1) {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            redirectAndExit(self::URL_INDEX);
+        }
+
+
+        $state = self::leaving($data,$whereAndParams);
+        if ($state) {
+            success("Vous avez rejoint l'Evnt");
+            redirectAndExit("/?url=evnt&id=" . $id);
+        } else {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            // redirectAndExit(self::URL_INDEX);
+            var_dump($data);
+            var_dump($state);
+            var_dump($whereAndParams);
+        }
+    }
+
     static function getCurrentEvntbyId(?int $id): Evnt
     {
         if (!$id) {
@@ -86,6 +121,15 @@ class EventPageController
     {
         return DB::insert("isaccepted", $data);
     }
+
+      public function leaving(?array $data,$where)
+    {
+
+        return DB::update("isaccepted", $data, $where);
+    }
+
+
+ 
 
     public function getNbParticipantByEvntId(?int $id): ?array
     {

@@ -259,8 +259,7 @@ class Evnt
         
         foreach ($arrayOfParticipants as $participant) {
 
-            var_dump($participant['idUser']);
-            var_dump($idUser);
+         
             if($participant['idUser'] == $idUser){
                 $isParticipating = true;
                 if ($isParticipating==true){
