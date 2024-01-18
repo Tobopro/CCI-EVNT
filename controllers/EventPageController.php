@@ -60,7 +60,7 @@ class EventPageController
 
     }
 
-        public function leavingEvnt()
+    public function leavingEvnt()
     {
         $id = $_POST['id'] ?? null;
 
@@ -81,11 +81,11 @@ class EventPageController
         }
     }
 
-      public function deleteParticipation(): int|false
+    public function deleteParticipation(): int|false
     {
         $eventId = $_POST['id'] ?? null;
         $userId = $_SESSION[Auth::SESSION_KEY] ?? null;
-        return self::staticDeleteParticipation($userId,$eventId);
+        return self::staticDeleteParticipation($userId, $eventId);
     }
 
     public static function staticDeleteParticipation(int $userId, int $eventId): int|false
@@ -129,9 +129,10 @@ class EventPageController
 
     }
 
-    public static function showJoinLeftButton($evnt){
-           if(isset ($_SESSION[Auth::SESSION_KEY]) &&$evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==!NULL && $evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==true){
-                     echo '
+    public static function showJoinLeftButton($evnt)
+    {
+        if (isset($_SESSION[Auth::SESSION_KEY]) && $evnt->isParticipatingTo($evnt->getId(), $_SESSION[Auth::SESSION_KEY]) == !NULL && $evnt->isParticipatingTo($evnt->getId(), $_SESSION[Auth::SESSION_KEY]) == true) {
+            echo '
                         <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
                             <div id="submit-box" class="mx-2 fs-1 w-100">
                                 <form action="handlers/evnt-handler.php" method="POST">
@@ -141,9 +142,9 @@ class EventPageController
                                 </form>
                             </div>
                         </a>';
-                    }else {
+        } else {
 
-                   echo '
+            echo '
                         <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
                             <div id="submit-box" class="mx-2 fs-1 w-100">
                                 <form action="handlers/evnt-handler.php" method="POST">
@@ -153,8 +154,8 @@ class EventPageController
                                 </form>
                             </div>
                         </a>';
-                    }
-                    
-                    ;
+        }
+
+        ;
     }
 }
