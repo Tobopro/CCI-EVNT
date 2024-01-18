@@ -68,7 +68,7 @@
                     </div>
                    
                     <?php 
-                    if($evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==!NULL && $evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==true ){
+                    if(isset ($_SESSION[Auth::SESSION_KEY]) &&$evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==!NULL && $evnt->isParticipatingTo($evnt->getId(),$_SESSION[Auth::SESSION_KEY])==true){
                      echo '
                         <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
                             <div id="submit-box" class="mx-2 fs-1 w-100">
