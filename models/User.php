@@ -7,6 +7,9 @@ use DB;
 class User
 {
     const TABLE_NAME = "users";
+
+    const DEFAULT_PIC = "assets/img/profile-pictures/profiledefault.jpg";
+    const DEFAULT_COVER = "assets/img/profile-pictures/cover-pictures/coverdefault.jpg";
     protected ?int $id;
     protected ?string $lastName;
     protected ?string $firstName;
@@ -76,12 +79,12 @@ class User
         );
         $user->id = $data['idUser'] ?? null;
         $user->description = $data['description'] ?? null;
-        $user->picture = $data['picture'] ?? null;
+        $user->picture = $data['picture'] ?? self::DEFAULT_PIC;
         $user->city = $data['city'] ?? null;
         $user->creationCount = $data['creationCount'] ?? null;
         $user->participationCount = $data['participationCount'] ?? null;
         $user->isBanned = $data['isBanned'] ?? null;
-        $user->coverPicture = $data['coverPicture'] ?? null;
+        $user->coverPicture = $data['coverPicture'] ?? self::DEFAULT_COVER;
         $user->preferredCategories = $data['preferredCategories'] ?? null;
         $user->evntsToCome = $data['evntsToCome'] ?? null;
         $user->evntsParticipated = $data['evntsParticipated'] ?? null;
@@ -245,7 +248,7 @@ class User
     {
         $this->setFields('password', $password);
     }
-    
+
     public function setCity(string $city): void
     {
         $this->setFields('city', $city);
@@ -304,7 +307,7 @@ class User
                         $updates[$key] = $toArray[$key];
                     }
                 }
-        
+
                 return DB::update(self::TABLE_NAME, $updates, $this->id, 'idUser');
             }
         } else {
@@ -437,32 +440,32 @@ class User
 //     }
 // }   
 // public function checkPassword($db)
-    // {
-    //     $query = $db->prepare("SELECT password FROM users WHERE mail = :mail");
-    //     $query->execute(['mail' => $this->mail]);
-    //     $result = $query->fetch();
-    //     $query = null;
+// {
+//     $query = $db->prepare("SELECT password FROM users WHERE mail = :mail");
+//     $query->execute(['mail' => $this->mail]);
+//     $result = $query->fetch();
+//     $query = null;
 
-    //     return $this->password === $result['password'];
-    // }
+//     return $this->password === $result['password'];
+// }
 
-    // public function isBanned($db)
-    // {
-    //     $query = $db->prepare("SELECT isBanned FROM users WHERE mail = :mail");
-    //     $query->execute(['mail' => $this->mail]);
-    //     $result = $query->fetch();
-    //     $query = null;
+// public function isBanned($db)
+// {
+//     $query = $db->prepare("SELECT isBanned FROM users WHERE mail = :mail");
+//     $query->execute(['mail' => $this->mail]);
+//     $result = $query->fetch();
+//     $query = null;
 
-    //     return $result['isBanned'];
-    // }
+//     return $result['isBanned'];
+// }
 
-    
-    // public function isRegisteredInDb($db)
-    // {
-    //     $query = $db->prepare("SELECT * FROM users WHERE mail = :mail");
-    //     $query->execute(['mail' => $this->mail]);
-    //     $result = $query->fetch();
-    //     $query = null;
 
-    //     return $result;
-    // }
+// public function isRegisteredInDb($db)
+// {
+//     $query = $db->prepare("SELECT * FROM users WHERE mail = :mail");
+//     $query->execute(['mail' => $this->mail]);
+//     $result = $query->fetch();
+//     $query = null;
+
+//     return $result;
+// }

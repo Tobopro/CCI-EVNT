@@ -45,24 +45,34 @@ class UsersController
             redirectAndExit(self::URL_CREATE);
         }
 
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        // Validate strong password
+        $password = $_POST['password'];
+        $password_regex = "/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{12,}$/";
+        if (preg_match($password_regex, $password)) {
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        } else {
+            errors("le mot de passe ne remplie pas les conditions");
+            redirectAndExit(self::URL_CREATE);
+        }
+
         $user = new User(
             $_POST['firstName'],
             $_POST['lastName'],
             $_POST['mail'],
             $password
         );
-
+        // assets/img/profile-pictures/cover-pictures/coverdefault.jpg
+        // assets/img/profile-pictures/profiledefault.jpg
 
         $user->setDescription(($_POST['description'] ?? null) ?: '');
-        $user->setProfilePicture($_POST['picture'] ?? 'assets/img/profile-pictures/profiledefault.jpg');
+        $user->setProfilePicture($_POST['picture'] ?? '');
         $user->setCity(($_POST['city'] ?? null) ?: '');
-        $user->setCoverPicture(($_POST['coverPicture'] ?? 'assets/img/profile-pictures/cover-pictures/coverdefault.jpg'));
+        $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
         $user->setIsPublic(($_POST['isPublic'] ?? null) ?: 1);
         $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
         $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
-
+        var_dump($user);
         $user->save();
         success("Le compte a bien été crée");
         redirectAndExit('/?url=login');
@@ -123,55 +133,55 @@ class UsersController
 
     }
 
-     public function updateAsAdmin()
+    public function updateAsAdmin()
     {
-       $id = $_POST['id'] ?? null;
-       if($id==!null){
+        $id = $_POST['id'] ?? null;
+        if ($id == !null) {
 
-        $user = $this->getUserById(intval($id));
+            $user = $this->getUserById(intval($id));
 
-        if (isset($_POST['lastName'])) {
-            $user->setLastName($_POST['lastName'] ?: '');
-        }
-        if (isset($_POST['firstName'])) {
-            $user->setFirstName($_POST['firstName'] ?: '');
-        }
-        if (isset($_POST['description'])) {
-            $user->setDescription($_POST['description'] ?: '');
-        }
-        if (isset($_POST['picture'])) {
-            $user->setProfilePicture($_POST['picture'] ?: '');
-        }
-        if (isset($_POST['city'])) {
-            $user->setCity($_POST['city'] ?: '');
-        }
-         if (isset($_POST['mail'])) {
-            $user->setMail($_POST['mail'] ?: '');
-        }
-        
+            if (isset($_POST['lastName'])) {
+                $user->setLastName($_POST['lastName'] ?: '');
+            }
+            if (isset($_POST['firstName'])) {
+                $user->setFirstName($_POST['firstName'] ?: '');
+            }
+            if (isset($_POST['description'])) {
+                $user->setDescription($_POST['description'] ?: '');
+            }
+            if (isset($_POST['picture'])) {
+                $user->setProfilePicture($_POST['picture'] ?: '');
+            }
+            if (isset($_POST['city'])) {
+                $user->setCity($_POST['city'] ?: '');
+            }
+            if (isset($_POST['mail'])) {
+                $user->setMail($_POST['mail'] ?: '');
+            }
 
-        isset($_POST['isPublic']) ? $user->setisPublic(1) : $user->setisPublic(0);
 
-        isset($_POST['showFutureEvnts']) ? $user->setShowFutureEvnts(1) : $user->setShowFutureEvnts(0);
+            isset($_POST['isPublic']) ? $user->setisPublic(1) : $user->setisPublic(0);
 
-        isset($_POST['showPastEvnts']) ? $user->setShowPastEvnts(1) : $user->setShowPastEvnts(0);
+            isset($_POST['showFutureEvnts']) ? $user->setShowFutureEvnts(1) : $user->setShowFutureEvnts(0);
 
-        isset($_POST['showEvntScores']) ? $user->setShowEvntScores(1) : $user->setShowEvntScores(0);
+            isset($_POST['showPastEvnts']) ? $user->setShowPastEvnts(1) : $user->setShowPastEvnts(0);
 
-        if (isset($_POST['coverPicture'])) {
-            $user->setCoverPicture($_POST['coverPicture'] ?: null);
-        }
-        
+            isset($_POST['showEvntScores']) ? $user->setShowEvntScores(1) : $user->setShowEvntScores(0);
 
-        // Update the user in DB
-        $result = $user->save();
-        if ($result === false) {
-            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
-        } else {
-            success('Les informations ont bien été modifiées.');
-          
-        }
-         redirectAndExit('/?url=my_users');
+            if (isset($_POST['coverPicture'])) {
+                $user->setCoverPicture($_POST['coverPicture'] ?: null);
+            }
+
+
+            // Update the user in DB
+            $result = $user->save();
+            if ($result === false) {
+                errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            } else {
+                success('Les informations ont bien été modifiées.');
+
+            }
+            redirectAndExit('/?url=my_users');
         } else {
             echo 'erreur';
         }
@@ -204,11 +214,11 @@ class UsersController
 
     public function getUserById(?int $id): User
     {
-    
+
         if (!$id) {
             errors('404. Page introuvable');
-            
-             redirectAndExit(self::URL_INDEX);
+
+            redirectAndExit(self::URL_INDEX);
         }
 
         $user = DB::fetch(
@@ -222,39 +232,41 @@ class UsersController
         if (empty($user)) {
             errors('505. Page introuvable pas');
             redirectAndExit(self::URL_INDEX);
-       }
+        }
 
 
         return User::hydrate($user[0]);
     }
 
-     public static function display(){
+    public static function display()
+    {
 
-            $db = DB::getDB();
-            $allusers = User::getAllUsers($db);
+        $db = DB::getDB();
+        $allusers = User::getAllUsers($db);
 
-            foreach ($allusers as $user) :
-                $idUser = $user['idUser'];
-                $user = User::hydrate($user);
-                $user->setId($idUser); // Affectez l'ID à la propriété de l'objet
-                $hydratedUsers[] = $user;
-            endforeach;
+        foreach ($allusers as $user):
+            $idUser = $user['idUser'];
+            $user = User::hydrate($user);
+            $user->setId($idUser); // Affectez l'ID à la propriété de l'objet
+            $hydratedUsers[] = $user;
+        endforeach;
 
-            include('../views/my_users.php');
-        }
-
-    public function displayUpdateAll(){
-
-            $id = $_POST['id'] ?? null;
-            $user = $this->getUserById(intval($id));
-          
-                include(__DIR__.'/../views/my_users_update.php');
-              
-                
+        include('../views/my_users.php');
     }
 
-        
+    public function displayUpdateAll()
+    {
 
-        
+        $id = $_POST['id'] ?? null;
+        $user = $this->getUserById(intval($id));
+
+        include(__DIR__ . '/../views/my_users_update.php');
+
+
+    }
+
+
+
+
 
 }

@@ -1,6 +1,4 @@
 <main>
-    <?php displayErrorsAndMessages();
-    ?>
     <div class="cover-and-info">
         <div class="cover-picture">
             <button class="cover-picture__btn">
@@ -29,17 +27,18 @@
                             </p>
                         </div>
                         <div class="col-12 d-block d-lg-none ">
-                            <p>X Abonnés</p>
+                            <p> Abonnés</p>
                         </div>
                         <div class="col-12 d-block d-lg-none">
-                            <p>X Evénements</p>
+                            <p> Evénements</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <?php displayErrorsAndMessages(); ?>
+    <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 col-lg-8 my-auto">
                 <div id="future-events" class="mx-5">

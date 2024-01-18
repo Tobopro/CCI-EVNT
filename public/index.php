@@ -43,9 +43,6 @@ use Controllers\LegalController;
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
-
-    <!-- <script defer type="text/javascript" src="../flickity/flickity.pkgd.min.js"></script> -->
-    <!-- <link rel="stylesheet" type="text/css" href="../flickity/flickity.min.css"> -->
 </head>
 
 
@@ -109,7 +106,7 @@ if (isset($_GET['url'])) {
         case 'my_users':
             $controller = new UsersController();
             $controller->display();
-        break;
+            break;
         case 'carte':
             $controller = new MobileMapController();
             $controller->show();
@@ -129,6 +126,9 @@ if (isset($_GET['url'])) {
         case 'my_users_update':
             $controller = new UsersController();
             $controller->displayUpdateAll();
+            break;
+        case 'test':
+            require_once base_path("Views/test.php");
             break;
         default:
             $controller = new ErrorController();

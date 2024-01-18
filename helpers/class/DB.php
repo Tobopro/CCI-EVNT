@@ -1,15 +1,8 @@
 <?php
 
-// namespace Helpers;
-
-// use \PDO;
-// use \Exception;
-// use \PDOException;
-
-
 class DB
 {
-    private static ?PDO $db = null; // "?PDO" allowed only on PHP 8.1+
+    private static ?PDO $db = null;
 
     public static function getDB()
     {
@@ -22,13 +15,11 @@ class DB
 
     public static function insert(string $table, array $data): bool
     {
-        // only keys: ['enable', 'label', 'description', 'brand', 'price_ttc', 'price_ht', 'vat', 'quantity', 'created_at']
         $keys = array_keys($data);
 
-        // enable, label, description, brand, price_ttc, price_ht, vat, quantity, created_at
         $cols = implode(', ', $keys);
 
-        // :enable, :label, :description, :brand, :price_ttc, :price_ht, :vat, :quantity, :created_at
+
         $params = ':' . implode(', :', $keys);
 
         return DB::statement(
@@ -61,12 +52,6 @@ class DB
         // Inject identifier in data
         $data[$identifierName] = $identifier;
 
-        // var_dump($updates);
-        // echo '<br>';
-        // echo '<br>';
-        // var_dump($data);
-        // echo '<br>';
-        // echo '<br>';
         return DB::statement(
             "UPDATE $table SET $updates"
             . " WHERE $identifierName = :$identifierName",
