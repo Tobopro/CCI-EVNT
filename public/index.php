@@ -75,7 +75,6 @@ if (isset($_GET['url'])) {
             $controller->logOut();
             break;
         case 'dashboard':
-
             $controller = new DashboardController();
             $controller->index();
             break;
@@ -101,7 +100,7 @@ if (isset($_GET['url'])) {
             break;
         case 'my_events':
             $controller = new AllEventsController();
-            $controller->display();
+            $controller->index();
             break;
         case 'my_users':
             $controller = new UsersController();
