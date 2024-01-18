@@ -104,7 +104,7 @@ if (isset($_GET['url'])) {
             break;
         case 'my_users':
             $controller = new UsersController();
-            $controller->display();
+            $controller->indexAllUsers();
             break;
         case 'carte':
             $controller = new MobileMapController();

@@ -265,27 +265,27 @@ class UsersController
 
     }
 
-    public static function indexAllEvents()
+    public static function indexAllUsers()
         {
             $db = DB::getDB();
 
-            // Get all events 
-            $events = User::getAllUsers($db);
+            // Get all users 
+            $users = User::getAllUsers($db);
 
             // Number of items wanted by page
-            $itemsPerPage = 2;
+            $itemsPerPage = 3;
             // Get Current page 
             $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
             // Calculate start index
             $startIndex = ($currentPage - 1) * $itemsPerPage;
             // Get end index
             $endIndex = $startIndex + $itemsPerPage;
-            // Get all events to display
-            $eventsToDisplay = array_slice($events, $startIndex, $itemsPerPage);
-            // Total number of events
-            $totalEvents = count($events);
+            // Get all users to display
+            $usersToDisplay = array_slice($users, $startIndex, $itemsPerPage);
+            // Total number of users
+            $totalUsers = count($users);
             // Total number of pages necessary ( used in view )
-            $totalPages = ceil($totalEvents / $itemsPerPage);
+            $totalPages = ceil($totalUsers / $itemsPerPage);
             // Filter by search
             if (isset($_GET['search']) && ($_GET['search']!== '')) {
             $searchField = $_GET['search'] ?? '';
@@ -306,43 +306,46 @@ class UsersController
                         $searchFields[$k] = '%'.$search.'%';
                         unset($searchFields[$key]);
                         $whereSearchSQL .=
-                        ' title LIKE '.$k
-                            .' OR description LIKE '.$k;
+                        ' firstName LIKE '.$k
+                            .' OR lastName LIKE '.$k
+                            .' OR description LIKE '.$k
+                            .' OR mail LIKE '.$k
+                            .' OR idUser LIKE '.$k;
                     }
                         $whereSQL = $whereSearchSQL;
                 
-                        $eventsFiltered = DB::fetch(
+                        $UsersFiltered = DB::fetch(
                         // SQL
-                        "SELECT * FROM events WHERE"
+                        "SELECT * FROM Users WHERE"
                         .$whereSQL,
                         $searchFields,
                     );
 
-                    // Get filtered events to display
-                $eventsFilteredToDisplay = array_slice($eventsFiltered, $startIndex, $itemsPerPage);
-                // Total events filtered
-                $totalEvents = count($eventsFiltered);
+                    // Get filtered Users to display
+                $UsersFilteredToDisplay = array_slice($UsersFiltered, $startIndex, $itemsPerPage);
+                // Total Users filtered
+                $totalUsers = count($UsersFiltered);
                 // Total number necessary ( used in view ) 
-                $totalPages = ceil($totalEvents / $itemsPerPage);
-                    $hydratedEvents = [];
-                    foreach ($eventsFilteredToDisplay as $event) {
-                        $eventInstance = Evnt::hydrate($event);
-                        $hydratedEvents[] = $eventInstance;
+                $totalPages = ceil($totalUsers / $itemsPerPage);
+                    $hydratedUsers = [];
+                    foreach ($UsersFilteredToDisplay as $user) {
+                        $userInstance = User::hydrate($user);
+                        $hydratedUsers[] = $userInstance;
                     }
             
             } else {
 
-                // Hydrate All Events
-            $hydratedEvents = [];
-            foreach ($eventsToDisplay as $eventData) {
-                $eventInstance = Evnt::hydrate($eventData);
-                $hydratedEvents[] = $eventInstance;
+                // Hydrate All Users
+            $hydratedUsers = [];
+            foreach ($usersToDisplay as $eventData) {
+                $eventInstance = User::hydrate($eventData);
+                $hydratedUsers[] = $eventInstance;
             }
             }
 
         
             // Include view
-            include('../views/my_events.php');
+            include('../views/my_users.php');
         }
 
 
