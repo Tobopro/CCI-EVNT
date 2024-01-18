@@ -29,7 +29,6 @@ class Auth
                 }
             }
         }
-
         return self::$user;
     }
 
@@ -48,7 +47,10 @@ class Auth
         // Check user is auth
         if (!Auth::getCurrentUser() && !isset($_SESSION['admin'])) {
             // Not Auth Or account not exists
-            errors('Vous devez être admin pour accèder à cette page.');
+            errors('Vous devez être admin pour accèder à cette page.'); // TODO je sais pas si c'est pertinent de retourner 
+                                                                        //un message pour les page d'admin.
+                                                                        // j'pense le mieux ce serait d'envoyer sur error404 si qqun essaie 
+                                                                        //d'acceder au backoffice sans etre connecté en Admin
             redirectAndExit('/index.php?url=login');
 
 

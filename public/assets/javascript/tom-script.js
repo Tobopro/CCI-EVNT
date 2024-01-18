@@ -53,3 +53,5 @@ select.addEventListener('change', function () {
     categoryButton.textContent = 'Catégories sélectionnées';
 });
 
+
+// TODO confirm Delete 

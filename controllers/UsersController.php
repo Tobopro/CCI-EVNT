@@ -16,6 +16,9 @@ class UsersController
 
     public function index()
     {
+        if (Auth::getCurrentUser() === null) {
+            redirectAndExit("?url=home");
+        }
         $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_page.php');
     }
@@ -80,6 +83,9 @@ class UsersController
     public function edit()
     {
         $actionUrl = self::URL_HANDLER;
+        if (Auth::getCurrentUser() === null) {
+            redirectAndExit("?url=home");
+        }
         $user = User::hydrate(Auth::getCurrentUser());
         require_once base_path('Views/profile_edit_page.php');
     }
@@ -135,6 +141,7 @@ class UsersController
 
     public function updateAsAdmin()
     {
+        Auth::isAdminOrRedirect();
         $id = $_POST['id'] ?? null;
         if ($id == !null) {
 
@@ -203,6 +210,7 @@ class UsersController
 
     public function deleteAsAdmin()
     {
+        Auth::isAdminOrRedirect();
         $id = $_POST['id'] ?? null;
         $product = $this->getUserById($id);
 
@@ -214,7 +222,7 @@ class UsersController
 
     public function getUserById(?int $id): User
     {
-
+        var_dump($id);
         if (!$id) {
             errors('404. Page introuvable');
 
@@ -266,87 +274,87 @@ class UsersController
     }
 
     public static function indexAllUsers()
-        {
-            $db = DB::getDB();
+    {
+        $db = DB::getDB();
 
-            // Get all users 
-            $users = User::getAllUsers($db);
+        // Get all users 
+        $users = User::getAllUsers($db);
 
-            // Number of items wanted by page
-            $itemsPerPage = 3;
-            // Get Current page 
-            $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-            // Calculate start index
-            $startIndex = ($currentPage - 1) * $itemsPerPage;
-            // Get end index
-            $endIndex = $startIndex + $itemsPerPage;
-            // Get all users to display
-            $usersToDisplay = array_slice($users, $startIndex, $itemsPerPage);
-            // Total number of users
-            $totalUsers = count($users);
-            // Total number of pages necessary ( used in view )
-            $totalPages = ceil($totalUsers / $itemsPerPage);
-            // Filter by search
-            if (isset($_GET['search']) && ($_GET['search']!== '')) {
+        // Number of items wanted by page
+        $itemsPerPage = 3;
+        // Get Current page 
+        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+        // Calculate start index
+        $startIndex = ($currentPage - 1) * $itemsPerPage;
+        // Get end index
+        $endIndex = $startIndex + $itemsPerPage;
+        // Get all users to display
+        $usersToDisplay = array_slice($users, $startIndex, $itemsPerPage);
+        // Total number of users
+        $totalUsers = count($users);
+        // Total number of pages necessary ( used in view )
+        $totalPages = ceil($totalUsers / $itemsPerPage);
+        // Filter by search
+        if (isset($_GET['search']) && ($_GET['search'] !== '')) {
             $searchField = $_GET['search'] ?? '';
-                $whereSearchSQL = '';
-                    $searchFields = explode(' ', $searchField);
-                    $whereSearchSQL = '';
-                    foreach ($searchFields as $key => $search) {
-                        if (empty($search)) {
-                            unset($searchFields[$key]);
-                            continue;
-                        }
+            $whereSearchSQL = '';
+            $searchFields = explode(' ', $searchField);
+            $whereSearchSQL = '';
+            foreach ($searchFields as $key => $search) {
+                if (empty($search)) {
+                    unset($searchFields[$key]);
+                    continue;
+                }
 
-                        if ($whereSearchSQL) {
-                            $whereSearchSQL .= ' OR ';
-                        }
+                if ($whereSearchSQL) {
+                    $whereSearchSQL .= ' OR ';
+                }
 
-                        $k = ':search'.$key;
-                        $searchFields[$k] = '%'.$search.'%';
-                        unset($searchFields[$key]);
-                        $whereSearchSQL .=
-                        ' firstName LIKE '.$k
-                            .' OR lastName LIKE '.$k
-                            .' OR description LIKE '.$k
-                            .' OR mail LIKE '.$k
-                            .' OR idUser LIKE '.$k;
-                    }
-                        $whereSQL = $whereSearchSQL;
-                
-                        $UsersFiltered = DB::fetch(
-                        // SQL
-                        "SELECT * FROM Users WHERE"
-                        .$whereSQL,
-                        $searchFields,
-                    );
+                $k = ':search' . $key;
+                $searchFields[$k] = '%' . $search . '%';
+                unset($searchFields[$key]);
+                $whereSearchSQL .=
+                    ' firstName LIKE ' . $k
+                    . ' OR lastName LIKE ' . $k
+                    . ' OR description LIKE ' . $k
+                    . ' OR mail LIKE ' . $k
+                    . ' OR idUser LIKE ' . $k;
+            }
+            $whereSQL = $whereSearchSQL;
 
-                    // Get filtered Users to display
-                $UsersFilteredToDisplay = array_slice($UsersFiltered, $startIndex, $itemsPerPage);
-                // Total Users filtered
-                $totalUsers = count($UsersFiltered);
-                // Total number necessary ( used in view ) 
-                $totalPages = ceil($totalUsers / $itemsPerPage);
-                    $hydratedUsers = [];
-                    foreach ($UsersFilteredToDisplay as $user) {
-                        $userInstance = User::hydrate($user);
-                        $hydratedUsers[] = $userInstance;
-                    }
-            
-            } else {
+            $UsersFiltered = DB::fetch(
+                // SQL
+                "SELECT * FROM Users WHERE"
+                . $whereSQL,
+                $searchFields,
+            );
 
-                // Hydrate All Users
+            // Get filtered Users to display
+            $UsersFilteredToDisplay = array_slice($UsersFiltered, $startIndex, $itemsPerPage);
+            // Total Users filtered
+            $totalUsers = count($UsersFiltered);
+            // Total number necessary ( used in view ) 
+            $totalPages = ceil($totalUsers / $itemsPerPage);
+            $hydratedUsers = [];
+            foreach ($UsersFilteredToDisplay as $user) {
+                $userInstance = User::hydrate($user);
+                $hydratedUsers[] = $userInstance;
+            }
+
+        } else {
+
+            // Hydrate All Users
             $hydratedUsers = [];
             foreach ($usersToDisplay as $eventData) {
                 $eventInstance = User::hydrate($eventData);
                 $hydratedUsers[] = $eventInstance;
             }
-            }
-
-        
-            // Include view
-            include('../views/my_users.php');
         }
+
+
+        // Include view
+        include('../views/my_users.php');
+    }
 
 
 
