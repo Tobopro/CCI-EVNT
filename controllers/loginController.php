@@ -24,6 +24,7 @@ class LoginController
                     $_SESSION['firstName'] = $user['firstName'];
                     $_SESSION['lastName'] = $user['lastName'];
                     $_SESSION['email'] = $user['mail'];
+                    $_SESSION['id']= $user['idUser'];
                     $_SESSION['auth'] = true;
                     $_SESSION[Auth::SESSION_KEY] = $user['idUser'];
                     if($user['role'] == 'admin')

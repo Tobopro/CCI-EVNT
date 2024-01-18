@@ -252,6 +252,24 @@ class Evnt
         return $evnt;
     }
 
+      public function isParticipatingTo($idEvent,$idUser){
+        $arrayOfParticipants= DB::fetch("SELECT * FROM isaccepted WHERE idEvent = :idEvent",
+        ['idEvent' => $idEvent],
+        );
+        
+        foreach ($arrayOfParticipants as $participant) {
+
+         
+            if($participant['idUser'] == $idUser){
+                $isParticipating = true;
+                if ($isParticipating==true){
+                    return true;
+                }
+
+            }
+        }
+
+    }
 
 
 }

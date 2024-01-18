@@ -2,7 +2,11 @@
     <div class="evnt-page__banner">
     </div>
     <div class="evnt-page-container">
-        <?php displayErrorsAndMessages(); ?>
+        <?php
+
+use Controllers\EventPageController;
+
+ displayErrorsAndMessages(); ?>
         <section class="text-content">
             <div class="evnt-page">
                 <div class="evnt-page__left-block">
@@ -66,15 +70,10 @@
                         </p>
                         <div id="map" class="evnt-map"></div>
                     </div>
-                    <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
-                        <div id="submit-box" class=" mx-2 fs-1 w-100">
-                            <form action="handlers/evnt-handler.php" method="POST">
-                                <input type="text" name="action" value="join" hidden>
-                                <input type="text" name="id" value="<?php echo $evnt->getId() ?>" hidden>
-                                <button type="submit" class=" w-100  evnt-confirm-button">Rejoindre l'Evnt</button>
-                            </form>
-                        </div>
-                    </a>
+                   
+                    <?php 
+                    EventPageController::showJoinLeftButton($evnt);
+                    ?>
                 </div>
             </div>
         </section>

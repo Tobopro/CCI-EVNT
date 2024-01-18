@@ -50,6 +50,8 @@ class Auth
             // Not Auth Or account not exists
             errors('Vous devez être admin pour accèder à cette page.');
             redirectAndExit('/index.php?url=login');
+
+
         } else {
             errors('Vous devez être admin pour accèder à cette page.');
             redirectAndExit('/index.php?url=login');

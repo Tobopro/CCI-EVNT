@@ -12,4 +12,8 @@ if (!empty($_POST['action'])) {
         }
         $controller->joinEvnt();
     }
+    elseif ($_POST['action'] === 'leaving') {
+        Auth::isAuthOrRedirect();
+        $controller->leavingEvnt();
+    }
 }
