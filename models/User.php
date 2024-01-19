@@ -4,7 +4,7 @@ namespace Models;
 
 use DB;
 
-class User extends Model
+class User
 {
     const TABLE_NAME = "users";
 
@@ -327,5 +327,14 @@ class User extends Model
             "DELETE FROM users WHERE idUser = :idUser",
             ['idUser' => $id],
         );
+    }
+    protected array $changedFields = [];
+
+    protected function setFields($name, $value)
+    {
+        if (property_exists($this, $name) and isset($this->$name) and $this->$name != $value) {
+            $this->changedFields[] = $name;
+        }
+        $this->$name = $value;
     }
 }

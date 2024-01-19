@@ -4,8 +4,7 @@ namespace Models;
 
 use DB;
 
-require_once __DIR__ . "/../models/Model.php";
-class ParticipantList extends Model
+class ParticipantList
 {
     const PARTICIPANT_LIST_TABLE = 'isAccepted';
     protected ?int $idEvent;
@@ -19,13 +18,14 @@ class ParticipantList extends Model
 
     public static function hydrate(array $data): ParticipantList
     {
-        $data['$participantList'] ?? null;
+        $data['participantList'] ?? null;
+        $data['idOwner'] ?? null;
         $participantList = new ParticipantList($data['idEvent']);
-        $participantList->idOwner = $data["idOwner"];
-        if ($data['$participantList']) {
-            foreach ($data['$participantList'] as $participants) {
-                array_push($participantList->participants, $participants);
-            }
+        if ($data['idOwner']) {
+            $participantList->idOwner = $data["idOwner"];
+        }
+        if ($data['participantList']) {
+            $participantList->participants = $data['participantList'];
         }
         return $participantList;
     }
@@ -54,6 +54,14 @@ class ParticipantList extends Model
         $this->idOwner = $idOwner;
     }
 
+    public function displayParticipants()
+    {
+        $participants = $this->getParticipants();
+        foreach ($participants as $participant) {
+            echo "<li>" . $participant["firstName"] . " " . $participant['lastName'] . "</li>";
+        }
+
+    }
     public static function join(?array $data)
     {
         return DB::insert(self::PARTICIPANT_LIST_TABLE, $data);

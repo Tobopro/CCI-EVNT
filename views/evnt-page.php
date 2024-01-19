@@ -4,9 +4,9 @@
     <div class="evnt-page-container">
         <?php
 
-use Controllers\EventPageController;
+        use Controllers\EventPageController;
 
- displayErrorsAndMessages(); ?>
+        displayErrorsAndMessages(); ?>
         <section class="text-content">
             <div class="evnt-page">
                 <div class="evnt-page__left-block">
@@ -31,15 +31,13 @@ use Controllers\EventPageController;
                         <div class="evnt-page__participant box--yellow">
                             <div>
                                 <h2 class="title"> <i class="fa-solid fa-user-group me-2"></i>
-                                    <?php echo count($participants) . "/" . $evnt->getNbParticipants() ?>
+                                    <?php echo count($participantsList->getParticipants()) . "/" . $evnt->getNbParticipants() ?>
                                 </h2>
                             </div>
                             <div class="evnt-page__participant-list">
                                 <ul>
                                     <?php
-                                    foreach ($participants as $participant) {
-                                        echo "<li>" . $participant["firstName"] . " " . $participant['lastName'] . "</li>";
-                                    }
+                                    $participantsList->displayParticipants();
                                     ?>
                                 </ul>
                             </div>
@@ -70,8 +68,8 @@ use Controllers\EventPageController;
                         </p>
                         <div id="map" class="evnt-map"></div>
                     </div>
-                   
-                    <?php 
+
+                    <?php
                     EventPageController::showJoinLeftButton($evnt);
                     ?>
                 </div>

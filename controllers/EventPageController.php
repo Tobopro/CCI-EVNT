@@ -18,9 +18,13 @@ class EventPageController
 
     public function evntPage()
     {
+        Auth::isAuthOrRedirect();
         $id = $_GET['id'] ?? null;
         $evnt = self::getCurrentEvntById($id);
-        $participants = self::getNbParticipantByEvntId($id);
+        $data['idEvent'] = $evnt->getId();
+        $data['idOwner'] = $evnt->getIdUser();
+        $data['participantList'] = self::getParticipantByEvntId($id);
+        $participantsList = ParticipantList::hydrate($data);
         require_once base_path("Views/evnt-page.php");
     }
 
@@ -113,7 +117,7 @@ class EventPageController
 
 
 
-    public function getNbParticipantByEvntId(?int $id): ?array
+    public function getParticipantByEvntId(?int $id): ?array
     {
         return DB::fetch("SELECT users.firstName, users.lastName FROM users JOIN isAccepted ON users.idUser = isAccepted.idUser WHERE isAccepted.idEvent = :idEvent", ["idEvent" => $id]);
 
