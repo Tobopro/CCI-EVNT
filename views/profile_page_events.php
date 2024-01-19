@@ -1,41 +1,43 @@
-<main>
-    <div class="cover-and-info">
-        <div class="cover-picture">
-            <img src="<?php echo $user->getCoverPicture() ?>" alt="">
-        </div>
-        <div class="container-fluid">
-            <div id="profile-up" class="row ">
-                <div id="profile-picture" class="col-3 col-lg-2 mx-lg-5 mx-md-1 mx-0">
-                    <img src="<?php echo $user->getProfilePicture() ?>" alt="">
-                </div>
-                <div id="profile-name" class="col-2 col-lg-1  ms-md-5 ms-lg-0 position-relative  mt-lg-0 text-center ">
-                    <p>
-                        <?php echo $user->getLastName() ?><br>
-                        <?php echo $user->getFirstName() ?>
-                    </p>
-                </div>
-                <div id="profile-numbers" class="col-3 col-md-4 col-lg-1 offset-2 offset-lg-6  mt-lg-0">
-                    <div class="row">
-                        <div class="col-12">
-                            <p>
-                                <?php echo $user->getCity() ?>
-                            </p>
-                        </div>
-                        <div class="col-12 d-block d-lg-none ">
-                            <p> Abonnés</p>
-                        </div>
-                        <div class="col-12 d-block d-lg-none">
-                            <p> Evénements</p>
-                        </div>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+<h2 class="title-section col-6">Tous mes événements</h2>
+    <div class="justify-content-center d-flex">
+                        <p>
+                            <?php
+                            // Supposons que $totalPages soit le nombre total de pages
+                            for ($i = 1; $i <= $totalPages; $i++) {
+                                echo '<a style="color:black; text-decoration:underline;" href="?url=my_events&page=' . $i . '">' . $i . '</a> ';
+                            }
+                            ?>
+                        </p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <?php displayErrorsAndMessages(); ?>
-    <div class="container-fluid mt-5">
-        <div class="row">
+        <?php foreach ($hydratedEvents as $hydratedEvent) : ?>
+       
+            <article class="evnt-single col-3 m-5">
+                <a href="">
+                    <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                        alt="photographie d'un groupe de fêtard" />
+                    <div class="padding-evnt">
+                        <ul class="details-evnt">
+                            <!-- Ville -->
+                            <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" /> <?= $hydratedEvent->getAdress() ?></li>
+                            <!-- Date -->
+                            <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" /> <?= $hydratedEvent->getDateEvnt() ?></li>
+                            <!-- Participants -->
+                            <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" /> <?= $hydratedEvent->getNbParticipants() ?>/<?= $hydratedEvent->getNbParticipants() ?></li>
+                        </ul>
+                        <h3><?= $hydratedEvent->getTitle() ?></h3>
+                        <p><?= substr($hydratedEvent->getDescription(), 0
+                        , 25) . '...' ?></p>
+                        <ul class="liste-categories">
+                           <?php $hydratedEvent->getCategoryName()?>
+                        </ul>
+                            <a class="btn btn-danger" href="handlers/evnt_delete_handler.php?id=<?= $hydratedEvent->getId() ?>">Supprimer</a>
+
+                    </div>
+                </a>
+            </article>
+        <?php endforeach; ?>
         
-        </div>
     </div>
-</main>
+</div>

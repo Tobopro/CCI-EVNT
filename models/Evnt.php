@@ -216,6 +216,17 @@ class Evnt
         return $events;
     }
 
+  public static function getAllEventsOfUser($db, $idUser)
+{
+    $stmt = $db->prepare("SELECT * FROM events WHERE idUser = :idUser");
+    $stmt->bindParam(':idUser', $idUser);
+    $stmt->execute();
+
+    $events = $stmt->fetchAll();
+    return $events;
+}
+
+
     public static function getEventById($db, $id)
     {
         $result = $db->query("SELECT * FROM events WHERE idEvent = $id");

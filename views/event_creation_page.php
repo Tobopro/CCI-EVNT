@@ -7,11 +7,13 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>';
     }
+    $idUser=$_SESSION[Auth::SESSION_KEY];
 
     ?>
 
     <div id="creation-form" class="container">
 <form action="handlers/evnt_creation_handler.php" method="POST">
+    <input type="number" name="idUser" value="<?php ec($idUser) ?>" hidden>
             <div class="row d-flex  justify-content-between  ">
                 <!--Title box-->
                 <div class="mb-4 mb-lg-4 col-12 offset-0 col-lg-8 offset-lg-2 order-lg-0">
@@ -31,7 +33,7 @@
                                 aura lieu votre EVNT ? </label>
                             <input type="date" class="form-control mb-2" id="input-event-date" name="date"
                                 aria-describedby="date">
-                            <input type="time" class="form-control w-50" name="time" id="hour" aria-describedby="hour">
+                            <!-- <input type="time" class="form-control w-50" name="time" id="hour" aria-describedby="hour"> -->
                         </div>
                     </div>
                     <!--Adress box  2xs-->
@@ -46,10 +48,10 @@
                                 <div class="col-12 col-md-10 col-lg-8 ">
                                     <input type="text" class="form-control" id="adresse" name="adress">
                                 </div>
-                                <div class="col-12 col-md-2 col-lg-4 "> <input type="checkbox"
+                                <!-- <div class="col-12 col-md-2 col-lg-4 "> <input type="checkbox"
                                         class="form-check-input mt-2" id="private-adress">
                                     <label class="form-check-label mt-1" for="private-adress">Privée</label>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
