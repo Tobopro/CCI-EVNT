@@ -33,6 +33,7 @@ class CreationEventController
 
         $db = DB::getDB();
 
+        $idUser=isset($_POST["idUser"]) ? $_POST["idUser"] : "";
         $event_name_register = isset($_POST["title"]) ? $_POST["title"] : "";
         $event_date_register = isset($_POST["date"]) ? $_POST["date"] : "";
         $event_time_register = isset($_POST["time"]) ? $_POST["time"] : "";
@@ -96,7 +97,7 @@ class CreationEventController
                     null, // $priceInfoTODO
                     $event_nbplace_register,
                     $is_free_entry_register,
-                    1, // user ID preset, TODO
+                    $idUser, // user ID preset, TODO
                     $event_category_register,
                     "", // Assuming $urlImage is not provided in the form
                     0, // Initial likes count

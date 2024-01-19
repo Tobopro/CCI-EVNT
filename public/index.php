@@ -100,7 +100,11 @@ if (isset($_GET['url'])) {
             break;
         case 'my_events':
             $controller = new AllEventsController();
-            $controller->index();
+            $controller->index(9,'Admin');
+            break;
+        case 'personnal_events':
+            $controller = new AllEventsController();
+            $controller->index(6,'User');
             break;
         case 'my_users':
             $controller = new UsersController();
