@@ -75,7 +75,6 @@ class UsersController
         $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
         $user->setShowFutureEvnts(($_POST['ShowFutureEvnts'] ?? null) ?: 1);
-        var_dump($user);
         $user->save();
         success("Le compte a bien été crée");
         redirectAndExit('/?url=login');
@@ -123,10 +122,6 @@ class UsersController
         if (isset($_POST['coverPicture'])) {
             $user->setShowEvntScores($_POST['coverPicture'] ?: null);
         }
-
-
-
-
 
         // Update the user in DB
         $result = $user->save();
@@ -199,10 +194,10 @@ class UsersController
     public function delete()
     {
         $id = $_POST['id'] ?? null;
-        $product = $this->getUserById($id);
+        $user = $this->getUserById($id);
 
-        // Delete a product in DB
-        $product->delete();
+        // Delete a user in DB
+        $user->delete();
         LogoutController::logOut();
         App::terminate();
         redirectAndExit("/?url=home");
@@ -212,10 +207,10 @@ class UsersController
     {
         Auth::isAdminOrRedirect();
         $id = $_POST['id'] ?? null;
-        $product = $this->getUserById($id);
+        $user = $this->getUserById($id);
 
-        // Delete a product in DB
-        $product->delete();
+        // Delete a user in DB
+        $user->delete();
     }
 
 

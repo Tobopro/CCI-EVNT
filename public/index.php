@@ -51,9 +51,9 @@ use Controllers\LegalController;
 if (!empty($_GET)) {
     if ($_GET['url'] !== 'home') {
         $body = "<body class = 'body-background";
-        // if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil' or $_GET['url'] === 'evnt') {
-        //     $body .= " with-no-margin";
-        // }
+        if ($_GET['url'] === 'profile' or $_GET['url'] === 'edition_profil' or $_GET['url'] === 'evnt') {
+            $body .= " with-no-margin";
+        }
         $body .= "'>";
         echo $body;
     }

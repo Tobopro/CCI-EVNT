@@ -3,9 +3,9 @@
 namespace Controllers;
 
 use Models\Evnt;
-use Models\Attendee;
 use DB;
 use Auth;
+use Models\ParticipantList;
 
 // require_once __DIR__ . '/../bootstrap/app.php';
 
@@ -15,13 +15,6 @@ class EventPageController
 {
 
     const URL_INDEX = '/?url=dashboard';
-
-    public static function show()
-    {
-        include('../views/evnt-page.php');
-    }
-
-
 
     public function evntPage()
     {
@@ -49,7 +42,7 @@ class EventPageController
         }
 
 
-        $state = self::join($data);
+        $state = ParticipantList::join($data);
         if ($state) {
             success("Vous avez rejoint l'Evnt");
             redirectAndExit("/?url=evnt&id=" . $id);
@@ -118,10 +111,7 @@ class EventPageController
         return Evnt::hydrate($evnt[0]);
     }
 
-    public function join(?array $data)
-    {
-        return DB::insert("isaccepted", $data);
-    }
+
 
     public function getNbParticipantByEvntId(?int $id): ?array
     {

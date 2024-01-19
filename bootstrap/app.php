@@ -15,10 +15,11 @@ require_once __DIR__ . '/../helpers/class/Auth.php';
 
 
 // Import
-
-require_once __DIR__ . "/../Models/User.php";
+require_once __DIR__ . "/../models/ParticipantList.php";
+require_once __DIR__ . "/../models/Model.php";
+require_once __DIR__ . "/../models/User.php";
 require_once __DIR__ . "/../models/Evnt.php";
-require_once __DIR__ . "/../Controllers/UsersController.php";
+require_once __DIR__ . "/../controllers/UsersController.php";
 require_once __DIR__ . "/../controllers/DashboardController.php";
 require_once __DIR__ . "/../controllers/LogoutController.php";
 require_once __DIR__ . "/../controllers/LoginController.php";
