@@ -12,18 +12,18 @@
                 <div class="evnt-page__left-block">
                     <div class="box--yellow evnt-page__title">
                         <h1 class="">
-                            <?php echo $evnt->getTitle() ?>
+                            <?php ec($evnt->getTitle()) ?>
                         </h1>
                     </div>
                     <div class="evnt-page__date-cost">
                         <div class="box--yellow evnt-page__date">
                             <p>
-                                <?php echo $evnt->getDateEvnt(); ?>
+                                <?php ec($evnt->getDateEvnt()) ?>
                             </p>
                         </div>
                         <div class="box--yellow evnt-page__cost">
                             <p>
-                                <?php echo $evnt->getIsFreeEntry() ? "Gratauit" : "Payant" ?>
+                                <?php ec($evnt->getIsFreeEntry() ? "Gratauit" : "Payant") ?>
                             </p>
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <div class="evnt-page__participant box--yellow">
                             <div>
                                 <h2 class="title"> <i class="fa-solid fa-user-group me-2"></i>
-                                    <?php echo count($participantsList->getParticipants()) . "/" . $evnt->getNbParticipants() ?>
+                                    <?php ec(count($participantsList->getParticipants()) . "/" . $evnt->getNbParticipants()) ?>
                                 </h2>
                             </div>
                             <div class="evnt-page__participant-list">
@@ -45,7 +45,7 @@
                         <div>
                             <div class="evnt-page__description box--yellow">
                                 <p>
-                                    <?php echo $evnt->getDescription() ?>
+                                    <?php ec($evnt->getDescription()) ?>
                                 </p>
                             </div>
                             <div class="evnt-page__icon">
@@ -64,7 +64,7 @@
                 <div class="evnt-page__right-block ">
                     <div class="box--yellow evnt-page__adress ">
                         <p>
-                            <?php echo $evnt->getAdress(); ?>
+                            <?php ec($evnt->getAdress()); ?>
                         </p>
                         <div id="map" class="evnt-map"></div>
                     </div>
