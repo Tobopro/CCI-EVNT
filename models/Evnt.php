@@ -211,7 +211,7 @@ class Evnt
 
     public static function getAllEvents($db)
     {
-        $result = $db->query("SELECT * FROM events");
+        $result = $db->query("SELECT * FROM events ORDER BY idEvent DESC");
         $events = $result->fetchAll();
         return $events;
     }

@@ -13,36 +13,22 @@ class DashboardController {
  public static function index()
 {
     $db = DB::getDB();
-
     // Get all events 
     $events = Evnt::getAllEvents($db);
-
     // Number of items wanted by page
     $itemsPerPage = 3;
-
-
     // Get Current page 
     $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-
     // Calculate start index
     $startIndex = ($currentPage - 1) * $itemsPerPage;
-
     // Get end index
     $endIndex = $startIndex + $itemsPerPage;
-
     // Get all events to display
     $eventsToDisplay = array_slice($events, $startIndex, $itemsPerPage);
-
-
-    
-
     // Total number of events
     $totalEvents = count($events);
-
     // Total number of pages necessary ( used in view )
     $totalPages = ceil($totalEvents / $itemsPerPage);
-
-
     // Filter by search
     if (isset($_GET['search']) && ($_GET['search']!== '')) {
        $searchField = $_GET['search'] ?? '';
