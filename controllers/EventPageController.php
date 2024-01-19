@@ -122,30 +122,12 @@ class EventPageController
     public static function showJoinLeftButton($evnt)
     {
         if (isset($_SESSION[Auth::SESSION_KEY]) && $evnt->isParticipatingTo($evnt->getId(), $_SESSION[Auth::SESSION_KEY]) == !NULL && $evnt->isParticipatingTo($evnt->getId(), $_SESSION[Auth::SESSION_KEY]) == true) {
-            echo '
-                        <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
-                            <div id="submit-box" class="mx-2 fs-1 w-100">
-                                <form action="handlers/evnt-handler.php" method="POST">
-                                    <input type="text" name="action" value="leaving" hidden>
-                                    <input type="text" name="id" value="' . $evnt->getId() . '" hidden>
-                                    <button type="submit" class="w-100 evnt-confirm-button">Quitter l\'Evnt</button>
-                                </form>
-                            </div>
-                        </a>';
+            $value = "leaving";
+            $text = "Quitter";
         } else {
-
-            echo '
-                        <a href="" class="evnt-page__join d-flex justify-content-center align-items-center ">
-                            <div id="submit-box" class="mx-2 fs-1 w-100">
-                                <form action="handlers/evnt-handler.php" method="POST">
-                                    <input type="text" name="action" value="join" hidden>
-                                    <input type="text" name="id" value="' . $evnt->getId() . '" hidden>
-                                    <button type="submit" class="w-100 evnt-confirm-button">Rejoindre l\'Evnt</button>
-                                </form>
-                            </div>
-                        </a>';
+            $value = "join";
+            $text = "Rejoindre";
         }
-
-        ;
+        require_once base_path("views/components/joinLeaveEvnt.php");
     }
 }
