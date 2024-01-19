@@ -66,11 +66,12 @@ class UsersController
         );
         // assets/img/profile-pictures/cover-pictures/coverdefault.jpg
         // assets/img/profile-pictures/profiledefault.jpg
-
+      // $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
+        // $user->setProfilePicture($_POST['picture'] ?? '');
         $user->setDescription(($_POST['description'] ?? null) ?: '');
-        $user->setProfilePicture($_POST['picture'] ?? '');
+        $user->setProfilePicture('assets/img/profile-pictures/profiledefault.jpg');
         $user->setCity(($_POST['city'] ?? null) ?: '');
-        $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
+        $user->setCoverPicture('assets/img/profile-pictures/cover-pictures/coverdefault.jpg');
         $user->setIsPublic(($_POST['isPublic'] ?? null) ?: 1);
         $user->setShowEvntScores(($_POST['shsetShowEvntScores'] ?? null) ?: 1);
         $user->setShowPastEvnts(($_POST['ShowPastEvnts'] ?? null) ?: 1);
@@ -351,8 +352,5 @@ class UsersController
         include('../views/my_users.php');
     }
 
-
-
-
-
+    
 }

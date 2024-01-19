@@ -211,10 +211,21 @@ class Evnt
 
     public static function getAllEvents($db)
     {
-        $result = $db->query("SELECT * FROM events");
+        $result = $db->query("SELECT * FROM events ORDER BY idEvent DESC");
         $events = $result->fetchAll();
         return $events;
     }
+
+  public static function getAllEventsOfUser($db, $idUser)
+{
+    $stmt = $db->prepare("SELECT * FROM events WHERE idUser = :idUser");
+    $stmt->bindParam(':idUser', $idUser);
+    $stmt->execute();
+
+    $events = $stmt->fetchAll();
+    return $events;
+}
+
 
     public static function getEventById($db, $id)
     {
