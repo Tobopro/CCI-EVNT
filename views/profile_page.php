@@ -41,9 +41,9 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12 col-lg-8 my-auto">
+                <a href="?url=personnal_events" class="bg-black rounded-pill p-1 ">Mes événements</a>
                 <div id="future-events" class="mx-5">
                     <h4> Evenements à venir</h4>
-
                     <div class="col-12  justify-content-center d-flex">
                         <section id="carouselCard" class="row flex-wrap ">
                             <div id="carouselExampleControls" class="carousel slide carousel-dark"

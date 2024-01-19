@@ -12,7 +12,7 @@ use DB;
 
 class AllEventsController
 {
-    public static function index()
+    public static function index($itemsPerPage)
     {
         Auth::isAdminOrRedirect();
 
@@ -21,8 +21,6 @@ class AllEventsController
         // Get all events 
         $events = Evnt::getAllEvents($db);
 
-        // Number of items wanted by page
-        $itemsPerPage = 9;
         // Get Current page 
         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
         // Calculate start index
