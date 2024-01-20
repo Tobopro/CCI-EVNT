@@ -23,7 +23,9 @@
                         </div>
                         <div class="box--yellow evnt-page__cost">
                             <p>
-                                <?php ec($evnt->getIsFreeEntry() ? "Gratauit" : "Payant") ?>
+                                <?php ec($evnt->getIsFreeEntry() ? "Gratuit" : "Payant");
+
+                                ?>
                             </p>
                         </div>
                     </div>

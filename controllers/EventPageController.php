@@ -24,7 +24,7 @@ class EventPageController
         $data['idEvent'] = $evnt->getId();
         $data['idOwner'] = $evnt->getIdUser();
         $data['participantList'] = self::getParticipantByEvntId($id);
-        $participantsList = ParticipantList::hydrate($data);
+        $participantsList = ParticipantList::hydrate($data); 
         require_once base_path("Views/evnt-page.php");
     }
 
