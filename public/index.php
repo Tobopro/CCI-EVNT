@@ -85,7 +85,7 @@ if (isset($_GET['url'])) {
         // case 'page_EVNT':
         //     $controller = new EventPageController();
         //     $controller->show();
-            // break;
+        // break;
         case 'evnt':
             $controller = new EventPageController();
             $controller->evntPage();
@@ -100,11 +100,11 @@ if (isset($_GET['url'])) {
             break;
         case 'my_events':
             $controller = new AllEventsController();
-            $controller->index(9,'Admin');
+            $controller->index(9, 'Admin');
             break;
         case 'personnal_events':
             $controller = new AllEventsController();
-            $controller->index(6,'User');
+            $controller->index(6, 'User');
             break;
         case 'my_users':
             $controller = new UsersController();
@@ -130,9 +130,6 @@ if (isset($_GET['url'])) {
             $controller = new UsersController();
             $controller->displayUpdateAll();
             break;
-        // case 'test':
-        //     require_once base_path("Views/test.php");
-        //     break;
         default:
             $controller = new ErrorController();
             $controller->wrongURL();
