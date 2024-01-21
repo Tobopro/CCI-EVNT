@@ -7,7 +7,7 @@ use DB;
 class ParticipantList
 {
     const PARTICIPANT_LIST_TABLE = 'isAccepted';
-    const ISLIKED_TABLE='isliked';
+    const ISLIKED_TABLE = 'isliked';
     protected ?int $idEvent;
     protected ?int $idOwner;
     protected ?array $participants;
@@ -15,21 +15,21 @@ class ParticipantList
     public function __construct(?int $idEvent)
     {
         self::setIdEvent($idEvent);
-         $this->participants = [];
+        $this->participants = [];
     }
 
     public static function hydrate(?array $data): ?ParticipantList
     {
         $data['participantList'] ?? null;
         $data['idOwner'] ?? null;
-        $participantList = new ParticipantList($data['idEvent'])?? null;
+        $participantList = new ParticipantList($data['idEvent']) ?? null;
         if ($data['idOwner']) {
             $participantList->idOwner = $data["idOwner"];
         }
         if ($data['participantList']) {
             $participantList->participants = $data['participantList'];
         }
-        
+
         return $participantList;
     }
     public function getIdEvent(): ?int
@@ -60,8 +60,14 @@ class ParticipantList
     public function displayParticipants()
     {
         $participants = $this->getParticipants();
+        $list = '';
         foreach ($participants as $participant) {
-            echo "<li>" . $participant["firstName"] . " " . $participant['lastName'] . "</li>";
+            $list.= "<div>" . $participant["firstName"] . " " . $participant['lastName']
+            if(/* je suis le propriétaire de l'event */)
+            <input type='text' name='idUser'value=" . $participant["idUser"] . " hidden></input>
+            <button type='submit' name='button' value='accept' class='btn btn-success'><i class='fa-solid fa-check'></i></button>
+            <button type='submit' name='button' value='remove' class='btn btn-danger'><i class='fa-solid fa-x'></i></button>
+            $list .= "</div>";
         }
 
     }
@@ -70,5 +76,5 @@ class ParticipantList
         return DB::insert(self::PARTICIPANT_LIST_TABLE, $data);
     }
 
-    
+
 }

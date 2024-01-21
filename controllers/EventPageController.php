@@ -15,17 +15,19 @@ class EventPageController
 {
 
     const URL_INDEX = '/?url=dashboard';
+    const URL_HANDLER = '/handlers/participant-list-handler.php';
 
     public function evntPage()
     {
         Auth::isAuthOrRedirect();
+        $listUrl = self::URL_HANDLER;
         $id = $_GET['id'] ?? null;
         $evnt = self::getCurrentEvntById($id);
         $data['idEvent'] = $evnt->getId();
         $data['idOwner'] = $evnt->getIdUser();
         $data['participantList'] = self::getParticipantByEvntId($id);
-        $participantsList = ParticipantList::hydrate($data); 
-        $heartIcon=self::showHeartIcon();
+        $participantsList = ParticipantList::hydrate($data);
+        $heartIcon = self::showHeartIcon();
         require_once base_path("Views/evnt-page.php");
     }
 
@@ -47,7 +49,7 @@ class EventPageController
         }
 
 
-        $state = ParticipantList::join($data);
+        $state = ParticipantList::join($data); // TODO verify if the event is full
         if ($state) {
             success("Vous avez rejoint l'Evnt");
             redirectAndExit("/?url=evnt&id=" . $id);
@@ -120,7 +122,7 @@ class EventPageController
 
     public function getParticipantByEvntId(?int $id): ?array
     {
-        return DB::fetch("SELECT users.firstName, users.lastName FROM users JOIN isAccepted ON users.idUser = isAccepted.idUser WHERE isAccepted.idEvent = :idEvent", ["idEvent" => $id]);
+        return DB::fetch("SELECT users.firstName, users.lastName, users.idUser FROM users JOIN isAccepted ON users.idUser = isAccepted.idUser WHERE isAccepted.idEvent = :idEvent", ["idEvent" => $id]);
 
     }
 
@@ -141,48 +143,52 @@ class EventPageController
         return DB::insert('isliked', $data);
     }
 
-      public static function unlikeStatic(?array $data)
+    public static function unlikeStatic(?array $data)
     {
         return DB::statement(
-            "DELETE FROM isLiked WHERE idUser = :idUser AND idEvent = :idEvent",$data
+            "DELETE FROM isLiked WHERE idUser = :idUser AND idEvent = :idEvent",
+            $data
         );
     }
 
-    public static function isLikedStatic(?array $data){
+    public static function isLikedStatic(?array $data)
+    {
         return DB::statement("SELECT * FROM isliked WHERE idUser = :idUser AND idEvent = :idEvent", $data);
     }
 
-    public static function Likes(){
+    public static function Likes()
+    {
         $id = $_POST['id'] ?? null;
         $user = $_SESSION[Auth::SESSION_KEY] ?? null;
         $data = [
             "idUser" => $user,
             "idEvent" => $id
         ];
-        if (self::isLikedStatic($data)==0){
-        $state = self::likeStatic($data);
-        if ($state) {
-            success("Vous avez aimé l'Evnt");
-            redirectAndExit("/?url=evnt&id=" . $id);
+        if (self::isLikedStatic($data) == 0) {
+            $state = self::likeStatic($data);
+            if ($state) {
+                success("Vous avez aimé l'Evnt");
+                redirectAndExit("/?url=evnt&id=" . $id);
+            } else {
+                errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+                redirectAndExit(self::URL_INDEX);
+            }
         } else {
-            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
-            redirectAndExit(self::URL_INDEX);
+            $state = self::unlikeStatic($data);
+            if ($state) {
+                errors("Vous n'aimez plus l'Evnt");
+                redirectAndExit("/?url=evnt&id=" . $id);
+            } else {
+                errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+                redirectAndExit(self::URL_INDEX);
+            }
         }
-        }else{
-             $state = self::unlikeStatic($data);
-                 if ($state) {
-                    errors("Vous n'aimez plus l'Evnt");
-                    redirectAndExit("/?url=evnt&id=" . $id);
-                } else {
-                    errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
-                    redirectAndExit(self::URL_INDEX);
-        }
-        }
-        
-    }
- 
 
-    public static function showHeartIcon(){
+    }
+
+
+    public static function showHeartIcon()
+    {
 
         $id = $_GET['id'] ?? null;
         $user = $_SESSION[Auth::SESSION_KEY] ?? null;
@@ -190,10 +196,10 @@ class EventPageController
             "idUser" => $user,
             "idEvent" => $id
         ];
-        if (self::isLikedStatic($data)==0){
-            $heartIcon='fa-regular';
-        }else{
-            $heartIcon='fa-solid';
+        if (self::isLikedStatic($data) == 0) {
+            $heartIcon = 'fa-regular';
+        } else {
+            $heartIcon = 'fa-solid';
         }
         return $heartIcon;
     }

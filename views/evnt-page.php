@@ -38,32 +38,33 @@
                             </div>
                             <div class="evnt-page__participant-list">
                                 <ul>
-                                    <?php
-                                    $participantsList->displayParticipants();
-                                    ?>
+                                    <form action="<?php echo $listUrl ?>" method="POST">
+                                        <?php $participantsList->displayParticipants(); ?>
+                                    </form>
                                 </ul>
                             </div>
                         </div>
                         <div>
                             <div class="evnt-page__description box--yellow">
-                                <p>
-                                    <?php ec($evnt->getDescription()) ?>
-                                </p>
+
+                                <?php ec($evnt->getDescription()) ?>
+
                             </div>
                             <div class="evnt-page__icon">
                                 <a href=""
                                     class="d-none box--yellow evnt-page__icon--share d-flex justify-content-center align-items-center ">
                                     <i class="fa-solid fa-share-from-square fa-2xl"></i>
                                 </a>
-                              
-                                <form action="handlers/evnt-handler.php" method="POST" class='w-100' >
+
+                                <form action="handlers/evnt-handler.php" method="POST" class='w-100'>
                                     <input type="text" name="action" value="isLiked" hidden>
                                     <input type="number" name="id" value="<?php echo $evnt->getId() ?>" hidden>
-                                    <button type="submit" class="box--yellow evnt-page__icon--like  d-flex justify-content-center align-items-center">
-                                    <?php echo '<i class="'.$heartIcon.' fa-heart fa-2xl "></i>' ;?>
+                                    <button type="submit"
+                                        class="box--yellow evnt-page__icon--like  d-flex justify-content-center align-items-center">
+                                        <?php echo '<i class="' . $heartIcon . ' fa-heart fa-2xl "></i>'; ?>
                                     </button>
                                 </form>
-                    
+
                             </div>
                         </div>
                     </div>
