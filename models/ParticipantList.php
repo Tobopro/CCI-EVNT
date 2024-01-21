@@ -65,10 +65,10 @@ class ParticipantList
         foreach ($participants as $participant) {
             $list .= "<form action='" . EventPageController::URL_HANDLER . "' method='POST'>";
             $list .= "<input type='text' name='idEvent' value='" . $this->getIdEvent() . "' hidden>";
-            $list .= "<div class='d-flex justify-content-between'> <div class='ms-2'>" . $participant["firstName"] . " " . $participant['lastName'] . "</div>";
+            $list .= "<div class='d-flex justify-content-between'> <div class='ms-2 pt-2'>" . $participant["firstName"] . " " . $participant['lastName'] . "</div>";
             if ($this->idOwner == $_SESSION[\Auth::SESSION_KEY]) {
                 $list .= "<input type='text' name='idUser' value='" . $participant["idUser"] . "' hidden>";
-                $list .= "<div>";
+                $list .= "<div class='pe-2'>";
                 if
                 (!$participant["isaccepted"]) {
                     $list .= "<button type='submit' name='button' value='accept' class='btn btn-success'><i class='fa-solid fa-check'></i></button>";
