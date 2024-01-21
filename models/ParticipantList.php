@@ -65,14 +65,15 @@ class ParticipantList
         foreach ($participants as $participant) {
             $list .= "<form action='" . EventPageController::URL_HANDLER . "' method='POST'>";
             $list .= "<input type='text' name='idEvent' value='" . $this->getIdEvent() . "' hidden>";
-            $list .= "<div>" . $participant["firstName"] . " " . $participant['lastName'];
+            $list .= "<div class='d-flex justify-content-between'> <div class='ms-2'>" . $participant["firstName"] . " " . $participant['lastName'] . "</div>";
             if ($this->idOwner == $_SESSION[\Auth::SESSION_KEY]) {
                 $list .= "<input type='text' name='idUser' value='" . $participant["idUser"] . "' hidden>";
+                $list .= "<div>";
                 if
                 (!$participant["isaccepted"]) {
                     $list .= "<button type='submit' name='button' value='accept' class='btn btn-success'><i class='fa-solid fa-check'></i></button>";
                 }
-                $list .= "<button type='submit' name='button' value='remove' class='btn btn-danger'><i class='fa-solid fa-x'></i></button>";
+                $list .= "<button type='submit' name='button' value='remove' class='btn btn-danger ms-2'><i class='fa-solid fa-x'></i></button>";
             }
             $list .= "</div></form>";
         }
@@ -113,5 +114,12 @@ class ParticipantList
     public function toAccepted()
     {
         $this->participants['isaccepted'] = 1;
+    }
+    public static function deleteParticipation(int $userId, int $eventId): int|false
+    {
+        return DB::statement(
+            "DELETE FROM isAccepted WHERE idUser = :idUser AND idEvent = :idEvent",
+            ['idUser' => $userId, 'idEvent' => $eventId],
+        );
     }
 }

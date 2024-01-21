@@ -13,4 +13,7 @@ if (!empty($_POST['button'])) {
     if ($_POST['button'] === 'accept') {
         $evntPage->updateList();
     }
+    if ($_POST['button'] == 'remove') {
+        $evntPage->removeUser();
+    }
 }

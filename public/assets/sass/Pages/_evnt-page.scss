@@ -130,9 +130,7 @@ h1 {
     &__participant {
         height: 57vh;
 
-        &>div {
-            display: flex;
-        }
+
 
         @media (max-width: $small) {
             height: 5.4vh;

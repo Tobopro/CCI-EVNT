@@ -6,6 +6,7 @@ use Models\Evnt;
 use DB;
 use Auth;
 use Models\ParticipantList;
+use Models\User;
 
 // require_once __DIR__ . '/../bootstrap/app.php';
 
@@ -81,6 +82,7 @@ class EventPageController
     public function leavingEvnt()
     {
         $id = $_POST['id'] ?? null;
+        $userId = $_SESSION[Auth::SESSION_KEY] ?? null;
 
         //check evnt
         $evnt = DB::fetch("SELECT * FROM events WHERE idEvent = :id;", ['id' => $id]);
@@ -89,7 +91,7 @@ class EventPageController
             redirectAndExit(self::URL_INDEX);
         }
 
-        $state = self::deleteParticipation();
+        $state = ParticipantList::deleteParticipation($userId, $id);
         if ($state) {
             success("Vous avez quitté l'Evnt");
             redirectAndExit("/?url=evnt&id=" . $id);
@@ -99,21 +101,20 @@ class EventPageController
         }
     }
 
-    public function deleteParticipation(): int|false
+    public function removeUser()
     {
-        $eventId = $_POST['id'] ?? null;
-        $userId = $_SESSION[Auth::SESSION_KEY] ?? null;
-        return self::staticDeleteParticipation($userId, $eventId);
-    }
 
-    public static function staticDeleteParticipation(int $userId, int $eventId): int|false
-    {
-        return DB::statement(
-            "DELETE FROM isAccepted WHERE idUser = :idUser AND idEvent = :idEvent",
-            ['idUser' => $userId, 'idEvent' => $eventId],
-        );
+        $idUser = $_POST["idUser"] ?? null;
+        $idEvent = $_POST["idEvent"] ?? null;
+        $user = ParticipantList::getParticipantByEvntId($idEvent);
+        $state = ParticipantList::deleteParticipation($idUser, $idEvent);
+        if ($state) {
+            success($user[0]['firstName'] . " a été retirer de l'Evnt");
+        } else {
+            errors("Une erreur a été rencontrée lors du traitement des informations");
+        }
+        redirectAndExit("/?url=evnt&id=" . $idEvent);
     }
-
     static function getCurrentEvntbyId(?int $id): Evnt
     {
         if (!$id) {
