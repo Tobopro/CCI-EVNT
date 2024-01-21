@@ -7,6 +7,7 @@ use DB;
 class ParticipantList
 {
     const PARTICIPANT_LIST_TABLE = 'isAccepted';
+    const ISLIKED_TABLE='isliked';
     protected ?int $idEvent;
     protected ?int $idOwner;
     protected ?array $participants;
@@ -68,4 +69,6 @@ class ParticipantList
     {
         return DB::insert(self::PARTICIPANT_LIST_TABLE, $data);
     }
+
+    
 }
