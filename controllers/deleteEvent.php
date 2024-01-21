@@ -41,4 +41,3 @@ if (isset($_GET['id'])) {
 } else {
     echo "ID de l'événement non fourni !";
 }
-?>
