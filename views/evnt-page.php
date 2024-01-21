@@ -23,7 +23,9 @@
                         </div>
                         <div class="box--yellow evnt-page__cost">
                             <p>
-                                <?php ec($evnt->getIsFreeEntry() ? "Gratauit" : "Payant") ?>
+                                <?php ec($evnt->getIsFreeEntry() ? "Gratuit" : "Payant");
+
+                                ?>
                             </p>
                         </div>
                     </div>
@@ -50,13 +52,18 @@
                             </div>
                             <div class="evnt-page__icon">
                                 <a href=""
-                                    class="box--yellow evnt-page__icon--share d-flex justify-content-center align-items-center ">
+                                    class="d-none box--yellow evnt-page__icon--share d-flex justify-content-center align-items-center ">
                                     <i class="fa-solid fa-share-from-square fa-2xl"></i>
                                 </a>
-                                <a href=""
-                                    class="box--yellow evnt-page__icon--like  d-flex justify-content-center align-items-center">
-                                    <i class="fa-regular fa-heart fa-2xl"></i>
-                                </a>
+                              
+                                <form action="handlers/evnt-handler.php" method="POST" class='w-100' >
+                                    <input type="text" name="action" value="isLiked" hidden>
+                                    <input type="number" name="id" value="<?php echo $evnt->getId() ?>" hidden>
+                                    <button type="submit" class="box--yellow evnt-page__icon--like  d-flex justify-content-center align-items-center">
+                                    <?php echo '<i class="'.$heartIcon.' fa-heart fa-2xl "></i>' ;?>
+                                    </button>
+                                </form>
+                    
                             </div>
                         </div>
                     </div>

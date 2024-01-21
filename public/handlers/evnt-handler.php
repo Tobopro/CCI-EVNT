@@ -16,4 +16,8 @@ if (!empty($_POST['action'])) {
         Auth::isAuthOrRedirect();
         $controller->leavingEvnt();
     }
+     elseif ($_POST['action'] === 'isLiked') {
+        Auth::isAuthOrRedirect();
+        $controller->Likes();
+    }
 }

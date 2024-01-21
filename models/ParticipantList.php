@@ -7,6 +7,7 @@ use DB;
 class ParticipantList
 {
     const PARTICIPANT_LIST_TABLE = 'isAccepted';
+    const ISLIKED_TABLE='isliked';
     protected ?int $idEvent;
     protected ?int $idOwner;
     protected ?array $participants;
@@ -14,19 +15,21 @@ class ParticipantList
     public function __construct(?int $idEvent)
     {
         self::setIdEvent($idEvent);
+         $this->participants = [];
     }
 
-    public static function hydrate(array $data): ParticipantList
+    public static function hydrate(?array $data): ?ParticipantList
     {
         $data['participantList'] ?? null;
         $data['idOwner'] ?? null;
-        $participantList = new ParticipantList($data['idEvent']);
+        $participantList = new ParticipantList($data['idEvent'])?? null;
         if ($data['idOwner']) {
             $participantList->idOwner = $data["idOwner"];
         }
         if ($data['participantList']) {
             $participantList->participants = $data['participantList'];
         }
+        
         return $participantList;
     }
     public function getIdEvent(): ?int
@@ -66,4 +69,6 @@ class ParticipantList
     {
         return DB::insert(self::PARTICIPANT_LIST_TABLE, $data);
     }
+
+    
 }
