@@ -25,6 +25,7 @@ class EventPageController
         $data['idOwner'] = $evnt->getIdUser();
         $data['participantList'] = self::getParticipantByEvntId($id);
         $participantsList = ParticipantList::hydrate($data); 
+        $heartIcon=self::showHeartIcon();
         require_once base_path("Views/evnt-page.php");
     }
 
@@ -133,5 +134,67 @@ class EventPageController
             $text = "Rejoindre";
         }
         require_once base_path("views/components/joinLeaveEvnt.php");
+    }
+
+    public static function likeStatic(?array $data)
+    {
+        return DB::insert('isliked', $data);
+    }
+
+      public static function unlikeStatic(?array $data)
+    {
+        return DB::statement(
+            "DELETE FROM isLiked WHERE idUser = :idUser AND idEvent = :idEvent",$data
+        );
+    }
+
+    public static function isLikedStatic(?array $data){
+        return DB::statement("SELECT * FROM isliked WHERE idUser = :idUser AND idEvent = :idEvent", $data);
+    }
+
+    public static function Likes(){
+        $id = $_POST['id'] ?? null;
+        $user = $_SESSION[Auth::SESSION_KEY] ?? null;
+        $data = [
+            "idUser" => $user,
+            "idEvent" => $id
+        ];
+        if (self::isLikedStatic($data)==0){
+        $state = self::likeStatic($data);
+        if ($state) {
+            success("Vous avez aimé l'Evnt");
+            redirectAndExit("/?url=evnt&id=" . $id);
+        } else {
+            errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+            redirectAndExit(self::URL_INDEX);
+        }
+        }else{
+             $state = self::unlikeStatic($data);
+                 if ($state) {
+                    errors("Vous n'aimez plus l'Evnt");
+                    redirectAndExit("/?url=evnt&id=" . $id);
+                } else {
+                    errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
+                    redirectAndExit(self::URL_INDEX);
+        }
+        }
+        
+    }
+ 
+
+    public static function showHeartIcon(){
+
+        $id = $_GET['id'] ?? null;
+        $user = $_SESSION[Auth::SESSION_KEY] ?? null;
+        $data = [
+            "idUser" => $user,
+            "idEvent" => $id
+        ];
+        if (self::isLikedStatic($data)==0){
+            $heartIcon='fa-regular';
+        }else{
+            $heartIcon='fa-solid';
+        }
+        return $heartIcon;
     }
 }
