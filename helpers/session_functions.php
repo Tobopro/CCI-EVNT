@@ -23,17 +23,6 @@ function success(string $message)
     $_SESSION['success'][] = $message;
 }
 
-function errOrSuccess(string $message, bool $type)
-{
-    $type ? $type = 'success' : $type = 'errors';
-    if (!isset($_SESSION[$type])) {
-        $_SESSION[$type] = [];
-    }
-
-    $_SESSION[$type][] = $message;
-}
-
-
 function displayErrorsAndMessages()
 {
     // Errors messages

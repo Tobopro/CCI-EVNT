@@ -25,7 +25,7 @@ class EventPageController
         $evnt = self::getCurrentEvntById($id);
         $data['idEvent'] = $evnt->getId();
         $data['idOwner'] = $evnt->getIdUser();
-        $data['participantList'] = self::getParticipantByEvntId($id);
+        $data['participantList'] = ParticipantList::getParticipantByEvntId($id);
         $participantsList = ParticipantList::hydrate($data);
         $heartIcon = self::showHeartIcon();
         require_once base_path("Views/evnt-page.php");
@@ -38,7 +38,7 @@ class EventPageController
         $data = [
             "idUser" => $user,
             "idEvent" => $id,
-            "isAccepted" => 1
+            "isAccepted" => 0
         ];
 
         //check evnt
@@ -60,6 +60,24 @@ class EventPageController
 
     }
 
+    public function updateList()
+    {
+        $idUser = $_POST["idUser"];
+        $idEvent = $_POST["idEvent"];
+        $evnt = EventPageController::getCurrentEvntById($_POST["idEvent"]);
+        $data['idEvent'] = $evnt->getId();
+        $data['idOwner'] = $evnt->getIdUser();
+        $data['participantList'] = ParticipantList::getParticipantByEvntId($idEvent, $idUser);
+        $participantsList = ParticipantList::hydrate($data);
+        $state = $participantsList->acceptPending($idUser);
+
+        if ($state) {
+            success("Vous avez accepté " . $data['participantList'][0]['firstName'] . " dans votre Evnt.");
+        } else {
+            errors("Une erreur a été rencontrée lors du traitement des informations");
+        }
+        redirectAndExit("/?url=evnt&id=" . $idEvent);
+    }
     public function leavingEvnt()
     {
         $id = $_POST['id'] ?? null;
@@ -116,14 +134,6 @@ class EventPageController
         }
 
         return Evnt::hydrate($evnt[0]);
-    }
-
-
-
-    public function getParticipantByEvntId(?int $id): ?array
-    {
-        return DB::fetch("SELECT users.firstName, users.lastName, users.idUser FROM users JOIN isAccepted ON users.idUser = isAccepted.idUser WHERE isAccepted.idEvent = :idEvent", ["idEvent" => $id]);
-
     }
 
     public static function showJoinLeftButton($evnt)

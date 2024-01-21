@@ -66,7 +66,7 @@ class UsersController
         );
         // assets/img/profile-pictures/cover-pictures/coverdefault.jpg
         // assets/img/profile-pictures/profiledefault.jpg
-      // $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
+        // $user->setCoverPicture(($_POST['coverPicture'] ?? ''));
         // $user->setProfilePicture($_POST['picture'] ?? '');
         $user->setDescription(($_POST['description'] ?? null) ?: '');
         $user->setProfilePicture('assets/img/profile-pictures/profiledefault.jpg');
@@ -218,7 +218,6 @@ class UsersController
 
     public function getUserById(?int $id): User
     {
-        var_dump($id);
         if (!$id) {
             errors('404. Page introuvable');
 
@@ -352,5 +351,5 @@ class UsersController
         include('../views/my_users.php');
     }
 
-    
+
 }

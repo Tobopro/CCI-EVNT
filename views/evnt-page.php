@@ -38,9 +38,7 @@
                             </div>
                             <div class="evnt-page__participant-list">
                                 <ul>
-                                    <form action="<?php echo $listUrl ?>" method="POST">
-                                        <?php $participantsList->displayParticipants(); ?>
-                                    </form>
+                                    <?php $participantsList->displayParticipants(); ?>
                                 </ul>
                             </div>
                         </div>

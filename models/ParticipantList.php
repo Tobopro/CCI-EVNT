@@ -2,6 +2,7 @@
 
 namespace Models;
 
+use Controllers\EventPageController;
 use DB;
 
 class ParticipantList
@@ -59,22 +60,58 @@ class ParticipantList
 
     public function displayParticipants()
     {
+        $list = "";
         $participants = $this->getParticipants();
-        $list = '';
         foreach ($participants as $participant) {
-            $list.= "<div>" . $participant["firstName"] . " " . $participant['lastName']
-            if(/* je suis le propriétaire de l'event */)
-            <input type='text' name='idUser'value=" . $participant["idUser"] . " hidden></input>
-            <button type='submit' name='button' value='accept' class='btn btn-success'><i class='fa-solid fa-check'></i></button>
-            <button type='submit' name='button' value='remove' class='btn btn-danger'><i class='fa-solid fa-x'></i></button>
-            $list .= "</div>";
+            $list .= "<form action='" . EventPageController::URL_HANDLER . "' method='POST'>";
+            $list .= "<input type='text' name='idEvent' value='" . $this->getIdEvent() . "' hidden>";
+            $list .= "<div>" . $participant["firstName"] . " " . $participant['lastName'];
+            if ($this->idOwner == $_SESSION[\Auth::SESSION_KEY]) {
+                $list .= "<input type='text' name='idUser' value='" . $participant["idUser"] . "' hidden>";
+                if
+                (!$participant["isaccepted"]) {
+                    $list .= "<button type='submit' name='button' value='accept' class='btn btn-success'><i class='fa-solid fa-check'></i></button>";
+                }
+                $list .= "<button type='submit' name='button' value='remove' class='btn btn-danger'><i class='fa-solid fa-x'></i></button>";
+            }
+            $list .= "</div></form>";
         }
-
+        echo $list;
     }
     public static function join(?array $data)
     {
-        return DB::insert(self::PARTICIPANT_LIST_TABLE, $data);
+        return
+            DB::insert(self::PARTICIPANT_LIST_TABLE, $data);
+    }
+    public static function getParticipantByEvntId(
+        ?int $id,
+        ?int
+        $idUser = null
+    ): ?array {
+        $request = "SELECT users.firstName, users.lastName, users.idUser, isAccepted.isaccepted
+            FROM users 
+            JOIN isAccepted 
+            ON users.idUser = isAccepted.idUser 
+            WHERE isAccepted.idEvent = :idEvent";
+        $data["idEvent"] = $id;
+        if ($idUser) {
+            $request
+                .= " AND isAccepted.idUser = :idUser";
+            $data["idUser"] = $idUser;
+        }
+        return DB::fetch($request, $data);
+    }
+    public
+        function acceptPending(
+        ?int $idUser
+    ) {
+        $this->toAccepted();
+        $data['isaccepted'] = $this->participants['isaccepted'];
+        return DB::update(self::PARTICIPANT_LIST_TABLE, $data, $idUser, 'idUser');
     }
 
-
+    public function toAccepted()
+    {
+        $this->participants['isaccepted'] = 1;
+    }
 }
