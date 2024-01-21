@@ -21,6 +21,8 @@
             <form action="" method="GET">
                 <label for="search">Rechercher: </label>
                 <input id="search" type="text" name="search" value="<?php $searchField ?>">
+                <!-- <input type="checkbox" id="liked" name="liked" <?php echo isset($_GET['liked']) && $_GET['liked'] === 'on' ? 'checked' : ''; ?>>
+                <label for="liked">Favoris</label> -->
                 <input type="hidden" name="url" value="dashboard">
                 <input type="submit" value="Rechercher">
 
