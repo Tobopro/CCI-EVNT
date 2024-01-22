@@ -30,15 +30,15 @@ function checkTypeInput(form) {
     });
     return names;
 }
-function createFormInput(form, regex) {
+function createFormInput(form, type, regex) {
     inputNames = checkTypeInput(form);
     inputNames.forEach(name => {
         if (name === 'passwordConfirmation') {
             return;
         }
         reg = regex[name];
-        form[name].addEventListener('input', testRegex.bind(form[name], reg));
+        form[name].addEventListener(type, testRegex.bind(form[name], reg));
     });
 }
 
-createFormInput(form, regex);
+createFormInput(form, 'input', regex);
