@@ -109,7 +109,7 @@ class EventPageController
         $user = ParticipantList::getParticipantByEvntId($idEvent);
         $state = ParticipantList::deleteParticipation($idUser, $idEvent);
         if ($state) {
-            success($user[0]['firstName'] . " a été retirer de l'Evnt");
+            success($user[0]['firstName'] . " a été retiré(e) de l'Evnt");
         } else {
             errors("Une erreur a été rencontrée lors du traitement des informations");
         }
