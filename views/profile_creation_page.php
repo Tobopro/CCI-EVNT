@@ -3,8 +3,8 @@
         <div class="row">
             <?php displayErrorsAndMessages(); ?>
             <h2>Création de compte</h2>
-            <form action=<?php ec($actionUrl) ?> method="POST">
-                <input type="text" name="action" value="store" hidden>
+            <form action=<?php ec($actionUrl) ?> method="POST" name="inscription">
+                <input type="hidden" name="action" value="store" hidden>
                 <div class="form-group">
                     <label for="lastName">Nom</label>
                     <input class="form-control" id="lastName" type="text" name="lastName" required>
@@ -27,7 +27,8 @@
                 <br>
                 <div class="form-group">
                     <label for="password">Confirmer le mot de passe</label>
-                    <input class="form-control" id="password" type="password" name="passwordConfirmation" required>
+                    <input class="form-control" id="passwordConfirmation" type="password" name="passwordConfirmation"
+                        required>
                 </div>
                 <br>
                 <button class="btn btn-primary" type="submit">Valider</button>

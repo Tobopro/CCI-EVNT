@@ -64,3 +64,29 @@ h6 {
 body {
     @include text-content-font;
 }
+
+
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+.uneditable-input:focus {
+    border: solid;
+    border-color: var(--color-input);
+    box-shadow: none;
+    outline: 0 none;
+}
+
+// .success,
+// .success:focus {
+//     border: solid;
+//     border-color: #38cc8c;
+//     outline: 0 none;
+// }
+
+// .false,
+// .false:focus {
+//     border: solid;
+//     border-color: #ff7a7a;
+//     outline: 0 none;
+// }
