@@ -14,7 +14,7 @@ class DashboardController {
 {
     $db = DB::getDB();
 
-    if(isset($_GET['liked']) && $_GET['liked']=='on'){
+    if(isset($_GET['liked']) && $_GET['liked']=='on' && isset($_SESSION[Auth::SESSION_KEY])){
         $events = Evnt::getAllEventsLikedOfUser($db,$_SESSION[Auth::SESSION_KEY]);
     } else{
          // Get all events 
