@@ -52,7 +52,7 @@ class EventPageController
 
         $state = ParticipantList::join($data); // TODO verify if the event is full
         if ($state) {
-            success("Vous avez rejoint l'Evnt");
+            success("Votre demande de participation a été enregistré");
             redirectAndExit("/?url=evnt&id=" . $id);
         } else {
             errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
