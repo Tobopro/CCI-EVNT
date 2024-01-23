@@ -1,31 +1,44 @@
 <?php
 
-require_once("/laragon/www/CCI-EVNT/models/Evnt.php");
-require_once("/laragon/www/CCI-EVNT/helpers/class/DB.php");
+namespace Controllers;
+
+require_once __DIR__ . '/../bootstrap/app.php';
+
 
 use Models\Evnt;
+use DB;
+use Auth;
 
-if (isset($_GET['id'])) {
-    $eventId = $_GET['id'];
-    $db = DB::getDB(); // Ajustez cela en fonction de votre méthode de connexion à la base de données
+Class DeleteEventController{
 
-    // Vérifiez si l'événement existe
-    $event = Evnt::getEventById($db, $eventId);
-    if (!$event) {
-        echo "Événement non trouvé !";
-        exit;
-    }
+
+    public static function deleteEvent ()
+    {
+    if (isset($_GET['id'])) {
+        $eventId = $_GET['id'];
+        $db = DB::getDB(); // Ajustez cela en fonction de votre méthode de connexion à la base de données
+
+        // Vérifiez si l'événement existe
+        $event = Evnt::getEventById($db, $eventId);
+            if (!$event) {
+                echo "Événement non trouvé !";
+                exit;
+            }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Gérez la soumission du formulaire pour supprimer l'événement de la base de données
         $event = Evnt::hydrate($event);
         $result = $event->deleteEvent($db, $eventId);
 
-        if ($result) {
+        if ($result && isset($_SESSION['admin'])) {
             // Redirigez vers la page de liste des événements après la suppression
             header("Location: ../index.php?url=my_events");
             exit;
-        } else {
+        } elseif ($result){
+            header("Location: ../index.php?url=dashboard");
+            exit;
+        }
+        else {
             echo "Erreur lors de la suppression de l'événement !";
         }
     }
@@ -40,4 +53,7 @@ if (isset($_GET['id'])) {
     echo '</div>';
 } else {
     echo "ID de l'événement non fourni !";
+}
+
+    }
 }

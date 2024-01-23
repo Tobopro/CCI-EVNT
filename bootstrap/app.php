@@ -29,6 +29,7 @@ require_once __DIR__ . "/../controllers/EventPageController.php";
 require_once __DIR__ . "/../controllers/AllEventsController.php";
 require_once __DIR__ . "/../controllers/MobileMapController.php";
 require_once __DIR__ . "/../controllers/ErrorController.php";
+require_once __DIR__ . "/../controllers/deleteEvent.php";
 
 
 
