@@ -77,16 +77,14 @@ input[type="email"]:focus,
     outline: 0 none;
 }
 
-// .success,
-// .success:focus {
-//     border: solid;
-//     border-color: #38cc8c;
-//     outline: 0 none;
-// }
+.success-input {
+    border: solid;
+    border-color: #38cc8c;
+    outline: 0 none;
+}
 
-// .false,
-// .false:focus {
-//     border: solid;
-//     border-color: #ff7a7a;
-//     outline: 0 none;
-// }
+.false-input {
+    border: solid;
+    border-color: #ff7a7a;
+    outline: 0 none;
+}

@@ -14,10 +14,16 @@ const form = document.querySelector("form[name='inscription']");
 function testRegex(regex, e) {
     if (this.value === '') {
         document.documentElement.style.setProperty('--color-input', '$sub-color');
+        this.classList.remove("false-input");
+        this.classList.remove("success-input");
     } else if (regex.test(this.value)) {
         document.documentElement.style.setProperty('--color-input', '#38cc8c');
+        this.classList.add("success-input");
+        this.classList.remove("false-input");
     } else if (!regex.test(this.value)) {
         document.documentElement.style.setProperty('--color-input', '#ff7a7a');
+        this.classList.remove("success-input");
+        this.classList.add("false-input");
     }
 }
 function checkTypeInput(form) {
@@ -42,3 +48,10 @@ function createFormInput(form, type, regex) {
 }
 
 createFormInput(form, 'input', regex);
+createFormInput(form, 'focusin', regex);
+const inputs = form.querySelectorAll('input')
+inputs.forEach(input => {
+    input.addEventListener('focusout', (e) => {
+        document.documentElement.style.setProperty('--color-input', '$sub-color');
+    });
+})
