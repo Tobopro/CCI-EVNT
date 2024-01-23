@@ -145,7 +145,7 @@
                     <div id="description-box" class="px-3 pt-3  box--yellow fs-5 ">
                         <label for="description"><i class="fa-solid fa-pencil pb-3"></i> Description</label>
                         <div class="input-group">
-                            <input name="description" class="form-control pb-2" aria-label="textarea description"
+                            <input type ='textarea' name="description" class="form-control pb-2 " aria-label="textarea description"
                                 placeholder="Un EVNT est plus marrant à plusieurs. Un bon résumé augmentera sûrement le taux de participation"></textarea>
                         </div>
                     </div>
@@ -154,7 +154,9 @@
                     <!--Picture box 7xs-->
                     <div class="mb-4 col-12 mb-5 mb-lg-3 ">
                         <div id="picture-box" class="px-3 py-3  box--yellow fs-5 w-100">
-                            <label for="price"><i class="fa-solid fa-pencil "></i> Choisissez votre image</label>
+                            <!-- <label for="picture"><i class="fa-solid fa-pencil "></i> Choisissez votre image</label> -->
+                            <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                                alt="photographie d'un groupe de fêtard" />
 
                         </div>
                     </div>
