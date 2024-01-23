@@ -53,14 +53,40 @@
                     <div class="inner">
                         <ul class="carousel-evnt container">
                             <!-- data-flickity='{ "cellAlign": "left", "contain": true, "prevNextButtons": false }' -->
-                            <?php
-                            // 10 est une valeure temporaire et devra etre remplacé en fonction du nombre de card evnt que l'on veut mettre dans le carousel
-                            for ($i = 0; $i < 10; $i++) {
-                                echo "<li>";
-                                include "../views/components/card.php";
-                                echo "</li>";
-                            }
-                            ?>
+                        <?php foreach ($hydratedEvents as $hydratedEvent):
+
+                        ?>
+                    <li>
+                    <article class="evnt-single mb-2">
+                        <a href="<?php ec('?url=evnt&id=' . $hydratedEvent->getId()) ?>">
+                            <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
+                                alt="photographie d'un groupe de fêtard" />
+                            <div class="padding-evnt">
+                                <ul class="details-evnt">
+                                    <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
+                                        <?php  ec($hydratedEvent->getAdress()) ?>
+                                    </li>
+                                    <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" />
+                                        <?php ec($hydratedEvent->getDateEvnt()) ?>
+                                    </li>
+                                    <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" />
+                                        <?php ec($hydratedEvent->getNbParticipants()) ?>
+                                    </li>
+                                </ul>
+                                <h3>
+                                    <?php ec($hydratedEvent->getTitle()) ?>
+                                </h3>
+                                <ul class="liste-categories">
+                                    <li>
+                                        <?php $hydratedEvent->getCategoryName(); ?>
+                                    </li>
+                                </ul>
+                            </div>
+                        </a>
+                    </article>
+                        </li>
+                    <br>
+                    <?php endforeach; ?>
                         </ul>
                     </div>
                 </div>
