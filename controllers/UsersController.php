@@ -279,6 +279,8 @@ class UsersController
 
     public static function indexAllUsers()
     {
+
+        Auth::isAdminOrRedirect();
         $db = DB::getDB();
 
         // Get all users 

@@ -16,7 +16,7 @@ class AllEventsController
 
           $db = DB::getDB();
           //PerOrAdmin used for Admin accessing either to the back office or to his own events
-        if(Auth::isAdminOrRedirect() && $PerOrAdmin=='Admin'){
+        if(isset($_SESSION['admin']) && $PerOrAdmin=='Admin'){
 
               
                 // Get all events 
