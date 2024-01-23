@@ -1,7 +1,8 @@
 <?php
 
 
-require_once('/laragon/www/CCI-EVNT/bootstrap/app.php');
+require_once __DIR__ . '/../bootstrap/app.php';
+
 
 
 use Models\Evnt;
