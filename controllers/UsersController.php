@@ -138,6 +138,8 @@ class UsersController
         if ($result === false) {
             errors('Une erreur est survenue. Veuillez ré-essayer plus tard.');
         } else {
+            $_SESSION['firstName'] = $_POST['firstName'];
+            $_SESSION['lastName'] = $_POST['lastName'];
             success('Les informations ont bien été modifiées.');
         }
         redirectAndExit(self::URL_INDEX);

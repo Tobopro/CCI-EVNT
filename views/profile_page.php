@@ -17,8 +17,8 @@
                 </div>
                 <div id="profile-name" class="col-2 col-lg-1  ms-md-5 ms-lg-0 position-relative  mt-lg-0 text-center ">
                     <p>
-                        <?php ec($user->getLastName()) ?><br>
-                        <?php ec($user->getFirstName()) ?>
+                        <?php ec($user->getFirstName()) ?><br>
+                        <?php ec($user->getLastName()) ?>
                     </p>
                 </div>
                 <div id="profile-numbers" class="col-3 col-md-4 col-lg-1 offset-2 offset-lg-6  mt-lg-0">
@@ -39,6 +39,10 @@
                         </div>
                     </div>
                 </div>
+                <?php
+                if (!$user->getisPublic()):
+                    echo $user->getUserId() == $_SESSION[Auth::SESSION_KEY] ? "<div  class='info-account'> Votre profil est privé </div>" : "<div class='info-account'> Ce profil est privé </div>";
+                endif ?>
             </div>
         </div>
     </div>
@@ -428,8 +432,5 @@
             </div>
         </div>
         <?php
-    endif;
-    if (!$user->getisPublic()):
-        echo $user->getUserId() == $_SESSION[Auth::SESSION_KEY] ? "<p>Votre profil est privé</p>" : "<p>Ce profil est privé</p>";
     endif ?>
 </main>

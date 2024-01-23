@@ -6,12 +6,12 @@
             <form action=<?php ec($actionUrl) ?> method="POST" name="inscription">
                 <input type="hidden" name="action" value="store" hidden>
                 <div class="form-group">
-                    <label for="lastName">Nom</label>
-                    <input class="form-control" id="lastName" type="text" name="lastName" required>
-                </div>
-                <div class="form-group">
                     <label for="firstName">Prénom</label>
                     <input class="form-control" id="firstName" type="text" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Nom</label>
+                    <input class="form-control" id="lastName" type="text" name="lastName" required>
                 </div>
                 <div class="form-group">
                     <label for="mail">Email</label>

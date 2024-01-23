@@ -133,3 +133,13 @@
         overflow: hidden;
     }
 }
+
+.info-account {
+    display: flex;
+    justify-content: center;
+    background-color: $main-color;
+    margin-top: 2em;
+    height: 4em;
+    color: $sub-color;
+    padding-top: 1em;
+}
