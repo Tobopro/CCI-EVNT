@@ -45,7 +45,7 @@ class Auth
     public static function isAdminOrRedirect()
     {
         // Check user is auth
-        if (!Auth::getCurrentUser() && !isset($_SESSION['admin'])) {
+        if (!Auth::getCurrentUser() || !isset($_SESSION['admin'])) {
             redirectAndExit('/index.php?url=error');
 
         }else{

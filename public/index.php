@@ -41,7 +41,7 @@ use Controllers\LegalController;
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
-    <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/creation-event-script.js"></script>
     <script defer type="text/javascript" src="assets/javascript/creation-form.js"></script>
     <link rel="stylesheet" href="./assets/sass/main.css">
 

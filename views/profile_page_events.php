@@ -21,34 +21,34 @@
                         <ul class="details-evnt">
                             <!-- Ville -->
                             <li><img src="assets/img/icons/icon-map-marker.svg" alt="icone map marker" />
-                                <?= $hydratedEvent->getAdress() ?>
+                                <?php echo $hydratedEvent->getAdress() ?>
                             </li>
                             <!-- Date -->
                             <li><img src="assets/img/icons/icon-calendar.svg" alt="icone calendrier" />
-                                <?= $hydratedEvent->getDateEvnt() ?>
+                                <?php echo $hydratedEvent->getDateEvnt() ?>
                             </li>
                             <!-- Participants -->
                             <li><img src="assets/img/icons/icon-group.svg" alt="icone groupe" />
-                                <?= $hydratedEvent->getNbParticipants() ?>/
-                                <?= $hydratedEvent->getNbParticipants() ?>
+                                <?php echo $hydratedEvent->getNbParticipants() ?>/
+                                <?php echo $hydratedEvent->getNbParticipants() ?>
                             </li>
                         </ul>
                         <h3>
-                            <?= $hydratedEvent->getTitle() ?>
+                            <?php echo $hydratedEvent->getTitle() ?>
                         </h3>
                         <p>
-                            <?= substr(
+                            <?php echo substr(
                                 $hydratedEvent->getDescription(),
                                 0
                                 ,
-                                25
+                                50
                             ) . '...' ?>
                         </p>
                         <ul class="liste-categories">
-                            <?php ec($hydratedEvent->getCategoryName()) ?>
+                            <?php $hydratedEvent->getCategoryName() ?>
                         </ul>
                         <a class="btn btn-danger"
-                            href="handlers/evnt_delete_handler.php?id=<?= $hydratedEvent->getId() ?>">Supprimer</a>
+                            href="handlers/evnt_delete_handler.php?id=<?php echo $hydratedEvent->getId() ?>">Supprimer</a>
 
                     </div>
                 </a>

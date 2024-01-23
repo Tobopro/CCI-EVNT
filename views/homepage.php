@@ -3,8 +3,7 @@
         <section id="introduction">
             <div class="container-homepage">
                 <h1><span class="yellow">Rencontrer du monde</span> n'a jamais été aussi facile</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua. </p>
+               
 
                 <?php if (!Auth::getCurrentUser()): ?>
                     <a href="?url=creation_profile" class="btn btn-white">
