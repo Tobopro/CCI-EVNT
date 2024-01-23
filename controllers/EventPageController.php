@@ -200,7 +200,6 @@ class EventPageController
 
     public static function showHeartIcon()
     {
-
         $id = $_GET['id'] ?? null;
         $user = $_SESSION[Auth::SESSION_KEY] ?? null;
         $data = [
