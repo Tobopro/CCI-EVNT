@@ -19,18 +19,18 @@
                     <li>
                         <img src="assets/img/icons/icon-argument-calendar-create.svg" alt="icone calendrier avec plus">
                         <strong>Créez</strong>
-                        <p>votre évènement lorem ipsum dolor iset</p>
+                        <p>Envie de faire découvrir vos centres d'intêréts ?</p>
                     </li>
                     <li>
                         <img src="assets/img//icons/icon-argument-party-participate.svg"
                             alt="icone personnes en train de danser">
                         <strong>Participez</strong>
-                        <p>votre évènement lorem ipsum dolor iset</p>
+                        <p>Envie d'élargir votre cercle social ? </p>
                     </li>
                     <li>
                         <img src="assets/img/icons/icon-argument-group-share.svg" alt="icone groupe de personnes">
                         <strong>Partagez</strong>
-                        <p>votre évènement lorem ipsum dolor iset</p>
+                        <p>Envie de créer des moments inoubliables ? </p>
                     </li>
                 </ul>
             </div>
@@ -96,20 +96,15 @@
         <section id="quoi-evnt">
             <div class="container-homepage">
                 <h2>C'est quoi <span class="white">EVNT</span> ?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                    labore
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                    ut
-                    aliquip ex ea commodo consequat. </p>
+                <p>EVNT est une plateforme en ligne pour permettre à ses utilisateurs de créer,</p><p> partager, et rejoindre différents événements dans leurs alentours.​</p><br><p>
+Regroupés en différents groupes de centre d’intérêts,</p><p> EVNT permet de trouver avec facilité une communauté</p><p> qui partage les mêmes centres d’intérêts. </p><br>
                 <a href="" class="btn btn-secondary">En savoir plus sur Evnt</a>
             </div>
         </section>
 
         <section id="evnt-passes" class="container-homepage">
             <h2>Les <span class="yellow">EVNT</span> passés</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                et
-                dolore magna aliqua.</p>
+            <p>Section en construction.</p>
         </section>
     </main>
 
@@ -119,8 +114,7 @@
                 <div class="container-homepage">
                     <div>
                         <h2>Ne manquez pas les prochains <span class="white">EVNT</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <p>Section en construction.</p>
                     </div>
 
                     <form>
