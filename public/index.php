@@ -25,7 +25,6 @@ use Controllers\LegalController;
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="./assets/sass/main.css">
     <!-- Highest Praise font  -->
     <link rel="stylesheet" href="https://use.typekit.net/ace6zhm.css">
 
@@ -43,6 +42,9 @@ use Controllers\LegalController;
     <script defer src="./assets/javascript/dashboard.js"></script>
     <script defer type="text/javascript" src="assets/javascript/script-homepage.js"></script>
     <script defer type="text/javascript" src="assets/javascript/tom-script.js"></script>
+    <script defer type="text/javascript" src="assets/javascript/creation-form.js"></script>
+    <link rel="stylesheet" href="./assets/sass/main.css">
+
 </head>
 
 

@@ -13,8 +13,14 @@ class DashboardController {
  public static function index()
 {
     $db = DB::getDB();
-    // Get all events 
+
+    if(isset($_GET['liked']) && $_GET['liked']=='on' && isset($_SESSION[Auth::SESSION_KEY])){
+        $events = Evnt::getAllEventsLikedOfUser($db,$_SESSION[Auth::SESSION_KEY]);
+    } else{
+         // Get all events 
     $events = Evnt::getAllEvents($db);
+    }
+   
     // Number of items wanted by page
     $itemsPerPage = 3;
     // Get Current page 

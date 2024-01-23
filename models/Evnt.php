@@ -226,6 +226,18 @@ class Evnt
     return $events;
 }
 
+  public static function getAllEventsLikedOfUser($db, $idUser)
+{
+    $stmt = $db->prepare("SELECT * FROM `isliked`
+    INNER JOIN events ON events.idEvent=isliked.idEvent
+    WHERE isliked.idUser=:idUser");
+    $stmt->bindParam(':idUser', $idUser);
+    $stmt->execute();
+
+    $events = $stmt->fetchAll();
+    return $events;
+}
+
 
     public static function getEventById($db, $id)
     {
