@@ -216,6 +216,13 @@ class Evnt
         return $events;
     }
 
+     public static function getLastSixEvents($db)
+    {
+        $result = $db->query("SELECT * FROM events ORDER BY idEvent DESC LIMIT 6");
+        $events = $result->fetchAll();
+        return $events;
+    }
+
   public static function getAllEventsOfUser($db, $idUser)
 {
     $stmt = $db->prepare("SELECT * FROM events WHERE idUser = :idUser");
