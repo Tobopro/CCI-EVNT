@@ -66,21 +66,24 @@
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts" <?php ec($user->getisDisplayFutureEvnts() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showFutureEvnts"
+                            <?php ec($user->getisDisplayFutureEvnts() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts" <?php ec($user->getisDisplayPastEvnts() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showPastEvnts"
+                            <?php ec($user->getisDisplayPastEvnts() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores" <?php ec($user->getisDisplayEvntScores() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showEvntScores"
+                            <?php ec($user->getisDisplayEvntScores() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -101,15 +104,13 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
+
                     <div class="modal-body">
                         Êtes vous sûr de vouloir supprimer votre compte ? <br>
                         Cette action est irréversible.
                     </div>
                     <div class="modal-footer justify-content-between">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Retour</button>
                         <form action="<?php ec($actionUrl) ?>" method="POST">
                             <input type="text" name="action" value="delete" hidden>
                             <input type="text" name="id" value="<?php ec($_SESSION[Auth::SESSION_KEY]) ?>" hidden>
