@@ -10,8 +10,8 @@
                 </div>
                 <a href="#">
                     <div>
-                        <img class="cover-edit-picture__img"
-                            src="./assets/img/tourne-disque-tournant-vinyle-vintage.jpg" alt="bannière de profil">
+                        <img class="cover-edit-picture__img" src="<?php ec($user->getCoverPicture()) ?>"
+                            alt="bannière de profil">
                         <img class="cover-edit-picture__icon" src="./assets/img/icone/camera-solid.svg"
                             alt="modification de bannière de profil">
                     </div>
@@ -20,7 +20,8 @@
             <div id="profile-edit-up" class="row m-0">
                 <a href="#">
                     <div id="profile-edit-picture" class="col-4 col-md-2 col-lg-2">
-                        <img id="profile-edit-picture__img" src="./assets/img/portrait.jpg" alt="photo de profil">
+                        <img id="profile-edit-picture__img" src="<?php ec($user->getProfilePicture()) ?>"
+                            alt="photo de profil">
                         <img id="profile-edit-picture__icon" src="./assets/img/icone/camera-solid.svg"
                             alt="modification de photo de profil">
                     </div>
@@ -65,24 +66,21 @@
                 <div class="box--yellow">
                     <p>Afficher mes évènement à venir</p>
                     <label class="switch">
-                        <input type="checkbox" name="showFutureEvnts"
-                            <?php ec($user->getisDisplayFutureEvnts() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showFutureEvnts" <?php ec($user->getisDisplayFutureEvnts() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mes évènements passées</p>
                     <label class="switch">
-                        <input type="checkbox" name="showPastEvnts"
-                            <?php ec($user->getisDisplayPastEvnts() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showPastEvnts" <?php ec($user->getisDisplayPastEvnts() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="box--yellow">
                     <p>afficher mon compteur d'évènement</p>
                     <label class="switch">
-                        <input type="checkbox" name="showEvntScores"
-                            <?php ec($user->getisDisplayEvntScores() ? 'checked' : '') ?>>
+                        <input type="checkbox" name="showEvntScores" <?php ec($user->getisDisplayEvntScores() ? 'checked' : '') ?>>
                         <span class="slider round"></span>
                     </label>
                 </div>
