@@ -8,10 +8,10 @@ class Auth
 
     private static ?array $user = null;
 
-    public static function getCurrentUser(): ?array
+    public static function getCurrentUser($idUser = null): ?array
     {
-        $id = self::getSessionUserId();
-
+        $id = isset($idUser) ? $idUser : self::getSessionUserId();
+        self::$user = null;
         if (self::$user === null and $id) {
             self::$user = DB::fetch(
                 "SELECT * FROM users WHERE idUser = :idUser LIMIT 1",
@@ -48,7 +48,7 @@ class Auth
         if (!Auth::getCurrentUser() && !isset($_SESSION['admin'])) {
             redirectAndExit('/index.php?url=error');
 
-        }else{
+        } else {
             return true;
         }
     }

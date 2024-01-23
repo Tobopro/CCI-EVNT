@@ -47,7 +47,7 @@
             <div class="col-12 col-lg-8 my-auto">
                 <a href="?url=personnal_events" class="bg-black rounded-pill p-1 ">Mes événements</a>
                 <div id="future-events" class="mx-5">
-                    <?php if ($user->getisDisplayFutureEvnts() and $user->getUserId() != Auth::SESSION_KEY): ?>
+                    <?php if ($user->getisDisplayFutureEvnts() or $user->getUserId() == $_SESSION[Auth::SESSION_KEY]): ?>
                     <h4> Evenements à venir</h4>
                     <div class="col-12  justify-content-center d-flex">
                         <section id="carouselCard" class="row flex-wrap ">

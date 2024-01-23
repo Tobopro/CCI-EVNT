@@ -16,10 +16,19 @@ class UsersController
 
     public function index()
     {
-        if (Auth::getCurrentUser() === null) {
+        $currentUser = Auth::getCurrentUser();
+        if ($currentUser === null) {
             redirectAndExit("?url=home");
         }
-        $user = User::hydrate(Auth::getCurrentUser());
+        // if (isset($_GET['id'])) {
+        //     $idUser = intval($_GET['id']);
+        //     var_dump($idUser);
+        //     $user = User::hydrate(Auth::getCurrentUser($idUser));
+        // } else {
+        //     $user = User::hydrate($currentUser);
+        // }
+        $user = isset($_GET['id']) ? User::hydrate(Auth::getCurrentUser(intval($_GET['id']))) : User::hydrate($currentUser);
+
         require_once base_path('Views/profile_page.php');
     }
     public function create()
