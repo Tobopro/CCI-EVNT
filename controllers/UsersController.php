@@ -199,13 +199,11 @@ class UsersController
         }
 
     }
-
-
     public function delete()
     {
+
         $id = $_POST['id'] ?? null;
         $user = $this->getUserById($id);
-
         // Delete a user in DB
         $user->delete();
         LogoutController::logOut();

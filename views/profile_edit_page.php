@@ -6,7 +6,7 @@
         <div class="cover-and-info-edit">
             <div class="cover-edit-picture">
                 <div class="cover-edit-picture__btn">
-                    <input type="submit" value="Enregistrer">
+
                 </div>
                 <a href="#">
                     <div>
@@ -86,12 +86,41 @@
                 </div>
             </div>
         </div>
+        <div class="edit-page-delete">
+            <button type="submit" value="Enregistrer" class="btn btn-success">Enregistrer les modifications</button>
+        </div>
     </form>
     <div class="edit-page-delete">
-        <form action="<?php ec($actionUrl) ?>" method="POST">
-            <input type="text" name="action" value="delete" hidden>
-            <input type="text" name="id" value="<?php ec($_SESSION[Auth::SESSION_KEY]) ?>" hidden>
-            <button type="submit" onclick="return confirmDelete();" class="btn btn-danger">Supprimer mon compte</button>
-        </form>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Supprimer mon compte
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Êtes vous sûr de vouloir supprimer votre compte ? <br>
+                        Cette action est irréversible.
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        <form action="<?php ec($actionUrl) ?>" method="POST">
+                            <input type="text" name="action" value="delete" hidden>
+                            <input type="text" name="id" value="<?php ec($_SESSION[Auth::SESSION_KEY]) ?>" hidden>
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </main>

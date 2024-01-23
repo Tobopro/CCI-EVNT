@@ -415,12 +415,12 @@
                     <div id="indicators-lg" class="col-0 col-lg-3 d-none d-lg-block">
                         <div class="box__profile--black mt-5 mt-lg-0">
                             <div class="black-card  ">
-                                <p><span class="indicator__number--size">22</span><br>participations</p>
+                                <p><span class="indicator__number--size">22</span><br>Evnt crée(s)</p>
                             </div>
                         </div>
                         <div class="box__profile--black  mt-5">
                             <div class="black-card  ">
-                                <p><span class="indicator__number--size">13</span><br>participations</p>
+                                <p><span class="indicator__number--size">13</span><br>Participation(s)</p>
                             </div>
                         </div>
                     </div>
