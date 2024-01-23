@@ -101,6 +101,7 @@ if (isset($_GET['url'])) {
             $controller->edit();
             break;
         case 'my_events':
+            Auth::isAdminOrRedirect();
             $controller = new AllEventsController();
             $controller->index(9, 'Admin');
             break;
