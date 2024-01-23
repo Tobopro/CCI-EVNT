@@ -56,7 +56,7 @@
                         <?php foreach ($hydratedEvents as $hydratedEvent):
 
                         ?>
-
+                    <li>
                     <article class="evnt-single mb-2">
                         <a href="<?php ec('?url=evnt&id=' . $hydratedEvent->getId()) ?>">
                             <img class="img-une" src="assets/img/energetic-dancer-dynamic-glamorous-light.jpg"
@@ -84,6 +84,7 @@
                             </div>
                         </a>
                     </article>
+                        </li>
                     <br>
                     <?php endforeach; ?>
                         </ul>

@@ -11,21 +11,17 @@ Use DB;
 Class HomepageController {
 
  public static function show(){
-   self::showCardsHomepage();
-    include('../views/homepage.php');
- }
-
-
-
-public static function showCardsHomepage(){
-   $db = DB::getDB();
+    $db = DB::getDB();
    $events = Evnt::getLastSixEvents($db);
+
    $hydratedEvents = [];
    foreach ($events as $eventData) {
         $eventInstance = Evnt::hydrate($eventData);
         $hydratedEvents[] = $eventInstance;
-}
-}
 
+   
+ }
+  include('../views/homepage.php');
+ }
 
 }
